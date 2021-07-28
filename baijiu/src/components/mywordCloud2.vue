@@ -4,6 +4,8 @@
 <script>
 import Highcharts from "highcharts/highcharts";
 import wordcloud from "highcharts/modules/wordcloud";
+import PubSub from "pubsub-js";
+import cloudData from '../../public/static/wordTest.json'
 wordcloud(Highcharts);
  export default {
     name: "mywordCloud2",
@@ -38,6 +40,18 @@ wordcloud(Highcharts);
         }
     },mounted(){
        this.initcloud(this.worddata);
+       PubSub.subscribe("companyName", (msg, data) => {
+
+                 for(let i=0;i<cloudData.length;i++)
+                   {
+                     if(data==cloudData[i].label)
+                       {
+                       this.initcloud(cloudData[i].datas)
+                       break;
+                        }
+                   }
+    });
+       
     },methods:{
        initcloud:function(data){
            Highcharts.chart("mywordcloud", {
