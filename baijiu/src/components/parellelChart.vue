@@ -27,16 +27,17 @@ export default {
     //       console.log(err)
     //   })
     this.initChart(comparadata[0]);
-    // PubSub.subscribe("countryName", (msg, data) => {
-    //              for(let i=1;i<paradata.length;i++)
-    //                {
-    //                  if(data==paradata[i]['label'])
-    //                    {
-    //                    this.initChart(paradata[i])
-    //                    break;
-    //                     }
-    //                }
-    // });
+    console.log(comparadata[1])
+    PubSub.subscribe("countryName", (msg, data) => {
+                 for(let i=1;i<comparadata.length;i++)
+                   {
+                     if(data==comparadata[i]['label'])
+                       {
+                       this.initChart(comparadata[i])
+                       break;
+                        }
+                   }
+    });
 
   },created(){
   },
@@ -83,7 +84,7 @@ export default {
                 width: 2,
                 smooth: true,
             },
-            data: data.datas.data
+            data: data.datas.data,
            }
     };
     option && myChart.setOption(option);

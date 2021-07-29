@@ -145,6 +145,8 @@ export default {
 
 var a=400;
 var vulue = [128+a, 291, 342, 493, 362, 1078, 413, 1187, 1124, 385, 1741, 571, 1493, 44, 693, 1484, 546, 254, 930, 745, 430];
+var vulu = [1078, 291, 128, 1484, 342, 693, 493,413, 362, 546, 1493, 571, 1187, 745, 1124, 385, 1741, 430, 254, 44,930];
+
 for (var i=0;i<=20;i++)
 {
 	vulue[i]+=a;
@@ -188,7 +190,7 @@ for (var i=0;i<=20;i++)
 							 //  d3.interpolateRgb(min,max)  RGB可省掉不写
 				provinces.attr("fill", function(d, i) {
 					console.log(d);
-					var t = linear(vulue[i]);
+					var t = linear(vulu[i]);
 					var color = computeColor(t);
 					// console.log(color)
 					return color.toString();

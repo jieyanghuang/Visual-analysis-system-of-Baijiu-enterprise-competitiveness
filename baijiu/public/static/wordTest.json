@@ -1,0 +1,874 @@
+[
+    {
+        "label": "剑南春",
+        "datas": [
+            {
+                "name": "包装",
+                "weight": 551.0
+            },
+            {
+                "name": "不错",
+                "weight": 521.0
+            },
+           
+            {
+                "name": "剑南春",
+                "weight": 327.0
+            },
+            {
+                "name": "活动",
+                "weight": 244.0
+            },
+            {
+                "name": "满意",
+                "weight": 238.0
+            },
+            {
+                "name": "正品",
+                "weight": 186.0
+            },
+            {
+                "name": "价格",
+                "weight": 183.0
+            },
+            {
+                "name": "好评",
+                "weight": 169.0
+            },
+            {
+                "name": "品质",
+                "weight": 151.0
+            },
+            {
+                "name": "质量",
+                "weight": 148.0
+            },
+            {
+                "name": "发货",
+                "weight": 146.0
+            },
+            {
+                "name": "购买",
+                "weight": 142.0
+            },
+            {
+                "name": "物流",
+                "weight": 139.0
+            },
+            {
+                "name": "口感",
+                "weight": 135.0
+            },
+            {
+                "name": "赠品",
+                "weight": 130.0
+            },
+            {
+                "name": "很快",
+                "weight": 121.0
+            },
+            {
+                "name": "喜欢",
+                "weight": 114.0
+            },
+            {
+                "name": "味道",
+                "weight": 110.0
+            },
+            {
+                "name": "旗舰店",
+                "weight": 106.0
+            },
+            {
+                "name": "好酒",
+                "weight": 97.0
+            },
+            {
+                "name": "性价比",
+                "weight": 91.0
+            },
+            {
+                "name": "快递",
+                "weight": 91.0
+            },
+            {
+                "name": "值得",
+                "weight": 88.0
+            },
+            {
+                "name": "顺丰",
+                "weight": 81.0
+            },
+            {
+                "name": "优惠",
+                "weight": 80.0
+            },
+            {
+                "name": "外观",
+                "weight": 73.0
+            },
+            {
+                "name": "完好",
+                "weight": 72.0
+            },
+            {
+                "name": "性价比",
+                "weight": 77.0
+            },
+            {
+                "name": "hellip",
+                "weight": 77.0
+            },
+            {
+                "name": "希望",
+                "weight": 75.0
+            },
+            {
+                "name": "旗舰店",
+                "weight": 75.0
+            },
+            {
+                "name": "知道",
+                "weight": 72.0
+            },
+            {
+                "name": "一瓶",
+                "weight": 71.0
+            },
+            {
+                "name": "速度",
+                "weight": 71.0
+            },
+            {
+                "name": "好好",
+                "weight": 71.0
+            },
+            {
+                "name": "自己",
+                "weight": 70.0
+            },
+            {
+                "name": "好酒",
+                "weight": 68.0
+            }
+          
+        ]
+    },
+    {
+        "label": "泸州老窖",
+        "datas": [
+            {
+                "name": "包装",
+                "weight": 858.0
+            },
+            {
+                "name": "不错",
+                "weight": 701.0
+            },
+            {
+                "name": "老窖",
+                "weight": 383.0
+            },
+            {
+                "name": "泸州",
+                "weight": 368.0
+            },
+            {
+                "name": "购买",
+                "weight": 235.0
+            },
+            {
+                "name": "送礼",
+                "weight": 224.0
+            },
+            {
+                "name": "价格",
+                "weight": 207.0
+            },
+            {
+                "name": "口感",
+                "weight": 203.0
+            },
+            {
+                "name": "活动",
+                "weight": 193.0
+            },
+            {
+                "name": "大气",
+                "weight": 184.0
+            },
+            {
+                "name": "喜欢",
+                "weight": 182.0
+            },           
+            {
+                "name": "物流",
+                "weight": 163.0
+            },
+            {
+                "name": "满意",
+                "weight": 162.0
+            },
+            {
+                "name": "值得",
+                "weight": 153.0
+            },
+            {
+                "name": "上档次",
+                "weight": 152.0
+            },
+            {
+                "name": "礼盒",
+                "weight": 152.0
+            },
+            {
+                "name": "好评",
+                "weight": 144.0
+            },
+            {
+                "name": "精美",
+                "weight": 141.0
+            },
+            {
+                "name": "好喝",
+                "weight": 133.0
+            },
+            {
+                "name": "发货",
+                "weight": 132.0
+            },
+            {
+                "name": "味道",
+                "weight": 130.0
+            },
+            {
+                "name": "过年",
+                "weight": 130.0
+            },
+            {
+                "name": "品质",
+                "weight": 127.0
+            },
+            {
+                "name": "可以",
+                "weight": 126.0
+            },
+            {
+                "name": "窖龄",
+                "weight": 124.0
+            },
+            {
+                "name": "很快",
+                "weight": 114.0
+            },
+            {
+                "name": "高端",
+                "weight": 114.0
+            },
+            {
+                "name": "质量",
+                "weight": 110.0
+            },
+            {
+                "name": "多次",
+                "weight": 91.0
+            },
+            {
+                "name": "品牌",
+                "weight": 90.0
+            },
+            {
+                "name": "正品",
+                "weight": 88.0
+            },
+            {
+                "name": "实惠",
+                "weight": 87.0
+            },
+            {
+                "name": "服务",
+                "weight": 84.0
+            },
+            {
+                "name": "外观",
+                "weight": 82.0
+            },
+            {
+                "name": "高大",
+                "weight": 82.0
+            }
+
+        ]
+    },
+    {
+        "label": "沱牌舍得",
+        "datas": [
+            {
+                "name": "不错",
+                "weight": 663.0
+            },
+            {
+                "name": "包装",
+                "weight": 479.0
+            },
+            {
+                "name": "非常",
+                "weight": 307.0
+            },
+            {
+                "name": "舍得",
+                "weight": 289.0
+            },
+            {
+                "name": "口感",
+                "weight": 204.0
+            },
+            {
+                "name": "没有",
+                "weight": 169.0
+            },
+            {
+                "name": "好评",
+                "weight": 162.0
+            },
+            {
+                "name": "购买",
+                "weight": 152.0
+            },
+            {
+                "name": "收到",
+                "weight": 141.0
+            },
+            {
+                "name": "价格",
+                "weight": 137.0
+            },
+            {
+                "name": "好喝",
+                "weight": 136.0
+            },
+            {
+                "name": "喜欢",
+                "weight": 136.0
+            },
+            {
+                "name": "值得",
+                "weight": 129.0
+            },
+            {
+                "name": "味道",
+                "weight": 128.0
+            },
+            {
+                "name": "评价",
+                "weight": 122.0
+            },
+            {
+                "name": "这个",
+                "weight": 122.0
+            },
+            {
+                "name": "漂亮",
+                "weight": 120.0
+            },
+            {
+                "name": "可以",
+                "weight": 119.0
+            },
+            {
+                "name": "沱牌",
+                "weight": 118.0
+            },
+            {
+                "name": "满意",
+                "weight": 117.0
+            },
+            {
+                "name": "质量",
+                "weight": 109.0
+            },
+            {
+                "name": "发货",
+                "weight": 107.0
+            },
+            {
+                "name": "快递",
+                "weight": 107.0
+            },
+            {
+                "name": "物流",
+                "weight": 105.0
+            },
+            {
+                "name": "好看",
+                "weight": 97.0
+            },
+            {
+                "name": "活动",
+                "weight": 96.0
+            },
+            {
+                "name": "就是",
+                "weight": 91.0
+            },
+            {
+                "name": "感觉",
+                "weight": 88.0
+            },
+            {
+                "name": "客服",
+                "weight": 84.0
+            },
+            {
+                "name": "品质",
+                "weight": 84.0
+            },
+            {
+                "name": "一瓶",
+                "weight": 82.0
+            },
+            {
+                "name": "收藏",
+                "weight": 81.0
+            },
+            {
+                "name": "外观",
+                "weight": 80.0
+            },
+            {
+                "name": "口粮",
+                "weight": 80.0
+            }
+        ]
+    },
+    {
+        "label": "水井坊",
+        "datas": [
+            {
+                "name": "不错",
+                "weight": 644.0
+            },
+            {
+                "name": "包装",
+                "weight": 541.0
+            },
+            {
+                "name": "好评",
+                "weight": 205.0
+            },
+            {
+                "name": "好好",
+                "weight": 197.0
+            },
+            {
+                "name": "口感",
+                "weight": 181.0
+            },
+            {
+                "name": "购买",
+                "weight": 179.0
+            },
+            {
+                "name": "满意",
+                "weight": 144.0
+            },
+            {
+                "name": "物流",
+                "weight": 143.0
+            },
+            {
+                "name": "客服",
+                "weight": 138.0
+            },
+            {
+                "name": "发货",
+                "weight": 128.0
+            },
+            {
+                "name": "可以",
+                "weight": 125.0
+            },
+            {
+                "name": "正品",
+                "weight": 124.0
+            },
+            {
+                "name": "味道",
+                "weight": 119.0
+            },
+            {
+                "name": "水井坊",
+                "weight": 115.0
+            },
+            {
+                "name": "赠品",
+                "weight": 112.0
+            },
+            {
+                "name": "价格",
+                "weight": 110.0
+            },
+            {
+                "name": "服务",
+                "weight": 108.0
+            },
+            {
+                "name": "很快",
+                "weight": 102.0
+            },
+            {
+                "name": "质量",
+                "weight": 101.0
+            },
+            {
+                "name": "好喝",
+                "weight": 100.0
+            },
+            {
+                "name": "快递",
+                "weight": 94.0
+            },
+            {
+                "name": "值得",
+                "weight": 85.0
+            },
+            {
+                "name": "喜欢",
+                "weight": 83.0
+            },
+            {
+                "name": "品质",
+                "weight": 82.0
+            },
+            {
+                "name": "感觉",
+                "weight": 72.0
+            },
+            {
+                "name": "活动",
+                "weight": 69.0
+            },
+            {
+                "name": "宝贝",
+                "weight": 69.0
+            },
+            {
+                "name": "外观",
+                "weight": 68.0
+            },
+            {
+                "name": "好酒",
+                "weight": 66.0
+            },
+            {
+                "name": "速度",
+                "weight": 63.0
+            },
+            {
+                "name": "就是",
+                "weight": 62.0
+            },
+            {
+                "name": "品尝",
+                "weight": 58.0
+            },
+            {
+                "name": "送人",
+                "weight": 56.0
+            },
+            {
+                "name": "品相",
+                "weight": 55.0
+            },
+            {
+                "name": "顺丰",
+                "weight": 53.0
+            },
+            {
+                "name": "旗舰店",
+                "weight": 51.0
+            },
+            {
+                "name": "井台",
+                "weight": 51.0
+            },
+            {
+                "name": "便宜",
+                "weight": 50.0
+            }
+        ]
+    },
+    {
+        "label": "五粮液",
+        "datas": [
+            {
+                "name": "包装",
+                "weight": 660.0
+            },
+            {
+                "name": "不错",
+                "weight": 484.0
+            },
+            
+            {
+                "name": "直播间",
+                "weight": 186.0
+            },
+            {
+                "name": "五粮液",
+                "weight": 182.0
+            },
+            {
+                "name": "味道",
+                "weight": 169.0
+            },
+            {
+                "name": "可以",
+                "weight": 148.0
+            },
+            {
+                "name": "喜欢",
+                "weight": 140.0
+            },
+            {
+                "name": "好评",
+                "weight": 139.0
+            },
+            {
+                "name": "口感",
+                "weight": 136.0
+            },
+            {
+                "name": "价格",
+                "weight": 135.0
+            },
+            {
+                "name": "满意",
+                "weight": 133.0
+            },
+            {
+                "name": "物流",
+                "weight": 131.0
+            },
+            {
+                "name": "质量",
+                "weight": 129.0
+            },
+            {
+                "name": "正品",
+                "weight": 122.0
+            },
+            {
+                "name": "品质",
+                "weight": 121.0
+            },
+            {
+                "name": "评价",
+                "weight": 119.0
+            },
+            {
+                "name": "快递",
+                "weight": 116.0
+            },
+            {
+                "name": "精致",
+                "weight": 110.0
+            },
+            {
+                "name": "很快",
+                "weight": 100.0
+            },
+            {
+                "name": "外观",
+                "weight": 99.0
+            },
+            {
+                "name": "好喝",
+                "weight": 99.0
+            },
+            {
+                "name": "购买",
+                "weight": 95.0
+            },
+            {
+                "name": "便宜",
+                "weight": 94.0
+            },
+            {
+                "name": "客服",
+                "weight": 92.0
+            },
+            {
+                "name": "旗舰店",
+                "weight": 87.0
+            },
+            {
+                "name": "品相",
+                "weight": 85.0
+            },
+            {
+                "name": "送人",
+                "weight": 82.0
+            },
+            {
+                "name": "值得",
+                "weight": 82.0
+            },
+            {
+                "name": "李佳琦",
+                "weight": 81.0
+            },
+            {
+                "name": "发货",
+                "weight": 80.0
+            },
+            {
+                "name": "东西",
+                "weight": 75.0
+            },
+            {
+                "name": "真的",
+                "weight": 71.0
+            }
+        ]
+    },
+    {
+        "label": "郎酒",
+        "datas": [
+            {
+                "name": "包装",
+                "weight": 756.0
+            },
+            {
+                "name": "不错",
+                "weight": 519.0
+            },
+            {
+                "name": "非常",
+                "weight": 319.0
+            },
+            {
+                "name": "郎酒",
+                "weight": 243.0
+            },
+            {
+                "name": "好评",
+                "weight": 177.0
+            },
+            {
+                "name": "喜欢",
+                "weight": 167.0
+            },
+            {
+                "name": "价格",
+                "weight": 167.0
+            },
+            {
+                "name": "口感",
+                "weight": 161.0
+            },
+            {
+                "name": "物流",
+                "weight": 150.0
+            },
+            {
+                "name": "味道",
+                "weight": 148.0
+            },
+            {
+                "name": "购买",
+                "weight": 145.0
+            },
+            {
+                "name": "评价",
+                "weight": 139.0
+            },
+            {
+                "name": "满意",
+                "weight": 138.0
+            },
+            {
+                "name": "品质",
+                "weight": 132.0
+            },
+            {
+                "name": "质量",
+                "weight": 127.0
+            },
+            {
+                "name": "活动",
+                "weight": 124.0
+            },
+            {
+                "name": "值得",
+                "weight": 121.0
+            },
+            {
+                "name": "正品",
+                "weight": 120.0
+            },
+            {
+                "name": "客服",
+                "weight": 114.0
+            },
+            {
+                "name": "可以",
+                "weight": 113.0
+            },
+            {
+                "name": "快递",
+                "weight": 106.0
+            },
+            {
+                "name": "发货",
+                "weight": 100.0
+            },
+            {
+                "name": "整体",
+                "weight": 92.0
+            },
+            {
+                "name": "送人",
+                "weight": 92.0
+            },
+            {
+                "name": "精美",
+                "weight": 90.0
+            },
+            {
+                "name": "大气",
+                "weight": 90.0
+            },
+            {
+                "name": "很快",
+                "weight": 88.0
+            },
+            {
+                "name": "外观",
+                "weight": 88.0
+            },
+            {
+                "name": "礼盒",
+                "weight": 87.0
+            },
+            {
+                "name": "好喝",
+                "weight": 83.0
+            },
+            {
+                "name": "旗舰店",
+                "weight": 78.0
+            },
+            {
+                "name": "送礼",
+                "weight": 77.0
+            },
+            {
+                "name": "酱香",
+                "weight": 73.0
+            }
+        ]
+    }
+
+    
+]
