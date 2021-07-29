@@ -1,233 +1,213 @@
 <template>
-    <div class="test" id='mapbox'  ></div>
+  <div class="test" id="mapbox">
+  </div>
 </template>
 <script src="../../public/plugins/H+/js/jquery.min.js"></script>
 <script src="./echarts/echarts.min.js"></script>
 <script>
-import $ from 'jquery'
-import * as echarts from 'echarts'
-import PubSub from 'pubsub-js';
+import $ from "jquery";
+import * as echarts from "echarts";
+import PubSub from "pubsub-js";
 export default {
-  data(){
-      return{
-         
-      }
+  data() {
+    return {};
   },
-  mounted(){
-      this.initmap();
+  mounted() {
+    this.initmap();
   },
-  methods:{
-      initmap(){
-        $(function () {
-        var myChart = echarts.init(document.getElementById('mapbox'));
+  methods: {
+    initmap() {
+      $(function() {
+        var myChart = echarts.init(document.getElementById("mapbox"));
         myChart.showLoading();
-        $.get('/static/sichuan.json', function (geoJson) {
-           var num = Math.random()
-           var data = [
-                    { name: '北京', selected: false, value: 1 },
-                    { name: '天津', selected: false, value: 2 },
-                    { name: '上海', selected: false, value: 3 },
-                    { name: '重庆', selected: false, value: 4 },
-                    { name: '河北', selected: false, value: 5 },
-                    { name: '河南', selected: false, value: 6 },
-                    { name: '云南', selected: false, value: 7 },
-                    { name: '辽宁', selected: false, value: 8 },
-                    { name: '黑龙江', selected: false, value: 9 },
-                    { name: '湖南', selected: false, value: 10 },
-                    { name: '安徽', selected: false, value: 11 },
-                    { name: '山东', selected: false, value: 12 },
-                    { name: '新疆', selected: false, value: 13 },
-                    { name: '江苏', selected: false, value: 14 },
-                    { name: '浙江', selected: false, value: 15 },
-                    { name: '江西', selected: false, value: 16 },
-                    { name: '湖北', selected: false, value: 17 },
-                    { name: '广西', selected: false, value: 18 },
-                    { name: '甘肃', selected: false, value: 19 },
-                    { name: '山西', selected: false, value: 20 },
-                    { name: '内蒙古', selected: false, value: 21 },
-                    { name: '陕西', selected: false, value: 22 },
-                    { name: '吉林', selected: false, value: 23 },
-                    { name: '福建', selected: false, value: 24 },
-                    { name: '贵州', selected: false, value: 25 },
-                    { name: '广东', selected: false, value: 26 },
-                    { name: '青海', selected: false, value: 27 },
-                    { name: '西藏', selected: false, value: 28 },
-                    { name: '四川', selected: false, value: 29 },
-                    { name: '宁夏', selected: false, value: 30 },
-                    { name: '海南', selected: false, value: 31 },
-                    { name: '台湾', selected: false, value: 32 },
-                    { name: '香港', selected: false, value: 33 },
-                    { name: '澳门', selected: false, value: 34 }
-                ]              
-      
-           var  dataColor = {
-                x: '-1000 px', //图例横轴位置
-                y: '-1000 px', //图例纵轴位置
-                splitList: [
-                { start: 1, end: 1, label: '北京', color: '#cfc5de' },
-                { start: 2, end: 2, label: '天津', color: '#f1ebd1' },
-                { start: 3, end: 3, label: '上海', color: '#feffdb' },
-                { start: 4, end: 4, label: '重庆', color: '#e0cee4' },
-                { start: 5, end: 5, label: '河北', color: '#fde8cd' },
-                { start: 6, end: 6, label: '河南', color: '#e4f1d7' },
-                { start: 7, end: 7, label: '云南', color: '#fffed7' },
-                { start: 8, end: 8, label: '辽宁', color: '#e4f1d7' },
-                { start: 9, end: 9, label: '黑龙江', color: '#e4f1d7' },
-                { start: 10, end: 10, label: '湖南', color: '#fffed7' },
-                { start: 11, end: 11, label: '安徽', color: '#fffed8' },
-                { start: 12, end: 12, label: '山东', color: '#dccee7' },
-                { start: 13, end: 13, label: '新疆', color: '#fffed7' },
-                { start: 14, end: 14, label: '江苏', color: '#fce8cd' },
-                { start: 15, end: 15, label: '浙江', color: '#ddceeb' },
-                { start: 16, end: 16, label: '江西', color: '#e4f1d3' },
-                { start: 17, end: 17, label: '湖北', color: '#fde8cd' },
-                { start: 18, end: 18, label: '广西', color: '#fde8cd' },
-                { start: 19, end: 19, label: '甘肃', color: '#fde8cd' },
-                { start: 20, end: 20, label: '山西', color: '#fffdd6' },
-                { start: 21, end: 21, label: '内蒙古', color: '#ddcfe6' },
-                { start: 22, end: 22, label: '陕西', color: '#fad8e9' },
-                { start: 23, end: 23, label: '吉林', color: '#fce8cd' },
-                { start: 24, end: 24, label: '福建', color: '#fad8e8' },
-                { start: 25, end: 25, label: '贵州', color: '#fad8e8' },
-                { start: 26, end: 26, label: '广东', color: '#ddcfe8' },
-                { start: 27, end: 27, label: '青海', color: '#fad8e9' },
-                { start: 28, end: 28, label: '西藏', color: '#ddcfe6' },
-                { start: 29, end: 29, label: '四川', color: '#e4f1d5' },
-                { start: 30, end: 30, label: '宁夏', color: '#fefcd5' },
-                { start: 31, end: 31, label: '海南', color: '#fad8e9' },
-                { start: 32, end: 32, label: '台湾', color: '#fce8cd' },
-                { start: 33, end: 33, label: '香港', color: '#dc9bbb' },
-                { start: 34, end: 34, label: '澳门', color: '#e0f7cc' }
-                ]
-                };
-                //从数组中获取最大值和最小值
-           var dataValue = [];
-           data.forEach(e => {
-                dataValue.push(e.value)
-                });
-           var max = Math.max.apply(null, dataValue),//数据最大值
-           min = Math.min.apply(null, dataValue),//数据最小值
-           min_max = max - min;//极差
-           var R = 178,//色值差
-                G = 98,
-                B = 12,
-                R_min = 18,
-                G_min = 139,
-                B_min = 237;
-           dataColor.splitList.forEach(e => {
-                var RED = (R / min_max * e.start) + R_min,
-                GREEN = (G / min_max * e.start) + G_min,
-                BLUE = (B / min_max * e.start) + B_min;
-                e.color = "rgb(" + RED + ',' + GREEN + ',' + BLUE + ")";
-                });
+        $.get("/static/sichuan.json", function(geoJson) {
+             var value = [1078, 291, 128, 1484, 342, 693, 493,413, 362, 546, 1493, 571, 1187, 745, 1124, 385, 1741, 430, 254, 44,930];
+             var cities =['成都市','自贡市','攀枝花','泸州','德阳市','绵阳市','广元','遂宁','内江','乐山','南充','眉山','宜宾','广安','达州','雅安','巴中','资阳','阿坝藏族羌族自治州','甘孜藏族自治州','凉山']
+             var num = Math.random()
+             var data = [
+                      { name: cities[0], selected: false, value: value[0] },
+                      { name: cities[1], selected: false, value: value[1] },
+                      { name: cities[2], selected: false, value: value[2] },
+                      { name: cities[3], selected: false, value: value[3] },
+                      { name: cities[4], selected: false, value: value[4] },
+                      { name: cities[5], selected: false, value: value[5] },
+                      { name: cities[6], selected: false, value: value[6] },
+                      { name: cities[7], selected: false, value: value[7] },
+                      { name: cities[8], selected: false, value: value[8] },
+                      { name: cities[9], selected: false, value: value[9] },
+                      { name: cities[10], selected: false, value: value[10] },
+                      { name: cities[11], selected: false, value: value[11] },
+                      { name: cities[12], selected: false, value: value[12] },
+                      { name: cities[13], selected: false, value: value[13] },
+                      { name: cities[14], selected: false, value: value[14] },
+                      { name: cities[15], selected: false, value: value[15] },
+                      { name: cities[16], selected: false, value: value[16] },
+                      { name: cities[17], selected: false, value: value[17] },
+                      { name: cities[18], selected: false, value: value[18] },
+                      { name: cities[19], selected: false, value: value[19] },
+                      { name: cities[20], selected: false, value: value[20] },
+                  ]
+            
 
-            console.log(geoJson)
-            myChart.hideLoading();
-            echarts.registerMap('四川', geoJson);
-            var value=[128, 291, 342, 493, 362, 1078, 413, 1187, 1124, 385, 1741, 571, 1493, 44, 693, 1484, 546, 254, 930, 745, 430]
-            var option = {
+             var  dataColor = {
+                  x: '-1000 px', //图例横轴位置
+                  y: '-1000 px', //图例纵轴位置
+                  splitList: [
+                  { start: 1, end: 1, label: cities[0], color: '#cfc5de' },
+                  { start: 2, end: 2, label: cities[1], color: '#f1ebd1' },
+                  { start: 3, end: 3, label: cities[2], color: '#feffdb' },
+                  { start: 4, end: 4, label: cities[3], color: '#e0cee4' },
+                  { start: 5, end: 5, label: cities[4], color: '#fde8cd' },
+                  { start: 6, end: 6, label: cities[5], color: '#e4f1d7' },
+                  { start: 7, end: 7, label: cities[6], color: '#fffed7' },
+                  { start: 8, end: 8, label: cities[7], color: '#e4f1d7' },
+                  { start: 9, end: 9, label: cities[8], color: '#e4f1d7' },
+                  { start: 10, end: 10, label: cities[9], color: '#fffed7' },
+                  { start: 11, end: 11, label: cities[10], color: '#fffed8' },
+                  { start: 12, end: 12, label: cities[11], color: '#dccee7' },
+                  { start: 13, end: 13, label: cities[12], color: '#fffed7' },
+                  { start: 14, end: 14, label: cities[13], color: '#fce8cd' },
+                  { start: 15, end: 15, label: cities[14], color: '#ddceeb' },
+                  { start: 16, end: 16, label: cities[15], color: '#e4f1d3' },
+                  { start: 17, end: 17, label: cities[16], color: '#fde8cd' },
+                  { start: 18, end: 18, label: cities[17], color: '#fde8cd' },
+                  { start: 19, end: 19, label: cities[18], color: '#fde8cd' },
+                  { start: 20, end: 20, label: cities[19], color: '#fffdd6' },
+                  { start: 21, end: 21, label: cities[20], color: '#ddcfe6' }
+                  ]
+                  };
+                  //从数组中获取最大值和最小值
+                   var dataValue = [];
+             data.forEach(e => {
+                  dataValue.push(e.value)
+                  });
+             var max = Math.max.apply(null, dataValue),//数据最大值
+             min = Math.min.apply(null, dataValue),//数据最小值
+             min_max = max - min;//极差
+             var R = 178,//值差
+                  G = 98,
+                  B = 12,
+                  R_min = 18,
+                  G_min = 139,
+                  B_min = 237;
+             dataColor.splitList.forEach(e => {
+                  var RED = (R / min_max * e.start) + R_min,
+                  GREEN = (G / min_max * e.start) + G_min,
+                  BLUE = (B / min_max * e.start) + B_min;
+                  e.color = "rgb(" + RED + ',' + GREEN + ',' + BLUE + ")";
+                  });
+
+          console.log(geoJson);
+          myChart.hideLoading();
+          echarts.registerMap("四川", geoJson);
+          var option = {
+
+            visualMap: {
+              min: 0,
+              max: 500,
+              show: false,
+              splitNumber: 5,
+              inRange: {
+                color: ["#d94e5d", "#eac736", "#50a3ba"].reverse(),
+              },
+              textStyle: {
+                color: "#fff",
+              },
+            },
+              geo: {
+              map: "四川",
+              label: {
+                normal: {
+                  show: true,
+                  color: "#fff",
+                },
+                emphasis: {
+                  show: true,
+                  color: "#fff",
+                },
+                tooltip:{
+                formatter:'{b}'
+              },
+              },
+              roam: false,
+              itemStyle: {
+                normal: {
+                  areaColor: "#40458e",
+                  borderColor: "#6367ad",
+                  borderWidth: 1.5,
+                },
+                emphasis: {
+                  areaColor: "#40458e",
+                },
                 visualMap: {
-                    min: 0,
-                    max: 500,
-                    show: false,
-                    splitNumber: 5,
-                    inRange: {
-                        color: ['#d94e5d', '#eac736', '#50a3ba'].reverse()
-                    },
+                  hoverLink: true,
+                  // dimension:0
+                },
+              },
+              left: "25%",
+              right: "30%",
+              top: "5%",
+              bottom: "37%",
+            },
+            series: [
+              {
+                name: "六大金花白酒厂",
+                type: "scatter",
+                coordinateSystem: "geo",
+                blurSize: 30,
+                //data
+                label: {
+                  normal: {
+                    show: true, //显示省份标签
                     textStyle: {
-                        color: '#fff'
-                    }
+                      color: '#CD2626',
+                    }, //省份标签字体颜色
+                  },
+                   emphasis: {show: true}
                 },
-                geo: {
-                    map: '四川',
-                    label: {
-                        normal: {
-                            show: true,
-                            color: '#fff'
-                        },
-                        emphasis: {
-                            show: true,
-                            color: '#fff'
-                        }
-                    },
-                    roam: false,
-                    itemStyle: {
-                        normal: {
-                            areaColor: '#40458e',
-                            borderColor: '#6367ad',
-                            borderWidth: 1.5
-                        },
-                        emphasis: {
-                            areaColor: '#40458e'
-                        },
-                    visualMap:{
-                        hoverLink:true,
-                        dimension:0
-                    },
-                    },
-                    "left": "25%",
-                    "right": "30%",
-                    "top": "5%",
-                    "bottom": "37%"
+                aspectScale: 0.75,
+                zoom: 1.2,
+                itemStyle: {
+                  normal: {
+                    borderWidth: 0.5, //区域边框宽度
+                    borderColor: "#CD2626", //区域边框颜色
+                    areaColor: "#CD2626", //区域颜色
+                  },
                 },
-                series: [{
-                    name: '各市州白酒厂家数',
-                    type: 'heatmap',
-                    coordinateSystem: 'geo',
-                    blurSize: 30,
-                    // data: value,
-                    label: {
-                            normal: {
-                            show: true, //显示省份标签
-                            textStyle: {
-                            color: "#fff"
-                            } //省份标签字体颜色
-                            }
-                            },
-                    aspectScale: 0.75,
-                    zoom: 1.2,
-                    itemStyle: {
-                            normal: {
-                            borderWidth: .5, //区域边框宽度
-                            borderColor: '#009fe8', //区域边框颜色
-                            areaColor: "#ffefd5", //区域颜色
-                            }
-                            },
-                    data:data,
-               }],
-            dataRange:dataColor
+              },
+              
+            ],
+            // dataRange:dataColor
+          };
+          myChart.setOption(option);
 
-            }
-            myChart.setOption(option);
-
-            window.addEventListener("resize", function () {
+          window.addEventListener("resize", function() {
             myChart.resize();
-            });
-            myChart.on("click",function(e){
-		  //点击地图板块
-            console.log(e)
-            if(e.componentType == "geo") {
-               PubSub.publish("countryName", e["region"]["name"]);
-               console.log(e["region"]["name"])
-             }
-        //点击地图学校点触发订阅事件
-           else{
-             PubSub.publish("clickSchool", e["data"]["name"]);
-              console.log( e["data"]["name"])
-             }
-            });
+          });
+          myChart.on("click", function(e) {
+            //点击地图板块
+            console.log(e);
+            if (e.componentType == "geo") {
+              PubSub.publish("countryName", e["region"]["name"]);
+              console.log(e["region"]["name"]);
+            }
+            //点击地图学校点触发订阅事件
+            else {
+              PubSub.publish("clickSchool", e["data"]["name"]);
+              console.log(e["data"]["name"]);
+            }
+          });
         });
-    })
-      }
-    
-  }
-}
+      });
+    },
+  },
+};
 </script>
 
 <style>
-#mapbox{
-    width:100%;
-    height:100%;
-    
+#mapbox {
+  width: 100%;
+  height: 100%;
 }
 </style>
+

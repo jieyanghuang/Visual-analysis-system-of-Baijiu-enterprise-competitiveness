@@ -410,7 +410,7 @@ export default {
       chart
         .line()
         .position("time*product")
-        .shape("smooth"); //绘制曲线，并设为平滑模式
+        // .shape("smooth"); //绘制曲线，并设为平滑模式
       console.log(chart);
       // chart.point().position('time*product').color('#5ed470').size(1.2); // 绘制点图
       //事件1描述

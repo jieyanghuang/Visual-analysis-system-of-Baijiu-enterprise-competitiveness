@@ -1,6 +1,7 @@
 <template>
   <div id="app">
      <div id="title"><p>四川白酒企业可视分析系统</p></div>
+      <router-view v-if="isRouterAlive"></router-view>
      <div id="container">
             <div id="c2">
                <sortChart2/> 
@@ -38,6 +39,24 @@ import mywordCloud2 from './components/mywordCloud2.vue'
 
 export default {
   name: 'App',
+  provide() { // 注册一个方法
+    return {
+      reload: this.reload
+    }
+  },
+  data() {
+    return {
+      isRouterAlive: true
+    }
+  },
+   methods: {
+    reload() {
+      this.isRouterAlive = false
+      this.$nextTick(function() {
+        this.isRouterAlive = true
+      })
+    }
+  },
   components: {
     sortChart2,
     sichuanmap3,
