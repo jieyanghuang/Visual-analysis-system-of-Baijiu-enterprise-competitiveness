@@ -14,10 +14,10 @@ export default {
   },
   methods: {
     initmap() {
-      $(function () {
+      $(function() {
         var myChart = echarts.init(document.getElementById("mapbox"));
         myChart.showLoading();
-        $.get("/static/sichuan.json", function (geoJson) {
+        $.get("/static/sichuan.json", function(geoJson) {
           var SixPineplants = [
             {
               name: "沱牌舍得",
@@ -44,12 +44,31 @@ export default {
               name: "郎酒",
               value: [105.43501, 29.00875],
             },
-          ];
+          ]; //打点数据
 
           var value = [
-            1078, 291, 128, 1484, 342, 693, 493, 413, 362, 546, 1493, 571, 1187,
-            745, 1124, 385, 1741, 430, 254, 44, 930,
-          ];
+            1078,
+            291,
+            128,
+            1484,
+            342,
+            693,
+            493,
+            413,
+            362,
+            546,
+            1493,
+            571,
+            1187,
+            745,
+            1124,
+            385,
+            1741,
+            430,
+            254,
+            44,
+            930,
+          ]; //每个市州白酒企业数
           var cities = [
             "成都市",
             "自贡市",
@@ -72,15 +91,19 @@ export default {
             "阿坝藏族羌族自治州",
             "甘孜藏族自治州",
             "凉山彝族自治州",
+            "沱牌舍得",
+            "剑南春",
+            "水井坊",
+            "五粮液",
+            "泸州老窖",
+            "郎酒",
           ];
-          var num = Math.random();
 
           var namemap = new Map();
           for (var i = 0; i < value.length; i++) {
-            namemap.set(cities[i], value[i]);
+            namemap.set(cities[i], value[i]); //将市州数和市州名数据设置成键值对结构
           }
 
-          console.log(geoJson);
           myChart.hideLoading();
           echarts.registerMap("四川", geoJson);
           var option = {
@@ -93,51 +116,65 @@ export default {
               tooltip: {
                 show: true,
                 confine: true,
-                formatter: function (params) {
-                  console.log(namemap.get(params.name));
-                  return [
-                    params.name + ":" + namemap.get(params.name) + "家",
-                  ].join("<br>");
+                formatter: function(params) {
+                  if (
+                    params.name == "沱牌舍得" ||
+                    params.name == "剑南春" ||
+                    params.name == "水井坊" ||
+                    params.name == "五粮液" ||
+                    params.name == "泸州老窖" ||
+                    params.name == "郎酒"
+                  ) {
+                    return [params.name].join("<br>");
+                  } else {
+                    return [
+                      params.name + ":" + namemap.get(params.name) + "家",
+                    ].join("<br>");
+                  }
+                },
+
+                textStyle: {
+                  fontFamily: "serif", //提示框字体种类设置
                 },
               },
+
               label: {
                 normal: {
                   show: true,
                   color: "white",
                   fontSize: 10,
                 },
-
                 emphasis: {
-                  show: true,
+                  show: true, //字体显示
                   color: "white",
                   focus: "self",
-                  fontSize: 15,
+                  fontSize: 18,
                 },
               },
 
-              roam: true,
+              roam: true, //地图缩放平移
 
               itemStyle: {
                 normal: {
                   areaColor: "#40458e",
                   borderColor: "white",
-                  borderWidth: 1.5,
+                  borderWidth: 1.2,
                 },
                 emphasis: {
-                  areaColor: "pink",
+                  areaColor: "#40458e",
                 },
               },
-
               left: "25%",
               right: "30%",
               top: "5%",
               bottom: "37%",
+              //地图板块出现位置
             },
 
             series: [
               {
                 name: "六大金花白酒厂",
-                symbolSize: 45,
+                symbolSize: 40, //大头针大小
                 type: "scatter",
                 symbol: "pin",
                 color: "yellow",
@@ -148,10 +185,10 @@ export default {
           };
           myChart.setOption(option);
 
-          window.addEventListener("resize", function () {
+          window.addEventListener("resize", function() {
             myChart.resize();
           });
-          myChart.on("click", function (e) {
+          myChart.on("click", function(e) {
             //点击地图板块
             console.log(e);
             if (e.componentType == "geo") {
