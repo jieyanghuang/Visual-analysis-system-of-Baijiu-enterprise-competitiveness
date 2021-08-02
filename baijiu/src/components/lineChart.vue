@@ -1,5 +1,5 @@
 <template>
-  <div id="lineChart"><p>全国白酒产量月增长率</p></div>
+  <div id="lineChart"><p></p></div>
 </template>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -379,12 +379,12 @@ export default {
       }
       //使用G2绘图
       const chart = new Chart({
-        title:"全国白酒产量月增长率",
+        title: "全国白酒产量月增长率",
         container: "lineChart", //连接body中的ID
         // height: window.innerHeight,  //高度为窗口高度
         forceFit: true, //自适应模式，若想自定义宽度需改为false
-        padding: [ 30, 21, 60, 30], //边框宽度，修改后会影响坐标轴的显示
-        top:200,
+        padding: [30, 21, 60, 30], //边框宽度，修改后会影响坐标轴的显示
+        top: 200,
         width: 540,
         height: 300,
       });
@@ -407,10 +407,10 @@ export default {
           },
         },
       }); //定义y轴文字
-      chart
-        .line()
-        .position("time*product")
-        // .shape("smooth"); //绘制曲线，并设为平滑模式
+      // chart
+      //   .line()
+      //   .position("time*product")
+      // .shape("smooth"); //绘制曲线，并设为平滑模式
       console.log(chart);
       // chart.point().position('time*product').color('#5ed470').size(1.2); // 绘制点图
       //事件1描述

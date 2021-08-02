@@ -1,140 +1,292 @@
-
 <template>
-  <div id="parellelChart"  style="width:700px;height:300px;">
+  <div id="parellelChart" style="width:900px;height:300px;">
     <!-- <div id='flag'></div> -->
   </div>
 </template>
 
 <script>
-// import * as axios from "axios";
-// import * as d3 from 'd3'
-import * as echarts from 'echarts'
-import * as d3 from 'd3'
-import comparadata from '../../public/static/comparallel.json'
-import PubSub from 'pubsub-js';
+import * as echarts from "echarts";
+import * as d3 from "d3";
+import comparadata from "../../public/static/parallel_final.json";
+import PubSub from "pubsub-js";
+import { color } from "highcharts";
 export default {
-  name: 'parellelChart',
-  data () {
-    return {
-    }
-  },mounted(){
-      //axios执行get请求
-    // axios.get('/api/data?id=1').then((res)=>{
-    //       console.log(res.data);
-    //       this.parallelChartdata = res.data.data;
-    //       this.initChart(this.parallelChartdata)
-    //   }).catch((err)=>{
-    //       console.log(err)
-    //   })
-    this.initChart(comparadata[0]);
-    console.log(comparadata[1])
-    PubSub.subscribe("countryName", (msg, data) => {
-                 for(let i=1;i<comparadata.length;i++)
-                   {
-                     if(data==comparadata[i]['label'])
-                       {
-                       this.initChart(comparadata[i])
-                       break;
-                        }
-                   }
-    });
-
-  },created(){
+  name: "parellelChart",
+  data() {
+    return {};
   },
-  methods:{
-     initChart:function(data){
-     var chartDom = document.getElementById('parellelChart');
-     var myChart = echarts.init(chartDom);
-     var countryAxisx =['市州','注册资本（万)','有限公司数','独资企业数','个体工商户数','专利数','天眼评分','商标数']
-     var companyAxisx =['酒企','注册资本（万）','参保人数','行政许可','商标信息','专利信息','天眼评分','法律诉讼']
-     var option;
-     var axisData
-     if(data.label == "市州") axisData = countryAxisx
-     else axisData = companyAxisx
-     option = {
-         parallelAxis: [
-             {
+  mounted() {
+    this.initChart(comparadata[0]);
+    // console.log(comparadata[1])
+    PubSub.subscribe("countryName", (msg, data) => {
+      for (let i = 1; i < comparadata.length; i++) {
+        if (data == comparadata[i]["label"]) {
+          this.initChart(comparadata[i]);
+          break;
+        }
+      }
+    });
+  },
+  created() {},
+  methods: {
+    initChart: function(data) {
+      console.log(data);
+      var chartDom = document.getElementById("parellelChart");
+      var myChart = echarts.init(chartDom);
+      var countryAxisx = [
+        "市州",
+        "注册资本（万)",
+        "有限公司数",
+        "独资企业数",
+        "个体工商户数",
+        "专利数",
+        "天眼评分",
+        "商标数",
+      ];
+      var companyAxisx = [
+        "酒企",
+        "注册资本（万）",
+        "参保人数",
+        "行政许可",
+        "商标信息",
+        "专利信息",
+        "天眼评分",
+        "法律诉讼",
+      ];
+      var option;
+      var axisData;
+      var data_f = [
+        "泸州市",
+        "成都市",
+        "宜宾市",
+        "德阳市",
+        "广安市",
+        "甘孜藏族自治州",
+        "攀枝花市",
+        "阿坝藏族羌族自治州",
+        "自贡市",
+        "遂宁市",
+        "雅安市",
+      ].reverse();
+      var data_l = [
+        "资阳市",
+        "内江市",
+        "乐山市",
+        "绵阳市",
+        "广元市",
+        "眉山市",
+        "凉山彝族自治州",
+        "南充市",
+        "巴中市",
+        "达州市",
+      ].reverse();
+      if (data.label == "市州") axisData = countryAxisx;
+      else axisData = companyAxisx;
+      var option1 = {
+        parallel: [
+          {
+            left: "2%",
+            right: "21%",
+            bottom: 20,
+            parallelindex: 0,
+          },
+          {
+            left: "2%",
+            right: "21%",
+            bottom: 20,
+            parallelIndex: 1,
+          },
+        ],
+        parallelAxis: [
+          {
             dim: 0,
             name: axisData[0],
-            type: 'category',
-            data: data.datas.name
-        }, 
-        {dim: 1, name: axisData[1]},
-        {dim: 2, name: axisData[2]},
-        {dim: 3, name: axisData[3]},
-        {dim: 4, name: axisData[4]},
-        {dim: 5, name: axisData[5]},
-        {dim: 6, name: axisData[6]},
-        {dim: 7, name: axisData[7]},            
+            type: "category",
+            parallelIndex: 0,
+            data: data_f,
+          },
+          { dim: 1, name: axisData[1], parallelIndex: 0 },
+          { dim: 2, name: axisData[2], parallelIndex: 0 },
+          { dim: 3, name: axisData[3], parallelIndex: 0 },
+          { dim: 4, name: axisData[4], parallelIndex: 0 },
+          { dim: 5, name: axisData[5], parallelIndex: 0 },
+          { dim: 6, name: axisData[6], parallelIndex: 0 },
+          { dim: 7, name: axisData[7], parallelIndex: 0 },
+          {
+            dim: 8,
+            name: axisData[0],
+            type: "category",
+            parallelIndex: 1,
+            data: data_l,
+          },
+          { dim: 9, name: axisData[1], parallelIndex: 1 },
+          { dim: 10, name: axisData[2], parallelIndex: 1 },
+          { dim: 11, name: axisData[3], parallelIndex: 1 },
+          { dim: 12, name: axisData[4], parallelIndex: 1 },
+          { dim: 13, name: axisData[5], parallelIndex: 1 },
+          { dim: 14, name: axisData[6], parallelIndex: 1 },
+          { dim: 15, name: axisData[7], parallelIndex: 1 },
         ],
-        parallel: {
-        left: '5%',
-        right: '18%',
-        bottom: 20,
+        legend: {
+          left: "center",
+          data: ["排名前十一市", "排名后十市"],
+          // show:false,
+          selected: {
+            排名前十一市: true,
+            排名后十市: false,
+            //不想显示的都设置成false
+          },
+          selectedMode: "single",
+          itemGap: 20,
+          textStyle: {
+            color: "#6699CC",
+            fontSize: 14,
+          },
         },
-        title:{
-             text:'市/州白酒企业数据展示',
-             textStyle:{
-                 left:'40%',
-             }
+        title: {
+          text: "21市州白酒企业整体数据展示",
+          textStyle: {
+            left: "40%",
+          },
         },
-        series: {
-            type: 'parallel',
+        series: [
+          {
+            type: "parallel",
+            name: "排名前十一市",
+            parallelIndex: 0,
+            smooth: false,
             lineStyle: {
-                width: 2,
-                smooth: true,
+              width: 2,
+              color: "#6699CC",
             },
-            data: data.datas.data,
-           }
-    };
-    option && myChart.setOption(option);
-      }
-    
-}}
-
+            data: data.datas.data1,
+          },
+          {
+            type: "parallel",
+            parallelIndex: 1,
+            name: "排名后十市",
+            lineStyle: {
+              width: 2,
+            },
+            smooth: false,
+            data: data.datas.data2,
+          },
+        ],
+      };
+      var option2 = {
+        parallel: [
+          {
+            left: "2%",
+            right: "21%",
+            bottom: 20,
+            parallelindex: 0,
+          },
+          {
+            left: "2%",
+            right: "21%",
+            bottom: 20,
+            parallelIndex: 1,
+          },
+        ],
+        parallelAxis: [
+          {
+            dim: 0,
+            name: axisData[0],
+            type: "category",
+            parallelIndex: 1,
+            data: ["其他", "个体工商户", "有限责任公司", "个人独资企业"],
+          },
+          { dim: 1, name: axisData[1], parallelIndex: 1 },
+          { dim: 2, name: axisData[2], parallelIndex: 1 },
+          { dim: 3, name: axisData[3], parallelIndex: 1 },
+          { dim: 4, name: axisData[4], parallelIndex: 1 },
+          { dim: 5, name: axisData[5], parallelIndex: 1 },
+          { dim: 6, name: axisData[6], parallelIndex: 1 },
+          { dim: 7, name: axisData[7], parallelIndex: 1 },
+          {
+            dim: 8,
+            name: axisData[0],
+            type: "category",
+            parallelIndex: 0,
+            data: [
+              "第十",
+              "第九",
+              "第八",
+              "第七",
+              "第六",
+              "第五",
+              "第四",
+              "第三",
+              "第二",
+              "第一",
+            ],
+          },
+          { dim: 9, name: axisData[1], parallelIndex: 0 },
+          { dim: 10, name: axisData[2], parallelIndex: 0 },
+          { dim: 11, name: axisData[3], parallelIndex: 0 },
+          { dim: 12, name: axisData[4], parallelIndex: 0 },
+          { dim: 13, name: axisData[5], parallelIndex: 0 },
+          { dim: 14, name: axisData[6], parallelIndex: 0 },
+          { dim: 15, name: axisData[7], parallelIndex: 0 },
+        ],
+        title: {
+          text: "市/州白酒企业数据展示",
+          textStyle: {
+            left: "40%",
+          },
+        },
+        legend: {
+          left: "center",
+          data: ["所有企业情况", "竞争力前十企业"],
+          // show:false,
+          selected: {
+            所有企业情况: false,
+            竞争力前十企业: true,
+            //不想显示的都设置成false
+          },
+          //   selectedMode: "single",
+          itemGap: 20,
+          textStyle: {
+            color: "#6699CC",
+            fontSize: 14,
+          },
+        },
+        series: [
+          {
+            name: "竞争力前十企业",
+            type: "parallel",
+            parallelIndex: 0,
+            smooth: false,
+            // coordinateSystem:'parallel',
+            // index:0,
+            lineStyle: {
+              width: 1.5,
+              color: "#6699CC",
+            },
+            data: data.datas.data1,
+          },
+          {
+            name: "所有企业情况",
+            type: "parallel",
+            parallelIndex: 1,
+            // index:1,
+            // coordinateSystem:'parallel',
+            smooth: true,
+            lineStyle: {
+              width: 1.5,
+              // color: "rgba(102, 153, 204, 0.5)"
+            },
+            data: data.datas.data2,
+          },
+        ],
+      };
+      if (data.label == "市州") option = option1;
+      else option = option2;
+      option && myChart.setOption(option);
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style type="scoped" >
-    /* #parallelChart{
-        width: 100%;
-        display: flex;
-        height: 100%;
-        position: absolute;
-        top: 0%;
-        
-    }
-    #parallelChart svg {
-        font: 10px sans-serif;
-    }
-    
-    .background path {
-        fill: none;
-        stroke: #ccc;
-        stroke-opacity: .4;
-        shape-rendering: crispEdges;
-    }
-    
-    .foreground path {
-        fill: none;
-        stroke: rgb(196, 56, 51);
-        stroke-opacity: .7;
-    }
-    
-    .brush .extent {
-        fill-opacity: .3;
-        stroke: #fff;
-        shape-rendering: crispEdges;
-    }
-    
-    .axis line,
-    .axis path {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
-    
-    .axis text {
-        text-shadow: 0 1px 0 #fff;
-    } */
-</style>
+<style type="scoped"></style>

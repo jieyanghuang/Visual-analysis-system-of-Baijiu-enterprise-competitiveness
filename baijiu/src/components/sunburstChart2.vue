@@ -1,282 +1,267 @@
 <template>
-    <div id="sunburst" style="width:100%;height:70%">
-    </div>
+  <div id="qipao" style="width:100%;height:70%"></div>
 </template>
 <script>
-import * as echarts from 'echarts';
+import * as echarts from "echarts";
+import PubSub from "pubsub-js";
+import $ from "jquery";
+// import * as d3 from 'd3'
+export default {
+  data() {
+    return {
+      company: ["剑南春", "郎酒", "泸州老窖", "沱牌舍得", "五粮液", "水井坊"],
+    };
+  },
+  mounted() {
+    this.initQipao(6);
+    PubSub.subscribe("companyName", (msg, data) => {
+      for (var i = 0; i < this.company.length; i++) {
+        if (data == this.company[i]) this.initQipao(i);
+      }
+    });
+  },
+  methods: {
+    initQipao(qipaoData) {
+      //   var ROOT_PATH = 'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples';
 
-export default ({
-    name:"sunburstChart2",
-    data(){
-        return{
-         sunburstdata:""
+      var chartDom = document.getElementById("qipao");
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      $.when(
+        $.get("static/qipao_final.json"),
+        $.getScript(
+          "https://cdn.jsdelivr.net/npm/d3-hierarchy@2.0.0/dist/d3-hierarchy.min.js"
+        )
+      ).done(function(res) {
+        if (qipaoData == 6) run(res[0]);
+        else run(res[0][qipaoData]);
+        console.log(res[0]);
+        console.log(res[0][qipaoData]);
+      });
+
+      function run(rawData) {
+        var dataWrap = prepareData(rawData);
+        console.log(dataWrap);
+
+        initChart(dataWrap.seriesData, dataWrap.maxDepth);
+      }
+
+      function prepareData(rawData) {
+        var seriesData = [];
+        var maxDepth = 0;
+
+        function convert(source, basePath, depth) {
+          if (source == null) {
+            return;
+          }
+          if (maxDepth > 5) {
+            return;
+          }
+          maxDepth = Math.max(depth, maxDepth);
+
+          seriesData.push({
+            id: basePath,
+            value: source.$count,
+            depth: depth,
+            index: seriesData.length,
+          });
+
+          for (var key in source) {
+            if (source.hasOwnProperty(key) && !key.match(/^\$/)) {
+              var path = basePath + "." + key;
+              convert(source[key], path, depth + 1);
+            }
+          }
         }
-    },mounted(){
-        this.initsun()
-    },methods:{
-        initsun(){
-                var chartDom = document.getElementById('sunburst');
-                var myChart = echarts.init(chartDom);
-                var option;
 
-                var item1 = {
-                    color: '#3399FF'
-                };
-                var item2 = {
-                    color: '#33CCFF'
-                };
-                var item3 = {
-                    color: '#33FFFF'
-                };
-                // var data = [{
-                //     name:"0",
-                //     children: [{
-                //         value: 5,
-                //         name:"a",
-                //         children: [{
-                //             value: 1,
-                //             name:"a1",
-                //             itemStyle: item1
-                //         }, {
-                //             value: 2,
-                //             name:"a2",
-                //             children: [{
-                //                 value: 1,
-                //                 name:"a2.1",
-                //                 itemStyle: item2
-                //             }]
-                //         }, {
-                //             children: [{
-                //                 value: 1
-                //             }]
-                //         }],
-                //         itemStyle: item1
-                //     }, {
-                //         value: 10,
-                //         children: [{
-                //             value: 6,
-                //             children: [{
-                //                 value: 1,
-                //                 itemStyle: item1
-                //             }, {
-                //                 value: 1
-                //             }, {
-                //                 value: 1,
-                //                 itemStyle: item2
-                //             }, {
-                //                 value: 1
-                //             }],
-                //             itemStyle: item3
-                //         }, {
-                //             value: 2,
-                //             children: [{
-                //                 value: 1
-                //             }],
-                //             itemStyle: item3
-                //         }, {
-                //             children: [{
-                //                 value: 1,
-                //                 itemStyle: item2
-                //             }]
-                //         }],
-                //         itemStyle: item1
-                //     }],
-                //     itemStyle: item1
-                // }, {
-                //     value: 9,
-                //     children: [{
-                //         value: 4,
-                //         children: [{
-                //             value: 2,
-                //             itemStyle: item2
-                //         }, {
-                //             children: [{
-                //                 value: 1,
-                //                 itemStyle: item1
-                //             }]
-                //         }],
-                //         itemStyle: item1
-                //     }, {
-                //         children: [{
-                //             value: 3,
-                //             children: [{
-                //                 value: 1
-                //             }, {
-                //                 value: 1,
-                //                 itemStyle: item2
-                //             }]
-                //         }],
-                //         itemStyle: item3
-                //     }],
-                //     itemStyle: item2
-                // }, {
-                //     value: 7,
-                //     children: [{
-                //         children: [{
-                //             value: 1,
-                //             itemStyle: item3
-                //         }, {
-                //             value: 3,
-                //             children: [{
-                //                 value: 1,
-                //                 itemStyle: item2
-                //             }, {
-                //                 value: 1
-                //             }],
-                //             itemStyle: item2
-                //         }, {
-                //             value: 2,
-                //             children: [{
-                //                 value: 1
-                //             }, {
-                //                 value: 1,
-                //                 itemStyle: item1
-                //             }],
-                //             itemStyle: item1
-                //         }],
-                //         itemStyle: item3
-                //     }],
-                //     itemStyle: item1
-                // }, {
-                //     children: [{
-                //         value: 6,
-                //         children: [{
-                //             value: 1,
-                //             itemStyle: item2
-                //         }, {
-                //             value: 2,
-                //             children: [{
-                //                 value: 2,
-                //                 itemStyle: item2
-                //             }],
-                //             itemStyle: item1
-                //         }, {
-                //             value: 1,
-                //             itemStyle: item3
-                //         }],
-                //         itemStyle: item3
-                //     }, {
-                //         value: 3,
-                //         children: [{
-                //             value: 1,
-                //         }, {
-                //             children: [{
-                //                 value: 1,
-                //                 itemStyle: item2
-                //             }]
-                //         }, {
-                //             value: 1
-                //         }],
-                //         itemStyle: item3
-                //     }],
-                //     itemStyle: item1
-                // }];
-                var data=[
-                    {
-                    itemStyle: item1,
-                    name:"剑南春（公司名字）",
-                    children:[
-                       {  name:"剑南春",
-                        //   value:2,
-                          itemStyle: item1,
-                          children:[
-                                   {name:"水晶剑南春",
-                                    value:1,
-                                    itemStyle: item1
-                                   },
-                                   {name:"珍藏级剑南春",
-                                    value:1,
-                                    itemStyle: item3
-                                   },                                  
-                                   ]
-                      },
-                     {  name:"金剑南",
-                         itemStyle: item1,
-                         children:[
-                            {name:"金剑南K6",
-                             value:1,
-                             itemStyle: item1
-                            },
-                            {name:"24K金剑南",
-                             value:1
-                            },
-                            {name:"金剑南K3",
-                             value:1
-                            },
-                            {name:"金剑特曲",
-                             value:1
-                            },
-                           ]
-                      }
-                           ]
-                    },
-                   {
-                
-                    name:"剑南春（公司名字）",
-                    children:[
-                       {  name:"剑南春",
-                        //   value:2,
-                          children:[
-                                   {name:"水晶剑南春",
-                                    value:1
-                                   },
-                                   {name:"珍藏级剑南春",
-                                    value:1
-                                   },                                  
-                                   ]
-                      },
-                     {  name:"金剑南",
-                        
-                         children:[
-                            {name:"金剑南K6",
-                             value:1
-                            },
-                            {name:"24K金剑南",
-                             value:1
-                            },
-                            {name:"金剑南K3",
-                             value:1
-                            },
-                            {name:"金剑特曲",
-                             value:1
-                            },
-                           ]
-                      }
-                           ]
-                    },
-                ]
+        convert(rawData, "option", 0);
 
-                option = {
-                    title:{
-                       text:'产品旭日图',
-                       textStyle:{
-                       left:'40%',
-                        }
-        },
-                    series: {
-                        radius: ['15%', '80%'],
-                        type: 'sunburst',
-                        sort: null,
-                        emphasis: {
-                            focus: 'ancestor'
-                        },
-                        data: data,
-                        label: {
-                            rotate: 'radial'
-                        },
-                        levels: [],
-                        itemStyle: {
-                            color: '',
-                            borderWidth: 2
-                        }
-                    }
-                };
+        return {
+          seriesData: seriesData,
+          maxDepth: maxDepth,
+        };
+      }
 
-                option && myChart.setOption(option);
+      function initChart(seriesData, maxDepth) {
+        var displayRoot = stratify();
+
+        function stratify() {
+          return d3
+            .stratify()
+            .parentId(function(d) {
+              return d.id.substring(0, d.id.lastIndexOf("."));
+            })(seriesData)
+            .sum(function(d) {
+              return d.value || 0;
+            })
+            .sort(function(a, b) {
+              return b.value - a.value;
+            });
         }
-    }
-})
+
+        function overallLayout(params, api) {
+          var context = params.context;
+          d3
+            .pack()
+            .size([api.getWidth() - 2, api.getHeight() - 2])
+            .padding(3)(displayRoot);
+
+          context.nodes = {};
+          displayRoot.descendants().forEach(function(node, index) {
+            context.nodes[node.id] = node;
+          });
+        }
+
+        function renderItem(params, api) {
+          var context = params.context;
+
+          // Only do that layout once in each time `setOption` called.
+          if (!context.layout) {
+            context.layout = true;
+            overallLayout(params, api);
+          }
+
+          var nodePath = api.value("id");
+          var node = context.nodes[nodePath];
+
+          if (!node) {
+            // Reder nothing.
+            return;
+          }
+
+          var isLeaf = !node.children || !node.children.length;
+
+          var focus = new Uint32Array(
+            node.descendants().map(function(node) {
+              return node.data.index;
+            })
+          );
+
+          var nodeName = isLeaf
+            ? nodePath
+                .slice(nodePath.lastIndexOf(".") + 1)
+                .split(/(?=[A-Z][^A-Z])/g)
+                .join("\n")
+            : "";
+
+          var z2 = api.value("depth") * 2;
+
+          return {
+            type: "circle",
+            focus: focus,
+            shape: {
+              cx: node.x,
+              cy: node.y,
+              r: node.r,
+            },
+            transition: ["shape"],
+            z2: z2,
+            textContent: {
+              type: "text",
+              style: {
+                // transition: isLeaf ? 'fontSize' : null,
+                text: nodeName,
+                fontFamily: "Arial",
+                width: node.r * 1.3,
+                overflow: "truncate",
+                fontSize: node.r / 3,
+              },
+              emphasis: {
+                style: {
+                  overflow: null,
+                  fontSize: Math.max(node.r / 3, 12),
+                },
+              },
+            },
+            textConfig: {
+              position: "inside",
+            },
+            style: {
+              fill: api.visual("color"),
+            },
+            emphasis: {
+              style: {
+                fontFamily: "Arial",
+                fontSize: 12,
+                shadowBlur: 20,
+                shadowOffsetX: 3,
+                shadowOffsetY: 5,
+                shadowColor: "rgba(0,0,0,0.3)",
+              },
+            },
+          };
+        }
+
+        var option = {
+          title: {
+            text: "产品结构图",
+            subtext: "Product Structure Chart",
+          },
+          dataset: {
+            source: seriesData,
+          },
+          tooltip: {},
+          visualMap: {
+            show: false,
+            min: 0,
+            max: maxDepth,
+            dimension: "depth",
+            inRange: {
+              color: ["#006edd", "#e0ffff"],
+            },
+          },
+          hoverLayerThreshold: Infinity,
+          series: {
+            type: "custom",
+            renderItem: renderItem,
+            progressive: 0,
+            coordinateSystem: "none",
+            encode: {
+              tooltip: "value",
+              itemName: "id",
+            },
+          },
+        };
+
+        myChart.setOption(option);
+
+        myChart.on("click", { seriesIndex: 0 }, function(params) {
+          drillDown(params.data.id);
+        });
+
+        function drillDown(targetNodeId) {
+          displayRoot = stratify();
+          console.log(displayRoot);
+          if (targetNodeId != null) {
+            displayRoot = displayRoot.descendants().find(function(node) {
+              return node.data.id === targetNodeId;
+            });
+          }
+          // A trick to prevent d3-hierarchy from visiting parents in this algorithm.
+          try {
+            displayRoot.parent = null;
+          } catch (err) {}
+
+          myChart.setOption({
+            dataset: {
+              source: seriesData,
+            },
+          });
+        }
+
+        // Reset: click on the blank area.
+        myChart.getZr().on("click", function(event) {
+          if (!event.target) {
+            drillDown();
+          }
+        });
+      }
+
+      option && myChart.setOption(option);
+    },
+  },
+};
 </script>
-<style scoped>
 
-</style>
+<style></style>

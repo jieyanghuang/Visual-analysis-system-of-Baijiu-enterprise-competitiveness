@@ -82,7 +82,8 @@ export default {
 
       option = {
         title: {
-          text: "市州竞争力排名图",
+          text: "竞争力排名图",
+          subtext: "Competitiveness Ranking Chart",
         },
         tooltip: {
           trigger: "axis",
@@ -102,7 +103,8 @@ export default {
         },
         yAxis: {
           type: "category",
-          data: data["市州"].reverse(),
+          inverse: true,
+          data: data["市州"],
           axisLabel: {
             show: false, //不显示坐标轴上的文字
           },
@@ -115,7 +117,7 @@ export default {
             backgroundStyle: {
               color: "rgba(180, 180, 180, 0.2)",
             },
-            data: data["竞争力指数"].reverse(),
+            data: data["竞争力指数"],
             label: {
               show: true,
               fontSize: 11,
