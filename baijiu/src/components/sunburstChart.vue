@@ -77,6 +77,11 @@ export default {
                     }).tooltip('label*sum');
                     chart.render();
                 });
+
+                //  this.$echartsResize(myChart);
+                window.addEventListener("resize", function () {
+            myChart.resize();
+          });
          }
       }
   }

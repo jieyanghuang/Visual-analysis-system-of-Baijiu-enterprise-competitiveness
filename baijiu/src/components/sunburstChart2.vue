@@ -1,5 +1,5 @@
 <template>
-  <div id="qipao" style="width:100%;height:70%"></div>
+  <div id="qipao" style="width: 100%; height: 100%"></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -33,16 +33,13 @@ export default {
         $.getScript(
           "https://cdn.jsdelivr.net/npm/d3-hierarchy@2.0.0/dist/d3-hierarchy.min.js"
         )
-      ).done(function(res) {
+      ).done(function (res) {
         if (qipaoData == 6) run(res[0]);
         else run(res[0][qipaoData]);
-        console.log(res[0]);
-        console.log(res[0][qipaoData]);
       });
 
       function run(rawData) {
         var dataWrap = prepareData(rawData);
-        console.log(dataWrap);
 
         initChart(dataWrap.seriesData, dataWrap.maxDepth);
       }
@@ -89,13 +86,13 @@ export default {
         function stratify() {
           return d3
             .stratify()
-            .parentId(function(d) {
+            .parentId(function (d) {
               return d.id.substring(0, d.id.lastIndexOf("."));
             })(seriesData)
-            .sum(function(d) {
+            .sum(function (d) {
               return d.value || 0;
             })
-            .sort(function(a, b) {
+            .sort(function (a, b) {
               return b.value - a.value;
             });
         }
@@ -108,7 +105,7 @@ export default {
             .padding(3)(displayRoot);
 
           context.nodes = {};
-          displayRoot.descendants().forEach(function(node, index) {
+          displayRoot.descendants().forEach(function (node, index) {
             context.nodes[node.id] = node;
           });
         }
@@ -133,7 +130,7 @@ export default {
           var isLeaf = !node.children || !node.children.length;
 
           var focus = new Uint32Array(
-            node.descendants().map(function(node) {
+            node.descendants().map(function (node) {
               return node.data.index;
             })
           );
@@ -152,7 +149,7 @@ export default {
             focus: focus,
             shape: {
               cx: node.x,
-              cy: node.y,
+              cy: node.y + 40,
               r: node.r,
             },
             transition: ["shape"],
@@ -163,7 +160,7 @@ export default {
                 // transition: isLeaf ? 'fontSize' : null,
                 text: nodeName,
                 fontFamily: "Arial",
-                width: node.r * 1.3,
+                width: node.r*1.5 ,
                 overflow: "truncate",
                 fontSize: node.r / 3,
               },
@@ -195,8 +192,21 @@ export default {
 
         var option = {
           title: {
-            text: "产品结构图",
-            subtext: "Product Structure Chart",
+            text: "产品分级研究",
+            subtext: "Product classification research ",
+            x: "center",
+            y: 20,
+            // textAlign: "center",
+            textStyle: {
+              color: "white",
+              fontFamily: " serif ",
+              fontSize: 17,
+            },
+            subtextStyle: {
+                 color:"#C0C0C0",
+                fontSize: 13,
+              
+            },
           },
           dataset: {
             source: seriesData,
@@ -208,7 +218,8 @@ export default {
             max: maxDepth,
             dimension: "depth",
             inRange: {
-              color: ["#006edd", "#e0ffff"],
+              color: ["#4682B4", "#e0ffff"],
+              //#006edd
             },
           },
           hoverLayerThreshold: Infinity,
@@ -226,23 +237,24 @@ export default {
 
         myChart.setOption(option);
 
-        myChart.on("click", { seriesIndex: 0 }, function(params) {
+        myChart.on("click", { seriesIndex: 0 }, function (params) {
           drillDown(params.data.id);
         });
 
         function drillDown(targetNodeId) {
           displayRoot = stratify();
-          console.log(displayRoot);
           if (targetNodeId != null) {
-            displayRoot = displayRoot.descendants().find(function(node) {
+            displayRoot = displayRoot.descendants().find(function (node) {
               return node.data.id === targetNodeId;
             });
           }
           // A trick to prevent d3-hierarchy from visiting parents in this algorithm.
-          try {
+          try{
             displayRoot.parent = null;
-          } catch (err) {}
+          }
+          catch{
 
+          }
           myChart.setOption({
             dataset: {
               source: seriesData,
@@ -251,7 +263,7 @@ export default {
         }
 
         // Reset: click on the blank area.
-        myChart.getZr().on("click", function(event) {
+        myChart.getZr().on("click", function (event) {
           if (!event.target) {
             drillDown();
           }
@@ -259,9 +271,13 @@ export default {
       }
 
       option && myChart.setOption(option);
+      window.addEventListener("resize", function () {
+        myChart.resize();
+      });
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+</style>

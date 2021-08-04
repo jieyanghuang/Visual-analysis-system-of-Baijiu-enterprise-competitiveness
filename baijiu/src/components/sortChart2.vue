@@ -82,9 +82,24 @@ export default {
 
       option = {
         title: {
-          text: "竞争力排名图",
-          subtext: "Competitiveness Ranking Chart",
-        },
+          text: "市州竞争力排名",
+          subtext: "Product classification research ",
+            x: "center",
+            y: 5,
+            // textAlign: "center",
+            textStyle: {
+              color: "white",
+              fontFamily: " serif ",
+              fontSize: 16,
+            },
+            subtextStyle: {
+                color:"#C0C0C0",
+                fontSize: 13,
+              
+            },
+          },
+          
+        
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -103,8 +118,7 @@ export default {
         },
         yAxis: {
           type: "category",
-          inverse: true,
-          data: data["市州"],
+          data: data["市州"].reverse(),
           axisLabel: {
             show: false, //不显示坐标轴上的文字
           },
@@ -115,14 +129,14 @@ export default {
             type: "bar",
             showBackground: true,
             backgroundStyle: {
-              color: "rgba(180, 180, 180, 0.2)",
+              color: "rgba(1, 180, 180, 0.2)",
             },
-            data: data["竞争力指数"],
+            data: data["竞争力指数"].reverse(),
             label: {
               show: true,
               fontSize: 11,
               position: "insideLeft",
-              color: "black",
+              color: "white",
               formatter: function(params) {
                 console.log(params.name);
                 let txtArry = params.name;
@@ -133,6 +147,10 @@ export default {
         ],
       };
       myChart.setOption(option);
+         window.addEventListener("resize", function () {
+            myChart.resize();
+          });
+      
     },
   },
 };

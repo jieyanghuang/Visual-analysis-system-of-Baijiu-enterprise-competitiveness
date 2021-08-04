@@ -1,5 +1,5 @@
 <template>
-  <div id="parellelChart" style="width:900px;height:300px;">
+  <div id="parellelChart" style="width:120%;height:100%;">
     <!-- <div id='flag'></div> -->
   </div>
 </template>
@@ -89,12 +89,58 @@ export default {
             right: "21%",
             bottom: 20,
             parallelindex: 0,
+            parallelAxisDefault: {
+            nameTextStyle: {
+                color:'#fff',
+                fontSize: 12,
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                color: '#fff'
+            }
+
+        }
           },
           {
             left: "2%",
             right: "21%",
             bottom: 20,
             parallelIndex: 1,
+             parallelAxisDefault: {
+            nameTextStyle: {
+                color:'#fff',
+                fontSize: 12,
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                color: '#fff'
+            }
+
+        }
           },
         ],
         parallelAxis: [
@@ -154,10 +200,10 @@ export default {
             type: "parallel",
             name: "排名前十一市",
             parallelIndex: 0,
-            smooth: false,
+            smooth: true,
             lineStyle: {
               width: 2,
-              color: "#6699CC",
+               color: '#FFFFCC'
             },
             data: data.datas.data1,
           },
@@ -167,8 +213,9 @@ export default {
             name: "排名后十市",
             lineStyle: {
               width: 2,
+               color: "#6699CC",
             },
-            smooth: false,
+            smooth: true,
             data: data.datas.data2,
           },
         ],
@@ -256,12 +303,12 @@ export default {
             name: "竞争力前十企业",
             type: "parallel",
             parallelIndex: 0,
-            smooth: false,
+            smooth: true,
             // coordinateSystem:'parallel',
             // index:0,
             lineStyle: {
               width: 1.5,
-              color: "#6699CC",
+              color: "#FFFFCC",
             },
             data: data.datas.data1,
           },
@@ -283,6 +330,9 @@ export default {
       if (data.label == "市州") option = option1;
       else option = option2;
       option && myChart.setOption(option);
+      window.addEventListener("resize", function () {
+            myChart.resize();
+          });
     },
   },
 };
