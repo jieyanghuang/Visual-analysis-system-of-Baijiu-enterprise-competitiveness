@@ -53,7 +53,7 @@ export default {
     });
   },
   methods: {
-    initcloud: function (data) {
+    initcloud: function(data) {
       Highcharts.chart("mywordcloud", {
         // 关闭Highcharts右下方logo
         credits: { enabled: false },
@@ -83,16 +83,15 @@ export default {
         ],
         title: {
           text: "产品评论词云",
-          y:20,
+          y: 20,
           // subtext: "Product review word cloud",
           style: {
             fontSize: 16,
             color: "white",
-            fontWeight:"bold",
-              fontFamily: "serif",
-            
+            fontWeight: "bold",
+            fontFamily: "serif",
           },
-        
+
           // title: {
           //             text: "产品分级研究",
           //             subtext: "Product classification research ",

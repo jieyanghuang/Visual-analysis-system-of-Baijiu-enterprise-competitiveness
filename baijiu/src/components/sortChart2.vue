@@ -84,22 +84,20 @@ export default {
         title: {
           text: "市州竞争力排名",
           subtext: "Product classification research ",
-            x: "center",
-            y: 5,
-            // textAlign: "center",
-            textStyle: {
-              color: "white",
-              fontFamily: " serif ",
-              fontSize: 16,
-            },
-            subtextStyle: {
-                color:"#C0C0C0",
-                fontSize: 13,
-              
-            },
+          x: "center",
+          y: 5,
+          // textAlign: "center",
+          textStyle: {
+            color: "white",
+            fontFamily: " serif ",
+            fontSize: 16,
           },
-          
-        
+          subtextStyle: {
+            color: "#C0C0C0",
+            fontSize: 13,
+          },
+        },
+
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -118,7 +116,8 @@ export default {
         },
         yAxis: {
           type: "category",
-          data: data["市州"].reverse(),
+          data: data["市州"],
+          inverse: true,
           axisLabel: {
             show: false, //不显示坐标轴上的文字
           },
@@ -131,7 +130,7 @@ export default {
             backgroundStyle: {
               color: "rgba(1, 180, 180, 0.2)",
             },
-            data: data["竞争力指数"].reverse(),
+            data: data["竞争力指数"],
             label: {
               show: true,
               fontSize: 11,
@@ -147,10 +146,9 @@ export default {
         ],
       };
       myChart.setOption(option);
-         window.addEventListener("resize", function () {
-            myChart.resize();
-          });
-      
+      window.addEventListener("resize", function() {
+        myChart.resize();
+      });
     },
   },
 };
