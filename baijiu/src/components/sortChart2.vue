@@ -124,6 +124,7 @@ export default {
         },
         series: [
           {
+            color: "#4B90C3",
             name: "竞争力指数",
             type: "bar",
             showBackground: true,

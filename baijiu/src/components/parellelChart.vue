@@ -90,57 +90,55 @@ export default {
             bottom: 20,
             parallelindex: 0,
             parallelAxisDefault: {
-            nameTextStyle: {
-                color:'#fff',
+              nameTextStyle: {
+                color: "#fff",
                 fontSize: 12,
-            },
-            axisLine: {
+              },
+              axisLine: {
                 lineStyle: {
-                    color: '#fff'
-                }
-            },
-            axisTick: {
+                  color: "#fff",
+                },
+              },
+              axisTick: {
                 lineStyle: {
-                    color: '#fff'
-                }
+                  color: "#fff",
+                },
+              },
+              splitLine: {
+                show: false,
+              },
+              axisLabel: {
+                color: "#fff",
+              },
             },
-            splitLine: {
-                show: false
-            },
-            axisLabel: {
-                color: '#fff'
-            }
-
-        }
           },
           {
             left: "2%",
             right: "21%",
             bottom: 20,
             parallelIndex: 1,
-             parallelAxisDefault: {
-            nameTextStyle: {
-                color:'#fff',
+            parallelAxisDefault: {
+              nameTextStyle: {
+                color: "#fff",
                 fontSize: 12,
-            },
-            axisLine: {
+              },
+              axisLine: {
                 lineStyle: {
-                    color: '#fff'
-                }
-            },
-            axisTick: {
+                  color: "#fff",
+                },
+              },
+              axisTick: {
                 lineStyle: {
-                    color: '#fff'
-                }
+                  color: "#fff",
+                },
+              },
+              splitLine: {
+                show: false,
+              },
+              axisLabel: {
+                color: "#fff",
+              },
             },
-            splitLine: {
-                show: false
-            },
-            axisLabel: {
-                color: '#fff'
-            }
-
-        }
           },
         ],
         parallelAxis: [
@@ -192,6 +190,7 @@ export default {
         title: {
           text: "21市州白酒企业整体数据展示",
           textStyle: {
+            color: "white",
             left: "40%",
           },
         },
@@ -203,7 +202,7 @@ export default {
             smooth: true,
             lineStyle: {
               width: 2,
-               color: '#FFFFCC'
+              color: "#4B90C3",
             },
             data: data.datas.data1,
           },
@@ -213,7 +212,7 @@ export default {
             name: "排名后十市",
             lineStyle: {
               width: 2,
-               color: "#6699CC",
+              color: "#4B90C3",
             },
             smooth: true,
             data: data.datas.data2,
@@ -308,7 +307,7 @@ export default {
             // index:0,
             lineStyle: {
               width: 1.5,
-              color: "#FFFFCC",
+              color: "#4B90C3",
             },
             data: data.datas.data1,
           },
@@ -321,7 +320,7 @@ export default {
             smooth: true,
             lineStyle: {
               width: 1.5,
-              // color: "rgba(102, 153, 204, 0.5)"
+              color: "#4B90C3",
             },
             data: data.datas.data2,
           },
@@ -330,9 +329,9 @@ export default {
       if (data.label == "市州") option = option1;
       else option = option2;
       option && myChart.setOption(option);
-      window.addEventListener("resize", function () {
-            myChart.resize();
-          });
+      window.addEventListener("resize", function() {
+        myChart.resize();
+      });
     },
   },
 };
