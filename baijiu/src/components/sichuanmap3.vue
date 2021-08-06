@@ -120,11 +120,11 @@ export default {
               textStyle: {
                 color: "white",
                 fontFamily: " serif ",
-                fontSize: 23 + 10,
+                fontSize: 23,
               },
               subtextStyle: {
                 color: "#C0C0C0",
-                fontSize: 14.5 + 10,
+                fontSize: 14.5,
               },
             },
 

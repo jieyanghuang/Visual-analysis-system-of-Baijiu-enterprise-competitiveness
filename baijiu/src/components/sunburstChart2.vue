@@ -33,9 +33,19 @@ export default {
         $.getScript(
           "https://cdn.jsdelivr.net/npm/d3-hierarchy@2.0.0/dist/d3-hierarchy.min.js"
         )
-      ).done(function (res) {
+      ).done(function(res) {
         if (qipaoData == 6) run(res[0]);
-        else run(res[0][qipaoData]);
+        else {
+          var companys = [
+            "剑南春",
+            "郎酒",
+            "泸州老窖",
+            "沱牌舍得",
+            "五粮液",
+            "水井坊",
+          ];
+          run(res[0][companys[qipaoData]]);
+        }
       });
 
       function run(rawData) {
@@ -86,13 +96,13 @@ export default {
         function stratify() {
           return d3
             .stratify()
-            .parentId(function (d) {
+            .parentId(function(d) {
               return d.id.substring(0, d.id.lastIndexOf("."));
             })(seriesData)
-            .sum(function (d) {
+            .sum(function(d) {
               return d.value || 0;
             })
-            .sort(function (a, b) {
+            .sort(function(a, b) {
               return b.value - a.value;
             });
         }
@@ -105,7 +115,7 @@ export default {
             .padding(3)(displayRoot);
 
           context.nodes = {};
-          displayRoot.descendants().forEach(function (node, index) {
+          displayRoot.descendants().forEach(function(node, index) {
             context.nodes[node.id] = node;
           });
         }
@@ -130,7 +140,7 @@ export default {
           var isLeaf = !node.children || !node.children.length;
 
           var focus = new Uint32Array(
-            node.descendants().map(function (node) {
+            node.descendants().map(function(node) {
               return node.data.index;
             })
           );
@@ -160,7 +170,7 @@ export default {
                 // transition: isLeaf ? 'fontSize' : null,
                 text: nodeName,
                 fontFamily: "Arial",
-                width: node.r*1.5 ,
+                width: node.r * 1.5,
                 overflow: "truncate",
                 fontSize: node.r / 3,
               },
@@ -203,9 +213,8 @@ export default {
               fontSize: 17,
             },
             subtextStyle: {
-                 color:"#C0C0C0",
-                fontSize: 13,
-              
+              color: "#C0C0C0",
+              fontSize: 13,
             },
           },
           dataset: {
@@ -237,24 +246,21 @@ export default {
 
         myChart.setOption(option);
 
-        myChart.on("click", { seriesIndex: 0 }, function (params) {
+        myChart.on("click", { seriesIndex: 0 }, function(params) {
           drillDown(params.data.id);
         });
 
         function drillDown(targetNodeId) {
           displayRoot = stratify();
           if (targetNodeId != null) {
-            displayRoot = displayRoot.descendants().find(function (node) {
+            displayRoot = displayRoot.descendants().find(function(node) {
               return node.data.id === targetNodeId;
             });
           }
           // A trick to prevent d3-hierarchy from visiting parents in this algorithm.
-          try{
+          try {
             displayRoot.parent = null;
-          }
-          catch{
-
-          }
+          } catch {}
           myChart.setOption({
             dataset: {
               source: seriesData,
@@ -263,7 +269,7 @@ export default {
         }
 
         // Reset: click on the blank area.
-        myChart.getZr().on("click", function (event) {
+        myChart.getZr().on("click", function(event) {
           if (!event.target) {
             drillDown();
           }
@@ -271,7 +277,7 @@ export default {
       }
 
       option && myChart.setOption(option);
-      window.addEventListener("resize", function () {
+      window.addEventListener("resize", function() {
         myChart.resize();
       });
     },
@@ -279,5 +285,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

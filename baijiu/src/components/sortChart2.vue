@@ -61,12 +61,20 @@ export default {
     };
   },
   mounted() {
-    console.log(this.sortdata);
+    console.log(this.sortdata.竞争力指数);
+    for (var num = 0; num < this.sortdata.竞争力指数.length; num++) {
+      this.sortdata.竞争力指数[num] = this.sortdata.竞争力指数[num].toFixed(2);
+    }
     this.initsort(this.sortdata);
     PubSub.subscribe("countryName", (msg, data) => {
       for (let i = 0; i < comdata.length; i++) {
         if (data == comdata[i]["市州"]) {
           this.sortdata["市州"] = comdata[i]["企业"];
+          for (var num = 0; num < comdata[i]["竞争力指数"].length; num++) {
+            comdata[i]["竞争力指数"][num] = comdata[i]["竞争力指数"][
+              num
+            ].toFixed(2);
+          }
           this.sortdata["竞争力指数"] = comdata[i]["竞争力指数"];
           this.initsort(this.sortdata);
           break;
