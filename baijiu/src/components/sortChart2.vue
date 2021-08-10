@@ -71,9 +71,9 @@ export default {
         if (data == comdata[i]["市州"]) {
           this.sortdata["市州"] = comdata[i]["企业"];
           for (var num = 0; num < comdata[i]["竞争力指数"].length; num++) {
-            comdata[i]["竞争力指数"][num] = comdata[i]["竞争力指数"][
-              num
-            ].toFixed(2);
+            comdata[i]["竞争力指数"][num] = parseFloat(
+              comdata[i]["竞争力指数"][num]
+            ).toFixed(2);
           }
           this.sortdata["竞争力指数"] = comdata[i]["竞争力指数"];
           this.initsort(this.sortdata);

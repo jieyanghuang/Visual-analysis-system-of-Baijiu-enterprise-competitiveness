@@ -227,8 +227,8 @@ export default {
             max: maxDepth,
             dimension: "depth",
             inRange: {
-              color: ["#4682B4", "#e0ffff"],
-              //#006edd
+              // color: ["#4682B4", "#e0ffff"],
+              color: ["#0B486B", "#F56217"],
             },
           },
           hoverLayerThreshold: Infinity,
