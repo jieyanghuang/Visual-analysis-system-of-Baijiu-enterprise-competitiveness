@@ -37,6 +37,13 @@
     <div id="parallelChart2">
       <parellelChart />
     </div>
+  <div id="search">
+      <search />
+      <p> 搜索框 </p>
+  </div>
+  <div id="gupiao">
+      <gupiao />
+  </div>
 
     
   </div>
@@ -49,6 +56,8 @@ import parellelChart from "./components/parellelChart.vue";
 import sunburstChart2 from "./components/sunburstChart2.vue";
 import haoping from "./components/haoping.vue";
 import mywordCloud2 from "./components/mywordCloud2.vue";
+import search from "./components/search.vue";
+import gupiao from "./components/gupiao.vue";
 
 export default {
   name: "App",
@@ -79,6 +88,8 @@ export default {
     sunburstChart2,
     haoping,
     mywordCloud2,
+    search,
+    gupiao
   },
 };
 </script>
@@ -118,16 +129,18 @@ export default {
   position: absolute;
   width: 23%;
   /* height:61.15%; */
-  height: 86.8%;
+  height: 62.5%;
   left: 1%;
-  top: 11.7%;
-  border-style:ridge;
-  border-color: #b0c4de;
-  background-color: rgba(224, 255, 255, 0);
+  top: 4%;
   z-index: 1;
-  box-shadow: 0px 0px 29px #333399;
   text-align: center;
   border-radius: 6px 6px 6px 6px;
+  border-style: ridge;
+  border-color: #b0c4de;
+
+  box-shadow: inset 0px 0px 15px #00FFFF;
+
+  background-color: rgba(224, 255, 255, 0);
 }
 #lineChart2 {
   /* 词云 */
@@ -138,27 +151,34 @@ export default {
   /* left:35%; */
   right: 0.4%;
   /* 1.7% */
+ 
+  /* z-index: 1; */
+  text-align: center;
   border-style: ridge;
   border-color: #b0c4de;
+
+  box-shadow: inset 0px 0px 15px #00FFFF;	 
+
   background-color: rgba(224, 255, 255, 0);
-  /* z-index: 1; */
-  box-shadow: 0px 0px 29px #333399;
-  text-align: center;
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 6px 6px 6px 6px;
 }
 #parallelChart2 {
   position: absolute;
   top: 67.9%;
-  left: 24.5%;
-  width: 51%;
+  left: 1%;
+  width: 38%;
   height: 30.5%;
   /* box-shadow: 0 0 20 red; */
   border-style: ridge;
   /* border-color: red; */
-  background-color: rgba(224, 255, 255, 0);
-  /* z-index: 1; */
-  box-shadow: 0px 0px 34px #333399;
   text-align: center;
+  border-radius: 6px 6px 6px 6px;
+  border-style: ridge;
+  border-color: #b0c4de;
+
+  box-shadow: inset 0px 0px 15px #00FFFF; 	 
+
+  background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
 }
 #mapbox2 {
@@ -180,17 +200,21 @@ export default {
   left: 76%;
   /* 72 */
   /* right: 3.1%; */
-  top: 12%;
+  top: 25%;
   width: 23.3%;
-  height: 54.5%;
-  border-style: ridge;
-  border-color: #b0c4de;
+  height: 41%;
   z-index: 1;
-  box-shadow: 0px 0px 20px #333399;
   /* rgba(0, 0, 0, 0.2) */
   text-align: center;
   background-color: rgba(224, 255, 255, 0);
   z-index: 1;
+  border-radius: 6px 6px 6px 6px;
+  border-style: ridge;
+  border-color: #b0c4de;
+
+  box-shadow: inset 0px 0px 15px  #00FFFF; 	 
+
+  background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
 }
 #ciyun {
@@ -204,12 +228,10 @@ export default {
   /* height:37.5%; */
   height: 19.5%;
   /* border-style: ridge; */
-  border-color: #0753b6;
   /* background-color: rgba(28, 145, 145, 0.6);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   text-align: center;
   z-index: 1;
-  border-radius: 6px 6px 6px 6px;
   border-width: 10px;
 }
 #frame {
@@ -217,13 +239,58 @@ export default {
   border-color: aqua;
   /* left: 23%; */
   border-width: 1px;
-  top: 11%;
+  top: 7%;
   width: 100%;
   height: 0%;
   border-style: ridge;
   box-shadow: 0px 10px 20px #333399;
+
 }
+#search{
+  position: absolute;
+  left: 76%;
+  /* 72 */
+  right: 3.1%; 
+  top: 4%;
+  width: 23.3%;
+  height: 19.5%;
+  border-style: ridge;
+  border-color: #b0c4de;
+  z-index: 1;
+  box-shadow: 0px 0px 20px #333399; 
+  /* rgba(0, 0, 0, 0.2) */
+  text-align: center;
+  background-color: rgba(224, 255, 255, 0);
+  z-index: 1;
+  border-radius: 6px 6px 6px 6px;
 
+  border-style: ridge;
+  border-color: #b0c4de;
+  box-shadow: inset 0px 0px 15px #00FFFF; 	 
+  background-color: rgba(224, 255, 255, 0);
+  border-radius: 6px 6px 6px 6px;
+}
+#gupiao{
+  position: absolute;
+  top: 67.9%;
+  left: 40%;
+  width: 35%;
+  height: 30.5%;
+  /* box-shadow: 0 0 20 red; */
 
+  /* border-color: red; */
+  background-color: rgba(224, 255, 255, 0);
+  /* z-index: 1; */
+ 
+  text-align: center;
+  border-radius: 6px 6px 6px 6px;
+  border-style: ridge;
+  border-color: #b0c4de;
+
+  box-shadow: inset 0px 0px 15px #00FFFF; 	 
+
+  background-color: rgba(224, 255, 255, 0);
+  border-radius: 6px 6px 6px 6px;
+}
 </style>
 

@@ -172,7 +172,7 @@ export default {
           { dim: 15, name: axisData[7], parallelIndex: 1 },
         ],
         legend: {
-          left: "center",
+          left: "47%",
           data: ["排名前十一市", "排名后十市"],
           // show:false,
           selected: {
@@ -184,7 +184,7 @@ export default {
           itemGap: 20,
           textStyle: {
             color: "#6699CC",
-            fontSize: 14,
+            fontSize: 12,
           },
         },
         title: {
@@ -192,6 +192,7 @@ export default {
           textStyle: {
             color: "white",
             left: "40%",
+            fontFamily: "serif",
           },
         },
         series: [
@@ -202,7 +203,7 @@ export default {
             smooth: true,
             lineStyle: {
               width: 2,
-              color: "#4B90C3",
+              color: "#1CB5E0",
             },
             data: data.datas.data1,
           },
@@ -212,7 +213,7 @@ export default {
             name: "排名后十市",
             lineStyle: {
               width: 2,
-              color: "#4B90C3",
+              color: "#2F80ED",
             },
             smooth: true,
             data: data.datas.data2,
@@ -282,7 +283,7 @@ export default {
           },
         },
         legend: {
-          left: "center",
+          left: "47%",
           data: ["所有企业情况", "竞争力前十企业"],
           // show:false,
           selected: {
@@ -293,8 +294,8 @@ export default {
           //   selectedMode: "single",
           itemGap: 20,
           textStyle: {
-            color: "#6699CC",
-            fontSize: 14,
+            color: "#2F80ED",
+            fontSize: 12,
           },
         },
         series: [
@@ -320,7 +321,7 @@ export default {
             smooth: true,
             lineStyle: {
               width: 1.5,
-              color: "#4B90C3",
+              color: "#0ED2F7",
             },
             data: data.datas.data2,
           },

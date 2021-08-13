@@ -1,5 +1,5 @@
 <template>
-  <div id="mywordcloud" style="width: 100%; height: 100%">
+  <div id="mywordcloud" style="width: 95%; height: 95%;left:10%">
     <!-- <h6>Product review word cloud</h6> -->
   </div>
 </template>
@@ -90,6 +90,7 @@ export default {
             color: "white",
             fontWeight: "bold",
             fontFamily: "serif",
+            fontSize:20
           },
 
           // title: {

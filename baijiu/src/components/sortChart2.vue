@@ -61,20 +61,12 @@ export default {
     };
   },
   mounted() {
-    console.log(this.sortdata.竞争力指数);
-    for (var num = 0; num < this.sortdata.竞争力指数.length; num++) {
-      this.sortdata.竞争力指数[num] = this.sortdata.竞争力指数[num].toFixed(2);
-    }
+    console.log(this.sortdata);
     this.initsort(this.sortdata);
     PubSub.subscribe("countryName", (msg, data) => {
       for (let i = 0; i < comdata.length; i++) {
         if (data == comdata[i]["市州"]) {
           this.sortdata["市州"] = comdata[i]["企业"];
-          for (var num = 0; num < comdata[i]["竞争力指数"].length; num++) {
-            comdata[i]["竞争力指数"][num] = parseFloat(
-              comdata[i]["竞争力指数"][num]
-            ).toFixed(2);
-          }
           this.sortdata["竞争力指数"] = comdata[i]["竞争力指数"];
           this.initsort(this.sortdata);
           break;
@@ -91,14 +83,14 @@ export default {
       option = {
         title: {
           text: "市州竞争力排名",
-          subtext: "Product classification research ",
+          // subtext: "Product classification research ",
           x: "center",
           y: 5,
           // textAlign: "center",
           textStyle: {
             color: "white",
             fontFamily: " serif ",
-            fontSize: 16,
+            fontSize: 20,
           },
           subtextStyle: {
             color: "#C0C0C0",
@@ -115,7 +107,8 @@ export default {
         grid: {
           left: "1%",
           right: "4%",
-          bottom: "3%",
+          bottom: "0.5%",
+          top:"6.5%",
           containLabel: true,
         },
         xAxis: {
@@ -132,7 +125,7 @@ export default {
         },
         series: [
           {
-            color: "#4B90C3",
+            // color: "#4B90C3",
             name: "竞争力指数",
             type: "bar",
             showBackground: true,
@@ -151,8 +144,59 @@ export default {
                 return txtArry;
               },
             },
-          },
-        ],
+            itemStyle: {
+                  normal: {
+                    color: new echarts.graphic.LinearGradient(
+                      1, 0, 0, 0,
+                    [
+                        {offset: 1, color: '#000046'},   
+                        {offset: 0, color: '#1CB5E0'}
+                        //  {offset: 1, color: '#4fC1E9'}
+                    ]
+                 )
+            },
+            emphasis: {
+              color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                   [
+                    {offset: 0, color: '#5D9CEC'},     
+                    {offset: 1, color: '#0000FF'}
+                   ]
+              )
+             }
+            }
+          //   itemStyle:{
+          //           normal:{
+          //               //柱体的颜色
+          //               //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
+          //               color: function(params){
+          //                   console.log(params);
+          //                   var colorList = [
+	        //   						['#0F5C7F','#99DFFF'],
+	        //   						['#8D3510','#FFA783'],
+	        //   						['#651180','#D099FF'],
+	        //   						['#4B8D10','#83FFC0'],
+	        //   						['#8D104B','#FF83D8'],
+	        //   						['#7F610F','#FFE899'],
+	        //   						['#108D89','#83FFE9']
+			    //       			];
+          //                   var colorItem = colorList[params.dataIndex];
+          //                   return new echarts.graphic.LinearGradient(1,0,0,0,[
+          //                               {
+          //                                   offset:0,
+          //                                   color: colorItem[0]
+          //                               },
+          //                               {
+          //                                   offset:1,
+          //                                   color: colorItem[1]
+          //                               }
+          //                               ],false);
+          //                   }
+          //               }
+                        
+          //           }
+           }
+        ]
       };
       myChart.setOption(option);
       window.addEventListener("resize", function() {

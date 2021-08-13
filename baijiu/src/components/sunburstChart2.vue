@@ -159,7 +159,7 @@ export default {
             focus: focus,
             shape: {
               cx: node.x,
-              cy: node.y + 40,
+              cy: node.y,
               r: node.r,
             },
             transition: ["shape"],
@@ -203,9 +203,9 @@ export default {
         var option = {
           title: {
             text: "产品分级研究",
-            subtext: "Product classification research ",
+            // subtext: "Product classification research ",
             x: "center",
-            y: 20,
+            y: 0,
             // textAlign: "center",
             textStyle: {
               color: "white",
@@ -217,6 +217,13 @@ export default {
               fontSize: 13,
             },
           },
+          //   grid: {
+          //   left: "1%",
+          //   right: "4%",
+          //   bottom: "0.5%",
+          //   top:"2.5%",
+          //   containLabel: true,
+          // },
           dataset: {
             source: seriesData,
           },
