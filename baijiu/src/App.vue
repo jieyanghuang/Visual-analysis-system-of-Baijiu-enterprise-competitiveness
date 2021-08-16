@@ -10,9 +10,7 @@
     <div id="mapbox2">
       <sichuanmap3 />
 
-      <div id="title">
-       
-      </div>
+      <div id="title"></div>
     </div>
 
     <div id="frame">
@@ -37,15 +35,12 @@
     <div id="parallelChart2">
       <parellelChart />
     </div>
-  <div id="search">
+    <div id="search">
       <search />
-      <p> 搜索框 </p>
-  </div>
-  <div id="gupiao">
+    </div>
+    <div id="gupiao">
       <gupiao />
-  </div>
-
-    
+    </div>
   </div>
 </template>
 <script>
@@ -75,7 +70,7 @@ export default {
   methods: {
     reload() {
       this.isRouterAlive = false;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.isRouterAlive = true;
       });
     },
@@ -89,7 +84,7 @@ export default {
     haoping,
     mywordCloud2,
     search,
-    gupiao
+    gupiao,
   },
 };
 </script>
@@ -100,9 +95,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-   background-color: rgba(2, 55, 255, 1);
+  background-color: rgba(2, 55, 255, 1);
   margin-top: 600px;
-  
 }
 #container {
   /* background: url("../assets/back.png") center !important; */
@@ -138,7 +132,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00FFFF;
+  box-shadow: inset 0px 0px 15px #00ffff;
 
   background-color: rgba(224, 255, 255, 0);
 }
@@ -151,13 +145,13 @@ export default {
   /* left:35%; */
   right: 0.4%;
   /* 1.7% */
- 
+
   /* z-index: 1; */
   text-align: center;
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00FFFF;	 
+  box-shadow: inset 0px 0px 15px #00ffff;
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
@@ -176,14 +170,14 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00FFFF; 	 
+  box-shadow: inset 0px 0px 15px #00ffff;
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
 }
 #mapbox2 {
   position: absolute;
-  top: .000009%;
+  top: 0.000009%;
   /* left:30%;
     width:80%;
     height:62%; */
@@ -212,7 +206,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px  #00FFFF; 	 
+  box-shadow: inset 0px 0px 15px #00ffff;
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
@@ -244,20 +238,19 @@ export default {
   height: 0%;
   border-style: ridge;
   box-shadow: 0px 10px 20px #333399;
-
 }
-#search{
+#search {
   position: absolute;
   left: 76%;
   /* 72 */
-  right: 3.1%; 
+  right: 3.1%;
   top: 4%;
   width: 23.3%;
   height: 19.5%;
   border-style: ridge;
   border-color: #b0c4de;
   z-index: 1;
-  box-shadow: 0px 0px 20px #333399; 
+  box-shadow: 0px 0px 20px #333399;
   /* rgba(0, 0, 0, 0.2) */
   text-align: center;
   background-color: rgba(224, 255, 255, 0);
@@ -266,11 +259,11 @@ export default {
 
   border-style: ridge;
   border-color: #b0c4de;
-  box-shadow: inset 0px 0px 15px #00FFFF; 	 
+  box-shadow: inset 0px 0px 15px #00ffff;
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
 }
-#gupiao{
+#gupiao {
   position: absolute;
   top: 67.9%;
   left: 40%;
@@ -281,16 +274,15 @@ export default {
   /* border-color: red; */
   background-color: rgba(224, 255, 255, 0);
   /* z-index: 1; */
- 
+
   text-align: center;
   border-radius: 6px 6px 6px 6px;
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00FFFF; 	 
+  box-shadow: inset 0px 0px 15px #00ffff;
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
 }
 </style>
-
