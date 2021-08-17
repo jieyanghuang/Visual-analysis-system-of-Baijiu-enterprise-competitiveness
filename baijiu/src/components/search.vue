@@ -1,46 +1,39 @@
 <template>
   <div id="example">
-    <input type="text" v-model="searchData" placeholder="请输入id或姓名" />
+    <input type="text" v-model="searchData" placeholder="请输入公司名字" />
     <ul class="d1">
-      <li class="d2">
-        <span>id</span>
-        <span>name</span>
-        <span>time</span>
-      </li>
-      <li v-for="(item, index) in Newitems" :key="index">
-        <span>{{ item.id }}</span>
-        <span class="name">{{ item.name }}</span>
-        <span>{{ item.time }}</span>
+      <li v-for="(item, index) in Newitems" :key="index" v-show="method1">
+        <span id="itemName">name:{{ item.name }}</span>
+        <span>competitive:{{ item.competitive }}</span>
+        <span>cityRanking:{{ item.cityRanking }}</span>
+        <span>provinceRanking:{{ item.provinceRanking }}</span>
       </li>
     </ul>
   </div>
 </template>
+
 <script>
+import Data from "../../public/static/searchDataItems";
 export default {
   name: "search",
   data() {
     return {
       searchData: "",
-      items: [
-        { id: "1001", name: "哈哈", time: "20170207" },
-        { id: "1002", name: "呵呵", time: "20170213" },
-        { id: "1103", name: "晓丽", time: "20170304" },
-        { id: "1104", name: "小兰", time: "20170112" },
-        { id: "1205", name: "财务", time: "20170203" },
-        { id: "1206", name: "嘻嘻", time: "20170208" },
-        { id: "1307", name: "测试", time: "20170201" },
-      ],
+      // name competive sort_area sort_province
+      items: Data,
     };
   },
   computed: {
+    method1() {
+      if (this.searchData == "") {
+        return 0;
+      } else return 1;
+    },
     Newitems() {
       var _this = this;
       var Newitems = [];
       _this.items.map(function(item) {
-        if (
-          item.id.search(_this.searchData) != -1 ||
-          item.name.search(_this.searchData) != -1
-        ) {
+        if (item.name.search(_this.searchData) != -1) {
           Newitems.push(item);
         }
       });
@@ -49,14 +42,15 @@ export default {
   },
 };
 </script>
+
 <style>
 * {
   margin: 0;
   padding: 0;
 }
 input {
-  width: 300px;
-  height: 5px;
+  width: 80%;
+  height: 10px;
   text-indent: 5px;
 
   outline-style: none;
@@ -82,20 +76,25 @@ ul li {
   list-style: none;
 }
 ul li span {
-  margin: 0 30px;
-  line-height: 30px;
+  display: block;
+  line-height: 26px;
   color: white;
 }
 .d1 {
-  width: 350px;
-  height: 130px;
-  overflow-x: hidden;
-  position: relative;
+  width: 87.5%;
+  height: 70%;
+  margin-top: 1%;
+  left: 6%;
+  overflow-x: hidden; /*设置滚动条*/
+  position: absolute;
 }
-.d2 span {
-  margin: 0 36px;
-  line-height: 30px;
-  color: gray;
-  font-weight: bold;
+#itemName {
+  background: linear-gradient(
+    rgba(102, 175, 233, 0.6),
+    rgba(102, 175, 233, 0.6)
+  );
+  background-size: auto auto;
+  background-position: right;
+  background-repeat: no-repeat;
 }
 </style>

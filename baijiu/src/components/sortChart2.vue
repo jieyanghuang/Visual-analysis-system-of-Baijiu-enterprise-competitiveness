@@ -62,12 +62,21 @@ export default {
   },
   mounted() {
     console.log(this.sortdata);
+    for (var j = 0; j < 10; j++) {
+      this.sortdata["竞争力指数"][j] = this.sortdata["竞争力指数"][j].toFixed(
+        2
+      );
+    }
     this.initsort(this.sortdata);
     PubSub.subscribe("countryName", (msg, data) => {
       for (let i = 0; i < comdata.length; i++) {
         if (data == comdata[i]["市州"]) {
           this.sortdata["市州"] = comdata[i]["企业"];
-          this.sortdata["竞争力指数"] = comdata[i]["竞争力指数"];
+          for (var j = 0; j < 10; j++) {
+            this.sortdata["竞争力指数"][j] = comdata[i]["竞争力指数"][
+              j
+            ].toFixed(2);
+          }
           this.initsort(this.sortdata);
           break;
         }
@@ -108,7 +117,7 @@ export default {
           left: "1%",
           right: "4%",
           bottom: "0.5%",
-          top:"6.5%",
+          top: "6.5%",
           containLabel: true,
         },
         xAxis: {
@@ -145,58 +154,52 @@ export default {
               },
             },
             itemStyle: {
-                  normal: {
-                    color: new echarts.graphic.LinearGradient(
-                      1, 0, 0, 0,
-                    [
-                        {offset: 1, color: '#000046'},   
-                        {offset: 0, color: '#1CB5E0'}
-                        //  {offset: 1, color: '#4fC1E9'}
-                    ]
-                 )
+              normal: {
+                color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+                  { offset: 1, color: "#000046" },
+                  { offset: 0, color: "#1CB5E0" },
+                  //  {offset: 1, color: '#4fC1E9'}
+                ]),
+              },
+              emphasis: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: "#5D9CEC" },
+                  { offset: 1, color: "#0000FF" },
+                ]),
+              },
             },
-            emphasis: {
-              color: new echarts.graphic.LinearGradient(
-                    0, 0, 0, 1,
-                   [
-                    {offset: 0, color: '#5D9CEC'},     
-                    {offset: 1, color: '#0000FF'}
-                   ]
-              )
-             }
-            }
-          //   itemStyle:{
-          //           normal:{
-          //               //柱体的颜色
-          //               //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
-          //               color: function(params){
-          //                   console.log(params);
-          //                   var colorList = [
-	        //   						['#0F5C7F','#99DFFF'],
-	        //   						['#8D3510','#FFA783'],
-	        //   						['#651180','#D099FF'],
-	        //   						['#4B8D10','#83FFC0'],
-	        //   						['#8D104B','#FF83D8'],
-	        //   						['#7F610F','#FFE899'],
-	        //   						['#108D89','#83FFE9']
-			    //       			];
-          //                   var colorItem = colorList[params.dataIndex];
-          //                   return new echarts.graphic.LinearGradient(1,0,0,0,[
-          //                               {
-          //                                   offset:0,
-          //                                   color: colorItem[0]
-          //                               },
-          //                               {
-          //                                   offset:1,
-          //                                   color: colorItem[1]
-          //                               }
-          //                               ],false);
-          //                   }
-          //               }
-                        
-          //           }
-           }
-        ]
+            //   itemStyle:{
+            //           normal:{
+            //               //柱体的颜色
+            //               //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
+            //               color: function(params){
+            //                   console.log(params);
+            //                   var colorList = [
+            //   						['#0F5C7F','#99DFFF'],
+            //   						['#8D3510','#FFA783'],
+            //   						['#651180','#D099FF'],
+            //   						['#4B8D10','#83FFC0'],
+            //   						['#8D104B','#FF83D8'],
+            //   						['#7F610F','#FFE899'],
+            //   						['#108D89','#83FFE9']
+            //       			];
+            //                   var colorItem = colorList[params.dataIndex];
+            //                   return new echarts.graphic.LinearGradient(1,0,0,0,[
+            //                               {
+            //                                   offset:0,
+            //                                   color: colorItem[0]
+            //                               },
+            //                               {
+            //                                   offset:1,
+            //                                   color: colorItem[1]
+            //                               }
+            //                               ],false);
+            //                   }
+            //               }
+
+            //           }
+          },
+        ],
       };
       myChart.setOption(option);
       window.addEventListener("resize", function() {

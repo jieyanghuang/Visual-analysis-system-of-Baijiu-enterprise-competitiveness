@@ -11,6 +11,22 @@
       <sichuanmap3 />
 
       <div id="title"></div>
+
+      <div id="colorReflect">
+        <div id="tu">
+          <div class="r1"></div>
+          <div class="r2"></div>
+          <div class="r3"></div>
+          <div class="r4"></div>
+          <div class="r5"></div>
+        </div>
+
+        <div class="literal">
+          <h6>
+            0~300<br /><br />300~600<br /><br />600~900<br /><br />900~1200<br /><br />1200~1500<br /><br />
+          </h6>
+        </div>
+      </div>
     </div>
 
     <div id="frame">
@@ -284,5 +300,77 @@ export default {
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
+}
+#colorReflect {
+  position: absolute;
+  width: 7%;
+  height: 20%;
+  top: 44%;
+  left: 23%;
+  /* text-align: center; */
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  /* background-color: burlywood; */
+  /* border-style: ridge; */
+  /* border-color: red; */
+  /* aqua */
+  border-width: 3px;
+}
+.literal {
+  position: absolute;
+  height: 70%;
+  width: 60%;
+  /* background-color:red; */
+  top: 5%;
+  left: 49%;
+}
+#tu {
+  position: absolute;
+  height: 70%;
+  width: 30%;
+  top: 10%;
+  left: 23%;
+}
+
+.r1 {
+  position: absolute;
+  top: 22%;
+  background-color: #82b1ff;
+  width: 50%;
+  height: 8%;
+  left: 10%;
+}
+.r2 {
+  position: absolute;
+  top: 48%;
+  background-color: #1565c0;
+  width: 50%;
+  height: 8%;
+  left: 10%;
+}
+.r3 {
+  position: absolute;
+  top: 76%;
+  background-color: #1976d2;
+  width: 50%;
+  height: 8%;
+  left: 10%;
+}
+.r4 {
+  position: absolute;
+  top: 105%;
+  background-color: #1e88e5;
+  width: 50%;
+  height: 8%;
+  left: 10%;
+}
+.r5 {
+  position: absolute;
+  top: 130%;
+  background-color: #2196f3;
+  width: 50%;
+  height: 8%;
+  left: 10%;
 }
 </style>
