@@ -2,11 +2,11 @@
   <div id="example">
     <input type="text" v-model="searchData" placeholder="请输入公司名字" />
     <ul class="d1">
-      <li v-for="(item, index) in Newitems" :key="index" v-show="method1">
+      <li v-for="(item, index) in Newitems" :key="index">
         <span id="itemName">name:{{ item.name }}</span>
-        <span>competitive:{{ item.competitive }}</span>
-        <span>cityRanking:{{ item.cityRanking }}</span>
-        <span>provinceRanking:{{ item.provinceRanking }}</span>
+        <span>competitive:{{ item.competitive }}分</span>
+        <span>provinceRanking:{{ item.provinceRanking }}名</span>
+        <span>cityRanking:{{ item.cityRanking }}名</span>
       </li>
     </ul>
   </div>
@@ -29,6 +29,7 @@ export default {
         return 0;
       } else return 1;
     },
+
     Newitems() {
       var _this = this;
       var Newitems = [];
@@ -37,7 +38,12 @@ export default {
           Newitems.push(item);
         }
       });
-      return Newitems;
+      if (this.searchData == "") {
+        console.log(Newitems[10]);
+        return Newitems.slice(0, 10);
+      } else {
+        return Newitems;
+      }
     },
   },
 };
