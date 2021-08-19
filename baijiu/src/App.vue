@@ -322,14 +322,14 @@ export default {
   height: 70%;
   width: 60%;
   /* background-color:red; */
-  top: 5%;
+  top: 20%;
   left: 49%;
 }
 #tu {
   position: absolute;
   height: 70%;
   width: 30%;
-  top: 10%;
+  top: 8%;
   left: 23%;
 }
 
