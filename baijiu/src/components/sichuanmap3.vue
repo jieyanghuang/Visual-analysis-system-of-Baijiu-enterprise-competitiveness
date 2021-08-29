@@ -104,19 +104,19 @@ export default {
           for (var i = 0; i < value.length; i++) {
             if (value[i] > 0 && value[i] <= 300)   //颜色分级
             {
-              Color = "	#B0C4DE";
+              Color = "#82b1ff";
             }
             else if (value[i] > 300 && value[i] <= 600) {
-              Color = "#87CEFA";
+              Color = "#1565c0";
             }
             else if (value[i] > 600 && value[i] <= 900) {
-              Color = "#00BFFF";
+              Color = "#1976d2";
             }
             else if (value[i] > 900 && value[i] <= 1200) {
-              Color = "#1E90FF";
+              Color = "#1e88e5";
             }
             else {
-              Color = "#008B8B";
+              Color = "#2196f3";
             }
 
             regions.push({
@@ -234,7 +234,7 @@ export default {
                 emphasis:
                 {
 
-                  areaColor: "#5F9EA0",
+                  areaColor: "#FF6100",
                 },
               },
 
