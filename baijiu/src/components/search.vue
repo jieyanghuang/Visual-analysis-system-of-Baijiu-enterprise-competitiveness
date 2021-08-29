@@ -13,9 +13,21 @@
           </svg>
           name:{{ item.name }}</span
         >
-        <span class="d2">competitive:{{ item.competitive }}分</span>
-        <span class="d2">provinceRanking:{{ item.provinceRanking }}名</span>
-        <span class="d2">cityRanking:{{ item.cityRanking }}名</span>
+        <span class="d2"
+          ><svg class="iconCompetitive" aria-hidden="true">
+            <use xlink:href="#icon-jz"></use></svg
+          >competitive:{{ item.competitive }}分</span
+        >
+        <span class="d2"
+          ><svg class="iconRanking" aria-hidden="true">
+            <use xlink:href="#icon-paiming"></use></svg
+          >provinceRanking:{{ item.provinceRanking }}名</span
+        >
+        <span class="d2"
+          ><svg class="iconRanking2" aria-hidden="true">
+            <use xlink:href="#icon-paiming"></use></svg
+          >cityRanking:{{ item.cityRanking }}名</span
+        >
       </li>
     </ul>
   </div>
@@ -24,6 +36,8 @@
 <script>
 import Data from "../../public/static/searchDataItems";
 import "../store/iconfont.js";
+import "../store/iconfont-ranking.js";
+import "../store/iconfont-competitive.js";
 export default {
   name: "search",
   data() {
@@ -60,19 +74,19 @@ export default {
       var len = this.Newitems.length;
       for (var i = 0; i < len; i++) {
         if (this.Newitems[i].competitive >= 70) {
-          document.getElementsByClassName("icon")[i].style.fill = "green"; //得分大于70,green
+          document.getElementsByClassName("icon")[i].style.fill = "yellow"; //得分大于70
         } else if (
           this.Newitems[i].competitive >= 50 &&
           this.Newitems[i].competitive < 70
         ) {
-          document.getElementsByClassName("icon")[i].style.fill = "blue"; //得分50-70,blue
+          document.getElementsByClassName("icon")[i].style.fill = "#A9A9A9"; //得分40-70
         } else if (
-          this.Newitems[i].competitive >= 30 &&
+          this.Newitems[i].competitive >= 20 &&
           this.Newitems[i].competitive < 50
         ) {
-          document.getElementsByClassName("icon")[i].style.fill = "gray"; //得分30-50,gray
+          document.getElementsByClassName("icon")[i].style.fill = "burlywood"; //得分20-40
         } else {
-          document.getElementsByClassName("icon")[i].style.fill = "white"; //得分低于30,white
+          document.getElementsByClassName("icon")[i].style.fill = "white"; //得分低于30
         }
       }
     },
@@ -141,10 +155,31 @@ ul li span {
   width: 1em;
   height: 1em;
   top: 1px;
-  right: 3px;
+  /* right: 3px; */
   vertical-align: -0.15em;
   fill: red;
   overflow: hidden;
   position: relative; /* 相对定位 */
+}
+.iconRanking {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: yellow;
+  overflow: hidden;
+}
+.iconCompetitive {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.iconRanking2 {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: burlywood;
+  overflow: hidden;
 }
 </style>
