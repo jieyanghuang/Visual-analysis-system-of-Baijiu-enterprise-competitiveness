@@ -29,9 +29,9 @@
       </div>
     </div>
 
-    <div id="frame">
+    <!-- <div id="frame">
       <haoping />
-    </div>
+    </div> -->
 
     <div id="c2">
       <sortChart2 />
