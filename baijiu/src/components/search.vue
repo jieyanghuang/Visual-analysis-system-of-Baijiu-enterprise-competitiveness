@@ -3,10 +3,19 @@
     <input type="text" v-model="searchData" placeholder="请输入公司名字" />
     <ul class="d1">
       <li v-for="(item, index) in Newitems" :key="index">
-        <span id="itemName">name:{{ item.name }}</span>
-        <span>competitive:{{ item.competitive }}分</span>
-        <span>provinceRanking:{{ item.provinceRanking }}名</span>
-        <span>cityRanking:{{ item.cityRanking }}名</span>
+        <!-- <span
+          ><svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xingxing"></use></svg
+        ></span> -->
+        <span id="itemName"
+          ><svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xingxing"></use>
+          </svg>
+          name:{{ item.name }}</span
+        >
+        <span class="d2">competitive:{{ item.competitive }}分</span>
+        <span class="d2">provinceRanking:{{ item.provinceRanking }}名</span>
+        <span class="d2">cityRanking:{{ item.cityRanking }}名</span>
       </li>
     </ul>
   </div>
@@ -14,6 +23,7 @@
 
 <script>
 import Data from "../../public/static/searchDataItems";
+import "../store/iconfont.js";
 export default {
   name: "search",
   data() {
@@ -24,12 +34,6 @@ export default {
     };
   },
   computed: {
-    method1() {
-      if (this.searchData == "") {
-        return 0;
-      } else return 1;
-    },
-
     Newitems() {
       var _this = this;
       var Newitems = [];
@@ -39,10 +43,37 @@ export default {
         }
       });
       if (this.searchData == "") {
-        console.log(Newitems[10]);
         return Newitems.slice(0, 10);
       } else {
         return Newitems;
+      }
+    },
+  },
+  mounted() {
+    setInterval((_) => {
+      this.changeColor();
+    }, 100); //每隔100ms调用一次
+  },
+  methods: {
+    changeColor() {
+      console.log("changeColor is run");
+      var len = this.Newitems.length;
+      for (var i = 0; i < len; i++) {
+        if (this.Newitems[i].competitive >= 70) {
+          document.getElementsByClassName("icon")[i].style.fill = "green"; //得分大于70,green
+        } else if (
+          this.Newitems[i].competitive >= 50 &&
+          this.Newitems[i].competitive < 70
+        ) {
+          document.getElementsByClassName("icon")[i].style.fill = "blue"; //得分50-70,blue
+        } else if (
+          this.Newitems[i].competitive >= 30 &&
+          this.Newitems[i].competitive < 50
+        ) {
+          document.getElementsByClassName("icon")[i].style.fill = "gray"; //得分30-50,gray
+        } else {
+          document.getElementsByClassName("icon")[i].style.fill = "white"; //得分低于30,white
+        }
       }
     },
   },
@@ -82,9 +113,11 @@ ul li {
   list-style: none;
 }
 ul li span {
-  display: block;
   line-height: 26px;
   color: white;
+}
+.d2 {
+  display: block;
 }
 .d1 {
   width: 87.5%;
@@ -102,5 +135,16 @@ ul li span {
   background-size: auto auto;
   background-position: right;
   background-repeat: no-repeat;
+  display: block;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  top: 1px;
+  right: 3px;
+  vertical-align: -0.15em;
+  fill: red;
+  overflow: hidden;
+  position: relative; /* 相对定位 */
 }
 </style>
