@@ -1,6 +1,10 @@
 <template>
   <div id="example">
-    <input type="text" v-model="searchData" placeholder="请输入公司名字" />
+    <input
+      type="text"
+      v-model="searchData"
+      placeholder="请输入公司或地区名字  "
+    />
     <ul class="d1">
       <li v-for="(item, index) in Newitems" :key="index">
         <!-- <span
@@ -23,11 +27,12 @@
             <use xlink:href="#icon-paiming"></use></svg
           >provinceRanking:{{ item.provinceRanking }}名</span
         >
-        <span class="d2"
+        <span class="d2" id="cityRanking"
           ><svg class="iconRanking2" aria-hidden="true">
             <use xlink:href="#icon-paiming"></use></svg
           >cityRanking:{{ item.cityRanking }}名</span
         >
+        <span id="kongge"></span>
       </li>
     </ul>
   </div>
@@ -100,15 +105,15 @@ export default {
   padding: 0;
 }
 input {
-  width: 80%;
-  height: 10px;
+  width: 87%;
+  height: 20px;
   text-indent: 5px;
 
   outline-style: none;
   border: 1px solid #ccc;
   border-radius: 3px;
-  padding: 13px 14px;
-  font-size: 14px;
+  /* padding: 13px 14px; */
+  font-size: 12px;
   font-weight: 700;
   font-family: "Microsoft soft";
 
@@ -128,10 +133,12 @@ ul li {
 }
 ul li span {
   line-height: 26px;
-  color: white;
+  color: black;
 }
 .d2 {
   display: block;
+  text-align: left;
+  background: rgba(248, 248, 248, 1);
 }
 .d1 {
   width: 87.5%;
@@ -140,16 +147,17 @@ ul li span {
   left: 6%;
   overflow-x: hidden; /*设置滚动条*/
   position: absolute;
+  text-align: center;
 }
+
 #itemName {
-  background: linear-gradient(
-    rgba(102, 175, 233, 0.6),
-    rgba(102, 175, 233, 0.6)
-  );
+  /* background: linear-gradient(rgba(193, 219, 182, 1), rgba(58, 59, 59, 0.6)); */
+  background: rgba(193, 219, 182, 1);
   background-size: auto auto;
   background-position: right;
   background-repeat: no-repeat;
   display: block;
+  text-align: left;
 }
 .icon {
   width: 1em;
@@ -157,7 +165,7 @@ ul li span {
   top: 1px;
   /* right: 3px; */
   vertical-align: -0.15em;
-  fill: red;
+  fill: rgba(193, 219, 182, 1);
   overflow: hidden;
   position: relative; /* 相对定位 */
 }
@@ -165,7 +173,7 @@ ul li span {
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
-  fill: yellow;
+  fill: orange;
   overflow: hidden;
 }
 .iconCompetitive {
@@ -181,5 +189,9 @@ ul li span {
   vertical-align: -0.15em;
   fill: burlywood;
   overflow: hidden;
+}
+#kongge {
+  display: block;
+  margin-bottom: 10px;
 }
 </style>
