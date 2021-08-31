@@ -1,37 +1,15 @@
 <template>
   <div id="app">
-    <!-- <div id="title"><p>四川白酒企业可视分析系统</p></div> -->
     <router-view v-if="isRouterAlive"></router-view>
-
-    <!-- <div id="container"> -->
-    <!-- <div id="title"><p>四川白酒企业可视分析系统</p></div>
-   -->
 
     <div id="mapbox2">
       <sichuanmap3 />
-
       <div id="title"></div>
-
-      <div id="colorReflect">
-        <div id="tu">
-          <div class="r1"></div>
-          <div class="r2"></div>
-          <div class="r3"></div>
-          <div class="r4"></div>
-          <div class="r5"></div>
-        </div>
-
-        <div class="literal">
-          <h6>
-            0~300<br /><br />300~600<br /><br />600~900<br /><br />900~1200<br /><br />1200~1500<br /><br />
-          </h6>
-        </div>
+      <div class="yansetiao">
+        <div id="bottom">0</div>
+        <div id="top">1500</div>
       </div>
     </div>
-
-    <!-- <div id="frame">
-      <haoping />
-    </div> -->
 
     <div id="c2">
       <sortChart2 />
@@ -42,6 +20,7 @@
     </div>
 
     <div id="xuritu">
+      <div id="title-qipao">产品分级研究</div>
       <sunburstChart2 />
     </div>
 
@@ -372,5 +351,30 @@ export default {
   width: 50%;
   height: 8%;
   left: 10%;
+}
+.yansetiao {
+  position: absolute;
+  top: 52%;
+  left: 26%;
+  width: 10px;
+  height: 80px;
+  background: -webkit-linear-gradient(bottom, #82b1ff, #2196f3) no-repeat;
+}
+#bottom {
+  position: relative;
+  top: 85%;
+  left: 150%;
+  color: #fff;
+  font-size: 12px;
+}
+#top {
+  position: relative;
+  top: -20%;
+  left: 150%;
+  color: #fff;
+  font-size: 12px;
+}
+#title-qipao {
+  color: #fff;
 }
 </style>

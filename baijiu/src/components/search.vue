@@ -43,6 +43,7 @@ import Data from "../../public/static/searchDataItems";
 import "../store/iconfont.js";
 import "../store/iconfont-ranking.js";
 import "../store/iconfont-competitive.js";
+import "../store/iconfont-goldcup.js";
 export default {
   name: "search",
   data() {
@@ -75,7 +76,6 @@ export default {
   },
   methods: {
     changeColor() {
-      console.log("changeColor is run");
       var len = this.Newitems.length;
       for (var i = 0; i < len; i++) {
         if (this.Newitems[i].competitive >= 70) {
@@ -105,9 +105,11 @@ export default {
   padding: 0;
 }
 input {
-  width: 87%;
-  height: 20px;
+  color: white;
+  width: 88%;
+  height: 25px;
   text-indent: 5px;
+  background-color: black;
 
   outline-style: none;
   border: 1px solid #ccc;
@@ -133,12 +135,12 @@ ul li {
 }
 ul li span {
   line-height: 26px;
-  color: black;
+  color: white;
 }
 .d2 {
   display: block;
   text-align: left;
-  background: rgba(248, 248, 248, 1);
+  background: rgba(33, 39, 49, 1);
 }
 .d1 {
   width: 87.5%;
@@ -152,7 +154,7 @@ ul li span {
 
 #itemName {
   /* background: linear-gradient(rgba(193, 219, 182, 1), rgba(58, 59, 59, 0.6)); */
-  background: rgba(193, 219, 182, 1);
+  background: rgba(88, 195, 216, 1);
   background-size: auto auto;
   background-position: right;
   background-repeat: no-repeat;
@@ -163,12 +165,12 @@ ul li span {
   width: 1em;
   height: 1em;
   top: 1px;
-  /* right: 3px; */
   vertical-align: -0.15em;
   fill: rgba(193, 219, 182, 1);
   overflow: hidden;
-  position: relative; /* 相对定位 */
+  position: relative;
 }
+
 .iconRanking {
   width: 1em;
   height: 1em;

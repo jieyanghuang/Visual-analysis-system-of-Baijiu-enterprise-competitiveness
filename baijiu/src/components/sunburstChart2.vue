@@ -1,5 +1,5 @@
 <template>
-  <div id="qipao" style="width: 100%; height: 100%"></div>
+  <div id="qipao"></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -201,29 +201,6 @@ export default {
         }
 
         var option = {
-          title: {
-            text: "产品分级研究",
-            // subtext: "Product classification research ",
-            x: "center",
-            y: 0,
-            // textAlign: "center",
-            textStyle: {
-              color: "white",
-              fontFamily: " serif ",
-              fontSize: 17,
-            },
-            subtextStyle: {
-              color: "#C0C0C0",
-              fontSize: 13,
-            },
-          },
-          //   grid: {
-          //   left: "1%",
-          //   right: "4%",
-          //   bottom: "0.5%",
-          //   top:"2.5%",
-          //   containLabel: true,
-          // },
           dataset: {
             source: seriesData,
           },
@@ -236,6 +213,7 @@ export default {
             inRange: {
               // color: ["#4682B4", "#e0ffff"],
               color: ["#0B486B", "#F56217"],
+              // color: ["#16BFFD", "#CB3066"],
             },
           },
           hoverLayerThreshold: Infinity,
@@ -292,4 +270,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#qipao {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  left: 10%;
+  top: 7%;
+}
+</style>
