@@ -127,7 +127,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00ffff;
+  
 
   background-color: rgba(224, 255, 255, 0);
 }
@@ -146,7 +146,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00ffff;
+
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
@@ -165,7 +165,6 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00ffff;
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
@@ -201,7 +200,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00ffff;
+  
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
@@ -232,7 +231,7 @@ export default {
   width: 100%;
   height: 0%;
   border-style: ridge;
-  box-shadow: 0px 10px 20px #333399;
+
 }
 #search {
   position: absolute;
@@ -245,7 +244,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
   z-index: 1;
-  box-shadow: 0px 0px 20px #333399;
+
   /* rgba(0, 0, 0, 0.2) */
   text-align: center;
   background-color: rgba(224, 255, 255, 0);
@@ -254,7 +253,7 @@ export default {
 
   border-style: ridge;
   border-color: #b0c4de;
-  box-shadow: inset 0px 0px 15px #00ffff;
+ 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;
 }
@@ -275,7 +274,7 @@ export default {
   border-style: ridge;
   border-color: #b0c4de;
 
-  box-shadow: inset 0px 0px 15px #00ffff;
+ 
 
   background-color: rgba(224, 255, 255, 0);
   border-radius: 6px 6px 6px 6px;

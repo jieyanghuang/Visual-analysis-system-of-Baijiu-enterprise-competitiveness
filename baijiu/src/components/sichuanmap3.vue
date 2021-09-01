@@ -144,7 +144,7 @@ export default {
               orient: 'vertical',
               x: '62%',
               y: '13%',
-              icon: 'diamond',
+              icon: 'squre',
               data: ['两家未上市公司', '四家上市公司'],
               itemGap: 20
 
@@ -249,18 +249,18 @@ export default {
             series:
               [{
                     name: "两家未上市公司",
-                    symbolSize: 40,  //大头针大小
+                    symbolSize: 20,  //大头针大小
                     type: "scatter",
-                    symbol: "pin",
+                    symbol: "circle",
                     color: "yellow",
                     coordinateSystem: "geo",
                     data: TwoPineplants,
                   },
                   {
                     name: "四家上市公司",
-                    symbolSize: 40,  //大头针大小
+                    symbolSize: 20,  //大头针大小
                     type: "scatter",
-                    symbol: "pin",
+                    symbol: "circle",
                     color: "orange",
                     coordinateSystem: "geo",
                     data: FourPineplantss,

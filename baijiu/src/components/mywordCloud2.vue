@@ -54,7 +54,7 @@ option = {
       axisLine: {
 
         lineStyle: {
-          width: 7,
+          width: 4,
           color: [
             [0.25, "#FF6E76"],
             [0.5, "#FDDD60"],
