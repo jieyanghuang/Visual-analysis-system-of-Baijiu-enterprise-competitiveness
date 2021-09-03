@@ -18,111 +18,115 @@ export default {
   },
   methods: {
     initmap() {
-      $(function () {
+      $(function() {
         var myChart = echarts.init(document.getElementById("mapbox"));
         myChart.showLoading();
-        $.get("/static/sichuan.json", function (geoJson) {
-           var TwoPineplants =
-              [
-                {
-                  name: "剑南春",
-                  value: [104.20702, 31.09263],
-                },   
-                {
-                  name: "郎酒",
-                  value: [105.43501, 29.00875],
-                },
-              ]; //打点数据
+        $.get("/static/sichuan.json", function(geoJson) {
+          var TwoPineplants = [
+            {
+              name: "剑南春",
+              value: [104.20702, 31.09263],
+            },
+            {
+              name: "郎酒",
+              value: [105.43501, 29.00875],
+            },
+          ]; //打点数据
 
-              var FourPineplantss =
-              [
-                {
-                  name: "沱牌舍得",
-                  value: [105.22636, 30.55541],
-                },
-                
-                {
-                  name: "水井坊",
-                  value: [103.70194, 30.54984],
-                },
-                {
-                  name: "五粮液",
-                  value: [104.61947, 28.66593],
-                },
-                {
-                  name: "泸州老窖",
-                  value: [105.43501, 28.00875],
-                },
-              
-              ]; //打点数据
+          var FourPineplantss = [
+            {
+              name: "沱牌舍得",
+              value: [105.22636, 30.55541],
+            },
 
-          var value =
-            [
-              1078, 291, 128, 1484, 342, 693, 493,
-              413, 362, 546, 1493, 571, 1187,
-              745, 1124, 385, 1741, 430, 254, 44,
-              930, 1,
-            ]; //每个市州白酒企业数
-          var cities =
-            [
-              "成都市",
-              "自贡市",
-              "攀枝花市",
-              "泸州市",
-              "德阳市",
-              "绵阳市",
-              "广元市",
-              "遂宁市",
-              "内江市",
-              "乐山市",
-              "南充市",
-              "眉山市",
-              "宜宾市",
-              "广安市",
-              "达州市",
-              "雅安市",
-              "巴中市",
-              "资阳市",
-              "阿坝藏族羌族自治州",
-              "甘孜藏族自治州",
-              "凉山彝族自治州",
-              "沱牌舍得",
-              "剑南春",
-              "水井坊",
-              "五粮液",
-              "泸州老窖",
-              "郎酒",
-            ];
+            {
+              name: "水井坊",
+              value: [103.70194, 30.54984],
+            },
+            {
+              name: "五粮液",
+              value: [104.61947, 28.66593],
+            },
+            {
+              name: "泸州老窖",
+              value: [105.43501, 28.00875],
+            },
+          ]; //打点数据
 
+          var value = [
+            1078,
+            291,
+            128,
+            1484,
+            342,
+            693,
+            493,
+            413,
+            362,
+            546,
+            1493,
+            571,
+            1187,
+            745,
+            1124,
+            385,
+            1741,
+            430,
+            254,
+            44,
+            930,
+            1,
+          ]; //每个市州白酒企业数
+          var cities = [
+            "成都市",
+            "自贡市",
+            "攀枝花市",
+            "泸州市",
+            "德阳市",
+            "绵阳市",
+            "广元市",
+            "遂宁市",
+            "内江市",
+            "乐山市",
+            "南充市",
+            "眉山市",
+            "宜宾市",
+            "广安市",
+            "达州市",
+            "雅安市",
+            "巴中市",
+            "资阳市",
+            "阿坝藏族羌族自治州",
+            "甘孜藏族自治州",
+            "凉山彝族自治州",
+            "沱牌舍得",
+            "剑南春",
+            "水井坊",
+            "五粮液",
+            "泸州老窖",
+            "郎酒",
+          ];
 
-
-
-
-
-          var regions = [];   //不同地区数组，用来分别设置颜色
+          var regions = []; //不同地区数组，用来分别设置颜色
           var Color;
           for (var i = 0; i < value.length; i++) {
-            if (value[i] > 0 && value[i] <= 300)   //颜色分级
-            {
+            if (value[i] > 0 && value[i] <= 300) {
+              //颜色分级
               Color = "#82b1ff";
-            }
-            else if (value[i] > 300 && value[i] <= 600) {
+            } else if (value[i] > 300 && value[i] <= 600) {
               Color = "#1565c0";
-            }
-            else if (value[i] > 600 && value[i] <= 900) {
+            } else if (value[i] > 600 && value[i] <= 900) {
               Color = "#1976d2";
-            }
-            else if (value[i] > 900 && value[i] <= 1200) {
+            } else if (value[i] > 900 && value[i] <= 1200) {
               Color = "#1e88e5";
-            }
-            else {
+            } else {
               Color = "#2196f3";
             }
 
             regions.push({
               name: cities[i],
-              itemStyle: { normal: { areaColor: Color } }
-            })
+              itemStyle: { normal: { areaColor: Color } },
+            });
           }
 
           var namemap = new Map();
@@ -130,30 +134,26 @@ export default {
             namemap.set(cities[i], value[i]); //将市州数和市州名数据设置成键值对结构
           }
 
-
-
-
-
-
           myChart.hideLoading();
           echarts.registerMap("四川", geoJson);
           var option = {
-
-
             legend: {
-              orient: 'vertical',
-              x: '62%',
-              y: '13%',
-              icon: 'squre',
-              data: ['两家未上市公司', '四家上市公司'],
-              itemGap: 20
-
+              orient: "vertical",
+              x: "62%",
+              y: "13%",
+              itemWidth: 20,
+              itemHeight: 10,
+              icon: "roundRect",
+              data: ["两家未上市公司", "四家上市公司"],
+              itemGap: 20,
+              textStyle: {
+                color: "#ffffff",
+              },
             },
 
             title: {
-
-              text: "四川白酒企业可视分析系统",
-              // subtext: "Visual Analysis System for Sichuan Liquor Enterprises",
+              text: "四川白酒企业竞争力可视分析系统",
+              subtext: "Visual Analysis System for Sichuan Liquor Enterprises",
               x: "center",
               y: 10,
 
@@ -167,22 +167,18 @@ export default {
                 color: "#C0C0C0",
                 fontSize: 14.5,
               },
-
             },
-            tooltip:
-            {
+            tooltip: {
               formatter: "test",
             },
-
 
             geo: {
               map: "四川",
 
-              tooltip:
-              {
+              tooltip: {
                 show: true,
                 confine: true,
-                formatter: function (params) {
+                formatter: function(params) {
                   if (
                     params.name == "沱牌舍得" ||
                     params.name == "剑南春" ||
@@ -190,28 +186,27 @@ export default {
                     params.name == "五粮液" ||
                     params.name == "泸州老窖" ||
                     params.name == "郎酒"
-                  ) { return [params.name].join("<br>"); }
-                  else {
-                    return [params.name + ":" + namemap.get(params.name) + "家",].join("<br>");
+                  ) {
+                    return [params.name].join("<br>");
+                  } else {
+                    return [
+                      params.name + ":" + namemap.get(params.name) + "家",
+                    ].join("<br>");
                   }
                 },
 
-                textStyle:
-                {
+                textStyle: {
                   fontFamily: "serif", //提示框字体种类设置
                 },
               },
 
-              label:
-              {
-                normal:
-                {
+              label: {
+                normal: {
                   show: true,
                   color: "white",
                   fontSize: 10,
                 },
-                emphasis:
-                {
+                emphasis: {
                   show: true, //字体显示
                   color: "white",
                   // focus: "self",
@@ -221,19 +216,14 @@ export default {
 
               roam: true, //地图缩放平移
 
-
-              itemStyle:
-              {
-                normal:
-                {
+              itemStyle: {
+                normal: {
                   areaColor: "#4682B4",
-                  // #40458e  原来的颜色 
+                  // #40458e  原来的颜色
                   borderColor: "white",
                   borderWidth: 0.6,
                 },
-                emphasis:
-                {
-
+                emphasis: {
                   areaColor: "#FF6100",
                 },
               },
@@ -243,43 +233,37 @@ export default {
               top: "15%",
               bottom: "37%",
               //地图板块出现位置
-              regions: regions
+              regions: regions,
             },
 
-            series:
-              [{
-                    name: "两家未上市公司",
-                    symbolSize: 20,  //大头针大小
-                    type: "scatter",
-                    symbol: "circle",
-                    color: "yellow",
-                    coordinateSystem: "geo",
-                    data: TwoPineplants,
-                  },
-                  {
-                    name: "四家上市公司",
-                    symbolSize: 20,  //大头针大小
-                    type: "scatter",
-                    symbol: "circle",
-                    color: "orange",
-                    coordinateSystem: "geo",
-                    data: FourPineplantss,
-                  },
-
-
-
-              ],
-
-
+            series: [
+              {
+                name: "两家未上市公司",
+                symbolSize: 20, //大头针大小
+                type: "scatter",
+                symbol: "circle",
+                color: "yellow",
+                coordinateSystem: "geo",
+                data: TwoPineplants,
+              },
+              {
+                name: "四家上市公司",
+                symbolSize: 20, //大头针大小
+                type: "scatter",
+                symbol: "circle",
+                color: "orange",
+                coordinateSystem: "geo",
+                data: FourPineplantss,
+              },
+            ],
           };
           myChart.setOption(option);
 
-          window.addEventListener("resize", function () {
-            myChart.resize();  //自适应屏幕宽度
+          window.addEventListener("resize", function() {
+            myChart.resize(); //自适应屏幕宽度
           });
 
-
-          myChart.on("click", function (e) {
+          myChart.on("click", function(e) {
             //点击地图板块
             console.log(e);
             if (e.componentType == "geo") {

@@ -1,5 +1,5 @@
 <template>
-  <div id="parellelChart" style="width:120%;height:100%;">
+  <div id="parellelChart">
     <!-- <div id='flag'></div> -->
   </div>
 </template>
@@ -191,7 +191,6 @@ export default {
           text: "21市州白酒企业整体数据展示",
           textStyle: {
             color: "white",
-            left: "40%",
             fontFamily: "serif",
           },
         },
@@ -202,8 +201,8 @@ export default {
             parallelIndex: 0,
             smooth: true,
             lineStyle: {
-              width: 2,
-              color: "#1CB5E0",
+              width: 1.5,
+              color: "#0ED2F7",
             },
             data: data.datas.data1,
           },
@@ -212,8 +211,8 @@ export default {
             parallelIndex: 1,
             name: "排名后十市",
             lineStyle: {
-              width: 2,
-              color: "#2F80ED",
+              width: 1.5,
+              color: "#0ED2F7",
             },
             smooth: true,
             data: data.datas.data2,
@@ -283,7 +282,7 @@ export default {
           },
         },
         legend: {
-          left: "47%",
+          left: "40%",
           data: ["所有企业情况", "竞争力前十企业"],
           // show:false,
           selected: {
@@ -308,7 +307,7 @@ export default {
             // index:0,
             lineStyle: {
               width: 1.5,
-              color: "#4B90C3",
+              color: "#0ED2F7",
             },
             data: data.datas.data1,
           },
@@ -320,7 +319,7 @@ export default {
             // coordinateSystem:'parallel',
             smooth: true,
             lineStyle: {
-              width: 1.5,
+              width: 1,
               color: "#0ED2F7",
             },
             data: data.datas.data2,
@@ -339,4 +338,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style type="scoped"></style>
+<style>
+#parellelChart {
+  height: 100%;
+  width: 115%;
+  position: absolute;
+}
+</style>

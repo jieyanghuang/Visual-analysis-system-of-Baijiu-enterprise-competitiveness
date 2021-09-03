@@ -123,6 +123,7 @@ export default {
         xAxis: {
           type: "value",
           boundaryGap: [0, 0.01],
+          splitLine: { show: false },
         },
         yAxis: {
           type: "category",

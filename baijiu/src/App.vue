@@ -4,14 +4,19 @@
 
     <div id="mapbox2">
       <sichuanmap3 />
-      <div id="title"></div>
+
+      <div id="leftline">
+        <div id="leftline1"></div>
+        <div id="bottomline"></div>
+      </div>
+      <div id="rightline"><div id="rightline1"></div></div>
       <div class="yansetiao">
         <div id="bottom">0</div>
         <div id="top">1500</div>
       </div>
     </div>
 
-    <div id="c2">
+    <div id="c2" class="border1">
       <sortChart2 />
     </div>
 
@@ -19,21 +24,21 @@
       <mywordCloud2 />
     </div>
 
-    <div id="xuritu">
+    <div id="xuritu" class="border1">
       <div id="title-qipao">产品分级研究</div>
       <sunburstChart2 />
     </div>
 
-    <div id="lineChart2">
+    <div id="lineChart2" class="border1">
       <lineChart />
     </div>
-    <div id="parallelChart2">
+    <div id="parallelChart2" class="border1">
       <parellelChart />
     </div>
-    <div id="search">
+    <div id="search" class="border1">
       <search />
     </div>
-    <div id="gupiao">
+    <div id="gupiao" class="border1">
       <gupiao />
     </div>
   </div>
@@ -98,21 +103,6 @@ export default {
   /* margin: 0;
             padding: 0; */
 }
-#title {
-  position: absolute;
-  width: 100%;
-  height: 0%;
-  top: 0px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  color: white;
-  /* background-color: burlywood; */
-  border-style: ridge;
-  border-color: black;
-  /* aqua */
-  border-width: 3px;
-}
 #c2 {
   /* 市州竞争力 */
   position: absolute;
@@ -123,11 +113,9 @@ export default {
   top: 4%;
   z-index: 1;
   text-align: center;
-  border-radius: 6px 6px 6px 6px;
+  /* border-radius: 6px 6px 6px 6px;
   border-style: ridge;
-  border-color: #b0c4de;
-
-  
+  border-color: #b0c4de; */
 
   background-color: rgba(224, 255, 255, 0);
 }
@@ -143,13 +131,11 @@ export default {
 
   /* z-index: 1; */
   text-align: center;
-  border-style: ridge;
+  /* border-style: ridge;
   border-color: #b0c4de;
 
-
-
   background-color: rgba(224, 255, 255, 0);
-  border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px; */
 }
 #parallelChart2 {
   position: absolute;
@@ -161,13 +147,12 @@ export default {
   border-style: ridge;
   /* border-color: red; */
   text-align: center;
-  border-radius: 6px 6px 6px 6px;
+  /* border-radius: 6px 6px 6px 6px;
   border-style: ridge;
   border-color: #b0c4de;
 
-
   background-color: rgba(224, 255, 255, 0);
-  border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px; */
 }
 #mapbox2 {
   position: absolute;
@@ -196,14 +181,12 @@ export default {
   text-align: center;
   background-color: rgba(224, 255, 255, 0);
   z-index: 1;
-  border-radius: 6px 6px 6px 6px;
+  /* border-radius: 6px 6px 6px 6px;
   border-style: ridge;
   border-color: #b0c4de;
 
-  
-
   background-color: rgba(224, 255, 255, 0);
-  border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px; */
 }
 #ciyun {
   /* 好评条 */
@@ -231,7 +214,6 @@ export default {
   width: 100%;
   height: 0%;
   border-style: ridge;
-
 }
 #search {
   position: absolute;
@@ -241,11 +223,10 @@ export default {
   top: 4%;
   width: 23.3%;
   height: 19.5%;
-  border-style: ridge;
+  /* border-style: ridge;
   border-color: #b0c4de;
   z-index: 1;
 
-  /* rgba(0, 0, 0, 0.2) */
   text-align: center;
   background-color: rgba(224, 255, 255, 0);
   z-index: 1;
@@ -253,10 +234,39 @@ export default {
 
   border-style: ridge;
   border-color: #b0c4de;
- 
+
   background-color: rgba(224, 255, 255, 0);
-  border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px; */
 }
+.border1 {
+  border: 1px solid #03a9f3;
+}
+.border1::before,
+.border1::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s;
+}
+.border1::before {
+  top: -5px;
+  left: -5px;
+  border-top: 1px solid #03a9f3;
+  border-left: 1px solid #03a9f3;
+}
+.border1::after {
+  right: -5px;
+  bottom: -5px;
+  border-bottom: 1px solid #03a9f3;
+  border-right: 1px solid #03a9f3;
+}
+/* .border1:hover::before,
+.border1:hover::after {
+  width: calc(100% + 9px);
+  height: calc(100% + 9px);
+} */
+
 #gupiao {
   position: absolute;
   top: 67.9%;
@@ -270,30 +280,12 @@ export default {
   /* z-index: 1; */
 
   text-align: center;
-  border-radius: 6px 6px 6px 6px;
+  /* border-radius: 6px 6px 6px 6px;
   border-style: ridge;
   border-color: #b0c4de;
 
- 
-
   background-color: rgba(224, 255, 255, 0);
-  border-radius: 6px 6px 6px 6px;
-}
-#colorReflect {
-  position: absolute;
-  width: 7%;
-  height: 20%;
-  top: 44%;
-  left: 23%;
-  /* text-align: center; */
-  font-weight: bold;
-  font-size: 20px;
-  color: white;
-  /* background-color: burlywood; */
-  /* border-style: ridge; */
-  /* border-color: red; */
-  /* aqua */
-  border-width: 3px;
+  border-radius: 6px 6px 6px 6px; */
 }
 .literal {
   position: absolute;
@@ -310,47 +302,6 @@ export default {
   top: 8%;
   left: 23%;
 }
-
-.r1 {
-  position: absolute;
-  top: 22%;
-  background-color: #82b1ff;
-  width: 50%;
-  height: 8%;
-  left: 10%;
-}
-.r2 {
-  position: absolute;
-  top: 48%;
-  background-color: #1565c0;
-  width: 50%;
-  height: 8%;
-  left: 10%;
-}
-.r3 {
-  position: absolute;
-  top: 76%;
-  background-color: #1976d2;
-  width: 50%;
-  height: 8%;
-  left: 10%;
-}
-.r4 {
-  position: absolute;
-  top: 105%;
-  background-color: #1e88e5;
-  width: 50%;
-  height: 8%;
-  left: 10%;
-}
-.r5 {
-  position: absolute;
-  top: 130%;
-  background-color: #2196f3;
-  width: 50%;
-  height: 8%;
-  left: 10%;
-}
 .yansetiao {
   position: absolute;
   top: 52%;
@@ -358,6 +309,7 @@ export default {
   width: 10px;
   height: 80px;
   background: -webkit-linear-gradient(bottom, #82b1ff, #2196f3) no-repeat;
+  border: 1px solid white;
 }
 #bottom {
   position: relative;
@@ -375,5 +327,55 @@ export default {
 }
 #title-qipao {
   color: #fff;
+}
+
+#leftline {
+  height: 1px;
+  width: 32.3%;
+  top: 2%;
+  border-top: solid #72fafc 1px;
+  z-index: 1;
+  position: absolute;
+}
+
+#leftline1 {
+  height: 1px;
+  width: 15%;
+  margin-top: 6.1%;
+  left: 96%;
+  border-top: solid #72fafc 1px;
+  z-index: 1;
+  position: relative;
+  transform: rotate(60deg);
+}
+
+#rightline {
+  height: 1px;
+  width: 32.1%;
+  top: 2%;
+  right: 0%;
+  border-top: solid #72fafc 1px;
+  z-index: 1;
+  position: absolute;
+}
+
+#rightline1 {
+  height: 1px;
+  width: 15%;
+  margin-top: 6.2%;
+  right: 11%;
+  border-top: solid #72fafc 1px;
+  z-index: 1;
+  position: relative;
+  transform: rotate(-60deg);
+}
+#bottomline {
+  left: 107.3%;
+  height: 1px;
+  width: 95.6%;
+  margin-top: 6.1%;
+  border-top: solid #72fafc 1px;
+  z-index: 1;
+  position: relative;
 }
 </style>

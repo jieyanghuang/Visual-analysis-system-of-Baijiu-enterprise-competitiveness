@@ -109,11 +109,10 @@ input {
   width: 88%;
   height: 25px;
   text-indent: 5px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
 
   outline-style: none;
   border: 1px solid #ccc;
-  border-radius: 3px;
   /* padding: 13px 14px; */
   font-size: 12px;
   font-weight: 700;
@@ -154,7 +153,7 @@ ul li span {
 
 #itemName {
   /* background: linear-gradient(rgba(193, 219, 182, 1), rgba(58, 59, 59, 0.6)); */
-  background: rgba(88, 195, 216, 1);
+  background: rgba(88, 195, 216, 0.6);
   background-size: auto auto;
   background-position: right;
   background-repeat: no-repeat;

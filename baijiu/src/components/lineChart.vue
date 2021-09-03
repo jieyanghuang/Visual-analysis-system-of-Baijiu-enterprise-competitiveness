@@ -1,5 +1,5 @@
 <template>
-  <div id="mywordcloud" style="width: 95%; height: 95%;left:10%">
+  <div id="mywordcloud" style="width: 100%; height: 100%;">
     <!-- <h6>Product review word cloud</h6> -->
   </div>
 </template>
@@ -13,30 +13,36 @@ export default {
   name: "mywordCloud2",
   data() {
     return {
+      // worddata: [
+      //   {
+      //     name: "五粮液",
+      //     weight: 100,
+      //   },
+      //   {
+      //     name: "泸州老窖",
+      //     weight: 80,
+      //   },
+      //   {
+      //     name: "郎酒",
+      //     weight: 60,
+      //   },
+      //   {
+      //     name: "剑南春",
+      //     weight: 50,
+      //   },
+      //   {
+      //     name: "沱牌",
+      //     weight: 40,
+      //   },
+      //   {
+      //     name: "水井坊",
+      //     weight: 20,
+      //   },
+      // ],
       worddata: [
         {
-          name: "五粮液",
-          weight: 100,
-        },
-        {
-          name: "泸州老窖",
-          weight: 80,
-        },
-        {
-          name: "郎酒",
-          weight: 60,
-        },
-        {
-          name: "剑南春",
-          weight: 50,
-        },
-        {
-          name: "沱牌",
-          weight: 40,
-        },
-        {
-          name: "水井坊",
-          weight: 20,
+          name: "请选择企业",
+          weight: 1,
         },
       ],
     };
@@ -90,7 +96,7 @@ export default {
             color: "white",
             fontWeight: "bold",
             fontFamily: "serif",
-            fontSize:20
+            fontSize: 20,
           },
 
           // title: {
