@@ -13,6 +13,7 @@
       <div class="yansetiao">
         <div id="bottom">0</div>
         <div id="top">1500</div>
+        <div id="companyNumber">企业数目</div>
       </div>
     </div>
 
@@ -304,8 +305,8 @@ export default {
 }
 .yansetiao {
   position: absolute;
-  top: 52%;
-  left: 26%;
+  top: 50%;
+  left: 27%;
   width: 10px;
   height: 80px;
   background: -webkit-linear-gradient(bottom, #82b1ff, #2196f3) no-repeat;
@@ -377,5 +378,14 @@ export default {
   border-top: solid #72fafc 1px;
   z-index: 1;
   position: relative;
+}
+#companyNumber {
+  height: auto;
+  width: 60px;
+  position: relative;
+  top: 70%;
+  left: -235%;
+  color: #fff;
+  font-size: 1px;
 }
 </style>

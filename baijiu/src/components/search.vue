@@ -7,30 +7,32 @@
     />
     <ul class="d1">
       <li v-for="(item, index) in Newitems" :key="index">
-        <!-- <span
-          ><svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-xingxing"></use></svg
-        ></span> -->
         <span id="itemName"
           ><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-xingxing"></use>
           </svg>
-          name:{{ item.name }}</span
+          <nobr class="pai">error</nobr>{{ item.name }}</span
         >
-        <span class="d2"
-          ><svg class="iconCompetitive" aria-hidden="true">
-            <use xlink:href="#icon-jz"></use></svg
-          >competitive:{{ item.competitive }}分</span
+        <span class="d2">
+          <div class="words">
+            <svg class="iconCompetitive" aria-hidden="true">
+              <use xlink:href="#icon-jz"></use></svg
+            >competitive:{{ item.competitive }}分
+          </div>
+        </span>
+        <span class="d2">
+          <div class="words">
+            <svg class="iconRanking" aria-hidden="true">
+              <use xlink:href="#icon-paiming"></use></svg
+            >provinceRanking:{{ item.provinceRanking }}名
+          </div></span
         >
-        <span class="d2"
-          ><svg class="iconRanking" aria-hidden="true">
-            <use xlink:href="#icon-paiming"></use></svg
-          >provinceRanking:{{ item.provinceRanking }}名</span
-        >
-        <span class="d2" id="cityRanking"
-          ><svg class="iconRanking2" aria-hidden="true">
-            <use xlink:href="#icon-paiming"></use></svg
-          >cityRanking:{{ item.cityRanking }}名</span
+        <span class="d2" id="cityRanking">
+          <div class="words">
+            <svg class="iconRanking2" aria-hidden="true">
+              <use xlink:href="#icon-paiming"></use></svg
+            >cityRanking:{{ item.cityRanking }}名
+          </div></span
         >
         <span id="kongge"></span>
       </li>
@@ -80,18 +82,22 @@ export default {
       for (var i = 0; i < len; i++) {
         if (this.Newitems[i].competitive >= 70) {
           document.getElementsByClassName("icon")[i].style.fill = "yellow"; //得分大于70
+          document.getElementsByClassName("pai")[i].innerHTML = "[金牌]";
         } else if (
           this.Newitems[i].competitive >= 50 &&
           this.Newitems[i].competitive < 70
         ) {
           document.getElementsByClassName("icon")[i].style.fill = "#A9A9A9"; //得分40-70
+          document.getElementsByClassName("pai")[i].innerHTML = "[银牌]";
         } else if (
-          this.Newitems[i].competitive >= 20 &&
+          this.Newitems[i].competitive >= 30 &&
           this.Newitems[i].competitive < 50
         ) {
           document.getElementsByClassName("icon")[i].style.fill = "burlywood"; //得分20-40
+          document.getElementsByClassName("pai")[i].innerHTML = "[铜牌]";
         } else {
           document.getElementsByClassName("icon")[i].style.fill = "white"; //得分低于30
+          document.getElementsByClassName("pai")[i].innerHTML = "";
         }
       }
     },
@@ -138,9 +144,11 @@ ul li span {
 }
 .d2 {
   display: block;
-  text-align: left;
   background: rgba(33, 39, 49, 1);
+  text-align: left;
+  position: relative;
 }
+
 .d1 {
   width: 87.5%;
   height: 70%;
@@ -194,5 +202,13 @@ ul li span {
 #kongge {
   display: block;
   margin-bottom: 10px;
+}
+.words {
+  position: relative;
+  left: 7%;
+}
+.pai {
+  color: MediumTurquoise;
+  font-family: "Hannotate SC";
 }
 </style>
