@@ -12,7 +12,7 @@ export default {
       haodata: [
         {
           value: 0.830536,
-          name: "五粮液",
+          name: "五粮液用户满意度",
         },
       ],
     };

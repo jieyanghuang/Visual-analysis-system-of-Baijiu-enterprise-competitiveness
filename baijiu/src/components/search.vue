@@ -80,18 +80,18 @@ export default {
     changeColor() {
       var len = this.Newitems.length;
       for (var i = 0; i < len; i++) {
-        if (this.Newitems[i].competitive >= 70) {
+        if (this.Newitems[i].competitive >= 60) {
           document.getElementsByClassName("icon")[i].style.fill = "yellow"; //得分大于70
           document.getElementsByClassName("pai")[i].innerHTML = "[金牌]";
         } else if (
-          this.Newitems[i].competitive >= 50 &&
-          this.Newitems[i].competitive < 70
+          this.Newitems[i].competitive >= 30 &&
+          this.Newitems[i].competitive < 60
         ) {
           document.getElementsByClassName("icon")[i].style.fill = "#A9A9A9"; //得分40-70
           document.getElementsByClassName("pai")[i].innerHTML = "[银牌]";
         } else if (
-          this.Newitems[i].competitive >= 30 &&
-          this.Newitems[i].competitive < 50
+          this.Newitems[i].competitive >= 10 &&
+          this.Newitems[i].competitive < 30
         ) {
           document.getElementsByClassName("icon")[i].style.fill = "burlywood"; //得分20-40
           document.getElementsByClassName("pai")[i].innerHTML = "[铜牌]";

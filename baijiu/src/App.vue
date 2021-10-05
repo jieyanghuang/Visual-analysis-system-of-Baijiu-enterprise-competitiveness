@@ -12,8 +12,8 @@
       <div id="rightline"><div id="rightline1"></div></div>
       <div class="yansetiao">
         <div id="bottom">0</div>
-        <div id="top">1500</div>
-        <div id="companyNumber">企业数目</div>
+        <div id="top">650</div>
+        <div id="companyNumber">竞争力指数</div>
       </div>
     </div>
 
@@ -50,7 +50,6 @@ import sichuanmap3 from "./components/sichuanmap3.vue";
 import lineChart from "./components/lineChart.vue";
 import parellelChart from "./components/parellelChart.vue";
 import sunburstChart2 from "./components/sunburstChart2.vue";
-import haoping from "./components/haoping.vue";
 import mywordCloud2 from "./components/mywordCloud2.vue";
 import search from "./components/search.vue";
 import gupiao from "./components/gupiao.vue";
@@ -82,7 +81,6 @@ export default {
     lineChart,
     parellelChart,
     sunburstChart2,
-    haoping,
     mywordCloud2,
     search,
     gupiao,
@@ -309,7 +307,7 @@ export default {
   left: 27%;
   width: 10px;
   height: 80px;
-  background: -webkit-linear-gradient(bottom, #82b1ff, #2196f3) no-repeat;
+  background: -webkit-linear-gradient(bottom, #64b5f6, #0d47a1) no-repeat;
   border: 1px solid white;
 }
 #bottom {

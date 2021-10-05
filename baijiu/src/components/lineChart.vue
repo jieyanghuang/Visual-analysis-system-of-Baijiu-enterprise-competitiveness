@@ -13,32 +13,6 @@ export default {
   name: "mywordCloud2",
   data() {
     return {
-      // worddata: [
-      //   {
-      //     name: "五粮液",
-      //     weight: 100,
-      //   },
-      //   {
-      //     name: "泸州老窖",
-      //     weight: 80,
-      //   },
-      //   {
-      //     name: "郎酒",
-      //     weight: 60,
-      //   },
-      //   {
-      //     name: "剑南春",
-      //     weight: 50,
-      //   },
-      //   {
-      //     name: "沱牌",
-      //     weight: 40,
-      //   },
-      //   {
-      //     name: "水井坊",
-      //     weight: 20,
-      //   },
-      // ],
       worddata: [
         {
           name: "请选择企业",
@@ -98,29 +72,6 @@ export default {
             fontFamily: "serif",
             fontSize: 20,
           },
-
-          // title: {
-          //             text: "产品分级研究",
-          //             subtext: "Product classification research ",
-          //             x: "center",
-          //             y: 20,
-          //             // textAlign: "center",
-          //             textStyle: {
-          //               color: "white",
-          //               fontFamily: " serif ",
-          //             },
-          //             subtextStyle: {
-          //                  color:"#C0C0C0",
-          //                 fontSize: 13,
-
-          //             },
-          //           },
-          // style: {
-          //   fontSize: 10,
-          //   fontWeight: "bold",
-          //   color: "white", //设置标题字体颜色
-          //   fontFamily: "serif",
-          // },
         },
       });
     },
@@ -128,11 +79,6 @@ export default {
 };
 </script>
 <style scoped>
-/* .BoxWrap {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-} */
 #sub {
   position: absolute;
   width: 10px;
@@ -142,28 +88,4 @@ export default {
   /*  6px solid */
   /* margin: 100px; */
 }
-/* .horn > div {
-  width: 10px;
-  height: 10px;
-  position: absolute;
-} */
-
-/* .horn .rt {
-  border-top: 10px solid #00d3e7;
-  border-right: 10px solid #00d3e7;
-  right: -3px;
-  top: -3px;
-}
-.horn .rb {
-  border-bottom: 10px solid #00d3e7;
-  border-right: 10px solid #00d3e7;
-  right: -3px;
-  bottom: -3px;
-}
-.horn .lb {
-  border-bottom: 10px solid #00d3e7;
-  border-left: 10px solid #00d3e7;
-  left: -3px;
-  bottom: -3px;
-} */
 </style>
