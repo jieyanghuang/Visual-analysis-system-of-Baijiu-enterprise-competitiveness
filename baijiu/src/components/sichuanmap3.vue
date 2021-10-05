@@ -1,7 +1,6 @@
 <template>
   <div class="test" id="mapbox">
     <div></div>
-    <!-- <img src="../../public/static/back.png"> -->
   </div>
 </template>
 <script>
@@ -31,7 +30,7 @@ export default {
               name: "郎酒",
               value: [105.43501, 29.00875],
             },
-          ]; //打点数据
+          ];
 
           var FourPineplantss = [
             {
@@ -51,7 +50,7 @@ export default {
               name: "泸州老窖",
               value: [105.43501, 28.00875],
             },
-          ]; //打点数据
+          ];
 
           var value = [
             647.27,
@@ -75,7 +74,7 @@ export default {
             4.92,
             1.27,
             1.1,
-          ]; //每个市州白酒企业数
+          ];
           var cities = [
             "成都市",
             "泸州市",
@@ -207,7 +206,7 @@ export default {
                 },
               },
 
-              roam: true, //地图缩放平移
+              roam: false, //地图缩放平移
 
               itemStyle: {
                 normal: {

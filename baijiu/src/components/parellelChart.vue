@@ -1,7 +1,5 @@
 <template>
-  <div id="parellelChart">
-    <!-- <div id='flag'></div> -->
-  </div>
+  <div id="parellelChart"></div>
 </template>
 
 <script>
@@ -303,8 +301,6 @@ export default {
             type: "parallel",
             parallelIndex: 0,
             smooth: true,
-            // coordinateSystem:'parallel',
-            // index:0,
             lineStyle: {
               width: 1.5,
               color: "#0ED2F7",
@@ -315,8 +311,6 @@ export default {
             name: "所有企业情况",
             type: "parallel",
             parallelIndex: 1,
-            // index:1,
-            // coordinateSystem:'parallel',
             smooth: true,
             lineStyle: {
               width: 1,

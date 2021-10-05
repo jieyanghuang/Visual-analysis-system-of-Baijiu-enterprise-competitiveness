@@ -67,15 +67,6 @@ export default {
                 color: "white",
               },
             },
-
-            // axisTick: {
-            //   length: 7,
-            //   lineStyle: {
-            //     color: "auto",
-            //     width: 20,
-
-            //   },
-            // },             //内部圆弧
             splitLine: {
               length: 82,
               lineStyle: {
@@ -89,9 +80,6 @@ export default {
               distance: -113,
 
               formatter: function(value) {
-                //  if (value <1.01&&value>0.81) {
-                //       return '优+';
-                //   }
                 if (value === 0.875) {
                   return "优";
                 } else if (value === 0.625) {
@@ -120,15 +108,6 @@ export default {
               color: "white",
             },
             data: data,
-            //  [
-            //   {
-            //     value: 0.7,
-            //     name: "成绩评定",
-            //   },
-            //   // { value: 0.8 ,
-            //   // },
-            //   // { value: 0.3 },
-            // ],
           },
         ],
       };

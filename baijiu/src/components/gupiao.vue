@@ -46,7 +46,6 @@ export default {
   created() {},
   mounted() {
     this.init(this.re.name);
-
     PubSub.subscribe("companyName", (msg, data) => {
       for (let i = 0; i < stocks.length; i++) {
         if (data == stocks[i].label) {
@@ -75,62 +74,26 @@ export default {
         this.locdata = response.data;
         console.log(this.locdata);
         console.log(this.flag);
-        // console.log(this.locdata["五粮液"]);
-        // var yy="五粮液"
-        // var tem=this.locdata[yy];
-        //  console.log(tem);
-        //  var tem_store= tem;
-        // console.log(this.locdata.length);
         for (var key in this.locdata) {
           var tem_store = this.locdata[key];
-
           for (var i = 0; i < tem_store.length; i++) {
-            //  tem_store[k][0] = tem_store[k][0] + "";
-            // console.log( tem_store[i][1] );
             tem_store[i][1] = tem_store[i][1] + "";
             tem_store[i][2] = tem_store[i][2] + "";
             tem_store[i][3] = tem_store[i][3] + "";
             tem_store[i][4] = tem_store[i][4] + "";
           }
         }
-
-        // }
       });
-
-    // this.init(this.locdata);
-
-    // PubSub.subscribe("companyName", (msg, data) => {
-
-    //   for (let i = 0; i < stocks.length; i++) {
-    //     if (data == stocks[i].label) {
-
-    //       // var a = stocks[i].datas;
-    //       // a.push.apply(a, this.locdata);
-
-    //       this.init(stocks[i].datas);
-
-    //       break;
-
-    //     }
-    //   }
-    // });
   },
 
-  // watch: {
-  //   data: 'change' // 值可以为methods的方法名
-  // },
   methods: {
     init(rawData) {
-      // , predata
       console.log(rawData);
-      // console.log(predata);
       var chartDom = document.getElementById("Stock");
       var myChart = echarts.init(chartDom);
       var option;
-
       function calculateMA(dayCount, dta) {
         var result = [];
-        // console.log(dta.length);
         for (var i = 0, len = dta.length; i < len; i++) {
           if (i < dayCount) {
             result.push("-");
@@ -139,24 +102,15 @@ export default {
           var sum = 0;
           for (var j = 0; j < dayCount; j++) {
             sum += dta[i - j][1];
-            // console.log(sum);
           }
-          // console.log(sum);
           result.push(sum / dayCount);
-          // console.log(result);
         }
         return result;
       }
-
       var dates = rawData.map(function(item) {
         return item[0];
       });
-      // for(var i=0;i<=31;i++){
       var dd = dates;
-      // dd.push(this.locdata[1][0]);
-      // }
-      // console.log(dd);
-
       var dta = rawData.map(function(item) {
         return [+item[1], +item[2], +item[3], +item[4]];
       });
@@ -262,7 +216,6 @@ export default {
             showSymbol: false,
             lineStyle: {
               width: 1,
-              // color:"yellow"
             },
           },
           {
@@ -273,7 +226,6 @@ export default {
             showSymbol: false,
             lineStyle: {
               width: 1,
-              // color:"white"
             },
           },
           {
@@ -286,17 +238,6 @@ export default {
               width: 1,
             },
           },
-          // {
-          //   type: "candlestick",
-          //   name: "预测值",
-          //   data: predata,
-          //   itemStyle: {
-          //     color: "#FD1050",
-          //     color0: "#0CF49B",
-          //     borderColor: "blue",
-          //     borderColor0: "white",
-          //   },
-          // },
         ],
       };
 

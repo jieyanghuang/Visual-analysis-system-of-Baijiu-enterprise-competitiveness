@@ -1,7 +1,5 @@
 <template>
-  <div id="mywordcloud" style="width: 100%; height: 100%;">
-    <!-- <h6>Product review word cloud</h6> -->
-  </div>
+  <div id="mywordcloud" style="width: 100%; height: 100%;"></div>
 </template>
 <script>
 import Highcharts from "highcharts/highcharts";
@@ -64,7 +62,6 @@ export default {
         title: {
           text: "产品评论词云",
           y: 20,
-          // subtext: "Product review word cloud",
           style: {
             fontSize: 16,
             color: "white",
@@ -85,7 +82,5 @@ export default {
   height: 10px;
   border-color: red;
   border-width: 20px;
-  /*  6px solid */
-  /* margin: 100px; */
 }
 </style>

@@ -92,10 +92,8 @@ export default {
       option = {
         title: {
           text: "市州竞争力排名",
-          // subtext: "Product classification research ",
           x: "center",
           y: 5,
-          // textAlign: "center",
           textStyle: {
             color: "white",
             fontFamily: " serif ",
@@ -130,12 +128,11 @@ export default {
           data: data["市州"],
           inverse: true,
           axisLabel: {
-            show: false, //不显示坐标轴上的文字
+            show: false,
           },
         },
         series: [
           {
-            // color: "#4B90C3",
             name: "竞争力指数",
             type: "bar",
             showBackground: true,
@@ -159,7 +156,6 @@ export default {
                 color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
                   { offset: 1, color: "#000046" },
                   { offset: 0, color: "#1CB5E0" },
-                  //  {offset: 1, color: '#4fC1E9'}
                 ]),
               },
               emphasis: {
@@ -169,36 +165,6 @@ export default {
                 ]),
               },
             },
-            //   itemStyle:{
-            //           normal:{
-            //               //柱体的颜色
-            //               //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
-            //               color: function(params){
-            //                   console.log(params);
-            //                   var colorList = [
-            //   						['#0F5C7F','#99DFFF'],
-            //   						['#8D3510','#FFA783'],
-            //   						['#651180','#D099FF'],
-            //   						['#4B8D10','#83FFC0'],
-            //   						['#8D104B','#FF83D8'],
-            //   						['#7F610F','#FFE899'],
-            //   						['#108D89','#83FFE9']
-            //       			];
-            //                   var colorItem = colorList[params.dataIndex];
-            //                   return new echarts.graphic.LinearGradient(1,0,0,0,[
-            //                               {
-            //                                   offset:0,
-            //                                   color: colorItem[0]
-            //                               },
-            //                               {
-            //                                   offset:1,
-            //                                   color: colorItem[1]
-            //                               }
-            //                               ],false);
-            //                   }
-            //               }
-
-            //           }
           },
         ],
       };
