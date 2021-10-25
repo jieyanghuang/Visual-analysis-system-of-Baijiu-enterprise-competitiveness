@@ -1,6 +1,6 @@
 # Visual-analysis-system-of-Baijiu-enterprise-competitiveness
 ## How to start:
-cd baijiu
+cd baijiu<br>
 npm run serve
 ## Precautions:
 The above code only includes the front-end, and the back-end code is implemented in python, which is not included.
