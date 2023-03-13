@@ -23,6 +23,7 @@ export default {
   methods: {
     initQipao(qipaoData) {
       //   var ROOT_PATH = 'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples';
+      // "https://cdn.jsdelivr.net/npm/d3-hierarchy@2.0.0/dist/d3-hierarchy.min.js"
 
       var chartDom = document.getElementById("qipao");
       var myChart = echarts.init(chartDom);
@@ -30,10 +31,8 @@ export default {
 
       $.when(
         $.get("static/qipao_final.json"),
-        $.getScript(
-          "https://cdn.jsdelivr.net/npm/d3-hierarchy@2.0.0/dist/d3-hierarchy.min.js"
-        )
-      ).done(function(res) {
+        $.getScript("static/qipao.js")
+      ).done(function (res) {
         if (qipaoData == 6) run(res[0]);
         else {
           var companys = [
@@ -96,13 +95,13 @@ export default {
         function stratify() {
           return d3
             .stratify()
-            .parentId(function(d) {
+            .parentId(function (d) {
               return d.id.substring(0, d.id.lastIndexOf("."));
             })(seriesData)
-            .sum(function(d) {
+            .sum(function (d) {
               return d.value || 0;
             })
-            .sort(function(a, b) {
+            .sort(function (a, b) {
               return b.value - a.value;
             });
         }
@@ -115,7 +114,7 @@ export default {
             .padding(3)(displayRoot);
 
           context.nodes = {};
-          displayRoot.descendants().forEach(function(node, index) {
+          displayRoot.descendants().forEach(function (node, index) {
             context.nodes[node.id] = node;
           });
         }
@@ -140,7 +139,7 @@ export default {
           var isLeaf = !node.children || !node.children.length;
 
           var focus = new Uint32Array(
-            node.descendants().map(function(node) {
+            node.descendants().map(function (node) {
               return node.data.index;
             })
           );
@@ -229,14 +228,14 @@ export default {
 
         myChart.setOption(option);
 
-        myChart.on("click", { seriesIndex: 0 }, function(params) {
+        myChart.on("click", { seriesIndex: 0 }, function (params) {
           drillDown(params.data.id);
         });
 
         function drillDown(targetNodeId) {
           displayRoot = stratify();
           if (targetNodeId != null) {
-            displayRoot = displayRoot.descendants().find(function(node) {
+            displayRoot = displayRoot.descendants().find(function (node) {
               return node.data.id === targetNodeId;
             });
           }
@@ -252,7 +251,7 @@ export default {
         }
 
         // Reset: click on the blank area.
-        myChart.getZr().on("click", function(event) {
+        myChart.getZr().on("click", function (event) {
           if (!event.target) {
             drillDown();
           }
@@ -260,7 +259,7 @@ export default {
       }
 
       option && myChart.setOption(option);
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         myChart.resize();
       });
     },

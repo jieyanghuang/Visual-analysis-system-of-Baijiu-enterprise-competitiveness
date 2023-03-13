@@ -35,37 +35,33 @@ export default {
           "阿坝藏族羌族自治州",
         ],
         竞争力指数: [
-          647.27,
-          481.85,
-          285.6,
-          160.0,
-          91.9,
-          48.28,
-          45.66,
-          44.22,
-          39.63,
-          37.21,
-          31.84,
-          30.5,
-          20.84,
-          17.68,
-          8.13,
-          6.8,
-          6.67,
-          5.51,
-          4.92,
-          1.27,
-          1.1,
+          647.27, 481.85, 285.6, 160.0, 91.9, 48.28, 45.66, 44.22, 39.63, 37.21,
+          31.84, 30.5, 20.84, 17.68, 8.13, 6.8, 6.67, 5.51, 4.92, 1.27, 1.1,
         ],
       },
+      // sortdata: {
+      //   市州: [
+      //     "四川省宜宾五粮液集团有限公司",
+      //     "四川广汉金雁酒业有限公司",
+      //     "得荣县太阳谷绿色食品有限责任公司",
+      //     "康定市琼浆酒业有限责任公司",
+      //     "四川戎春酒业集团有限公司",
+      //     "舍得酒业股份有限公司",
+      //     "四川省金波酒业有限公司",
+      //     "雅安市雨城区古家酒厂",
+      //     "雅安市雨城区李俊瓦屋山泉纯粮酒厂",
+      //     "隆昌市贵香酒业有限公司",
+      //   ],
+      //   竞争力指数: [
+      //     647.27, 481.85, 285.6, 160.0, 91.9, 48.28, 45.66, 44.22, 39.63, 37.21,
+      //   ],
+      // },
     };
   },
   mounted() {
-    console.log(this.sortdata);
     for (var j = 0; j < 10; j++) {
-      this.sortdata["竞争力指数"][j] = this.sortdata["竞争力指数"][j].toFixed(
-        2
-      );
+      this.sortdata["竞争力指数"][j] =
+        this.sortdata["竞争力指数"][j].toFixed(2);
     }
     this.initsort(this.sortdata);
     PubSub.subscribe("countryName", (msg, data) => {
@@ -73,9 +69,8 @@ export default {
         if (data == comdata[i]["市州"]) {
           this.sortdata["市州"] = comdata[i]["企业"];
           for (var j = 0; j < 10; j++) {
-            this.sortdata["竞争力指数"][j] = comdata[i]["竞争力指数"][
-              j
-            ].toFixed(2);
+            this.sortdata["竞争力指数"][j] =
+              comdata[i]["竞争力指数"][j].toFixed(2);
           }
           this.initsort(this.sortdata);
           break;
@@ -84,7 +79,7 @@ export default {
     });
   },
   methods: {
-    initsort: function(data) {
+    initsort: function (data) {
       var chartDom = document.getElementById("c1");
       var myChart = echarts.init(chartDom);
       var option;
@@ -130,6 +125,7 @@ export default {
           axisLabel: {
             show: false,
           },
+          show: false,
         },
         series: [
           {
@@ -145,8 +141,7 @@ export default {
               fontSize: 11,
               position: "insideLeft",
               color: "white",
-              formatter: function(params) {
-                console.log(params.name);
+              formatter: function (params) {
                 let txtArry = params.name;
                 return txtArry;
               },
@@ -169,7 +164,7 @@ export default {
         ],
       };
       myChart.setOption(option);
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         myChart.resize();
       });
     },

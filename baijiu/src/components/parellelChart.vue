@@ -27,8 +27,7 @@ export default {
   },
   created() {},
   methods: {
-    initChart: function(data) {
-      console.log(data);
+    initChart: function (data) {
       var chartDom = document.getElementById("parellelChart");
       var myChart = echarts.init(chartDom);
       var countryAxisx = [
@@ -323,7 +322,7 @@ export default {
       if (data.label == "市州") option = option1;
       else option = option2;
       option && myChart.setOption(option);
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         myChart.resize();
       });
     },

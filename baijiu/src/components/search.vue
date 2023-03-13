@@ -17,21 +17,21 @@
           <div class="words">
             <svg class="iconCompetitive" aria-hidden="true">
               <use xlink:href="#icon-jz"></use></svg
-            >competitive:{{ item.competitive }}分
+            >竞争力得分:{{ item.competitive }}分
           </div>
         </span>
         <span class="d2">
           <div class="words">
             <svg class="iconRanking" aria-hidden="true">
               <use xlink:href="#icon-paiming"></use></svg
-            >provinceRanking:{{ item.provinceRanking }}名
+            >全省排名:{{ item.provinceRanking }}名
           </div></span
         >
         <span class="d2" id="cityRanking">
           <div class="words">
             <svg class="iconRanking2" aria-hidden="true">
               <use xlink:href="#icon-paiming"></use></svg
-            >cityRanking:{{ item.cityRanking }}名
+            >全市排名:{{ item.cityRanking }}名
           </div></span
         >
         <span id="kongge"></span>
@@ -59,7 +59,7 @@ export default {
     Newitems() {
       var _this = this;
       var Newitems = [];
-      _this.items.map(function(item) {
+      _this.items.map(function (item) {
         if (item.name.search(_this.searchData) != -1) {
           Newitems.push(item);
         }

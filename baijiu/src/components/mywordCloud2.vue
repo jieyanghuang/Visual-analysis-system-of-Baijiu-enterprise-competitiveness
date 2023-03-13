@@ -22,7 +22,6 @@ export default {
     PubSub.subscribe("companyName", (msg, data) => {
       for (let i = 0; i < haopingtiao.length; i++) {
         if (data == haopingtiao[i].label) {
-          console.log(data);
           this.initsun(haopingtiao[i].datas);
           break;
         }
@@ -31,7 +30,7 @@ export default {
   },
 
   methods: {
-    initsun: function(data) {
+    initsun: function (data) {
       var chartDom = document.getElementById("haoping");
       var myChart = echarts.init(chartDom);
       var option;
@@ -79,7 +78,7 @@ export default {
               fontSize: 13,
               distance: -113,
 
-              formatter: function(value) {
+              formatter: function (value) {
                 if (value === 0.875) {
                   return "优";
                 } else if (value === 0.625) {
@@ -102,7 +101,7 @@ export default {
               fontSize: 12,
               offsetCenter: [1, "-12%"],
               valueAnimation: true,
-              formatter: function(value) {
+              formatter: function (value) {
                 return Math.round(value * 100) + "分";
               },
               color: "white",
@@ -113,7 +112,7 @@ export default {
       };
 
       option && myChart.setOption(option);
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         myChart.resize();
       });
     },

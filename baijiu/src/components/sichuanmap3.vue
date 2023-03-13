@@ -17,10 +17,10 @@ export default {
   },
   methods: {
     initmap() {
-      $(function() {
+      $(function () {
         var myChart = echarts.init(document.getElementById("mapbox"));
         myChart.showLoading();
-        $.get("/static/sichuan.json", function(geoJson) {
+        $.get("/static/sichuan.json", function (geoJson) {
           var TwoPineplants = [
             {
               name: "剑南春",
@@ -53,26 +53,8 @@ export default {
           ];
 
           var value = [
-            647.27,
-            481.85,
-            285.6,
-            160.0,
-            91.9,
-            48.28,
-            45.66,
-            44.22,
-            39.63,
-            37.21,
-            31.84,
-            30.5,
-            20.84,
-            17.68,
-            8.13,
-            6.8,
-            6.67,
-            5.51,
-            4.92,
-            1.27,
+            647.27, 481.85, 285.6, 160.0, 91.9, 48.28, 45.66, 44.22, 39.63,
+            37.21, 31.84, 30.5, 20.84, 17.68, 8.13, 6.8, 6.67, 5.51, 4.92, 1.27,
             1.1,
           ];
           var cities = [
@@ -144,8 +126,8 @@ export default {
             },
 
             title: {
-              text: "四川白酒企业竞争力可视分析系统",
-              subtext: "Visual Analysis System for Sichuan Liquor Enterprises",
+              text: "区域白酒企业竞争力可视分析系统",
+              subtext: "Visual Analysis System for Liquor Enterprises",
               x: "center",
               y: 10,
 
@@ -170,7 +152,7 @@ export default {
               tooltip: {
                 show: true,
                 confine: true,
-                formatter: function(params) {
+                formatter: function (params) {
                   if (
                     params.name == "沱牌舍得" ||
                     params.name == "剑南春" ||
@@ -181,9 +163,9 @@ export default {
                   ) {
                     return [params.name].join("<br>");
                   } else {
-                    return [
-                      params.name + ":" + namemap.get(params.name) + "家",
-                    ].join("<br>");
+                    return [params.name + ":" + namemap.get(params.name)].join(
+                      "<br>"
+                    );
                   }
                 },
 
@@ -251,21 +233,18 @@ export default {
           };
           myChart.setOption(option);
 
-          window.addEventListener("resize", function() {
+          window.addEventListener("resize", function () {
             myChart.resize(); //自适应屏幕宽度
           });
 
-          myChart.on("click", function(e) {
+          myChart.on("click", function (e) {
             //点击地图板块
-            console.log(e);
             if (e.componentType == "geo") {
               PubSub.publish("countryName", e["region"]["name"]);
-              console.log(e["region"]["name"]);
             }
             //点击地图学校点触发订阅事件
             else {
               PubSub.publish("companyName", e["data"]["name"]);
-              console.log(e["data"]["name"]);
             }
           });
         });
@@ -279,6 +258,7 @@ export default {
 #mapbox {
   width: 100%;
   height: 100%;
-  background: url("../assets/back2.png") center !important;
+  /* background-image: url("../assets/back2.png") !important; */
+  background-color: black;
 }
 </style>

@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <router-view v-if="isRouterAlive"></router-view>
-
     <div id="mapbox2">
       <sichuanmap3 />
 
@@ -21,16 +19,16 @@
       <sortChart2 />
     </div>
 
-    <div id="ciyun">
+    <div id="ciyun" name="情感分析模块">
       <mywordCloud2 />
     </div>
 
     <div id="xuritu" class="border1">
-      <div id="title-qipao">产品分级研究</div>
+      <div class="title">{{ curCompanyName }}白酒产品线</div>
       <sunburstChart2 />
     </div>
 
-    <div id="lineChart2" class="border1">
+    <div id="lineChart2" class="border1" name="词云">
       <lineChart />
     </div>
     <div id="parallelChart2" class="border1">
@@ -39,8 +37,9 @@
     <div id="search" class="border1">
       <search />
     </div>
-    <div id="gupiao" class="border1">
-      <gupiao />
+    <div id="cityAdvantage" class="border1" name="原来的股票">
+      <div class="title">区域综合信息</div>
+      <cityAdvantage />
     </div>
   </div>
 </template>
@@ -52,7 +51,7 @@ import parellelChart from "./components/parellelChart.vue";
 import sunburstChart2 from "./components/sunburstChart2.vue";
 import mywordCloud2 from "./components/mywordCloud2.vue";
 import search from "./components/search.vue";
-import gupiao from "./components/gupiao.vue";
+import cityAdvantage from "./components/cityAdvantage";
 
 export default {
   name: "App",
@@ -62,16 +61,26 @@ export default {
       reload: this.reload,
     };
   },
+  mounted() {
+    this.init();
+  },
   data() {
     return {
       isRouterAlive: true,
+      curCompanyName: "五粮液",
+      curCountryName: "",
     };
   },
   methods: {
     reload() {
       this.isRouterAlive = false;
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         this.isRouterAlive = true;
+      });
+    },
+    init() {
+      PubSub.subscribe("companyName", (msg, data) => {
+        this.curCompanyName = data;
       });
     },
   },
@@ -83,7 +92,7 @@ export default {
     sunburstChart2,
     mywordCloud2,
     search,
-    gupiao,
+    cityAdvantage,
   },
 };
 </script>
@@ -198,7 +207,7 @@ body::-webkit-scrollbar {
   border-right: 1px solid #03a9f3;
 }
 
-#gupiao {
+#cityAdvantage {
   position: absolute;
   top: 67.9%;
   left: 40%;
@@ -244,10 +253,6 @@ body::-webkit-scrollbar {
   color: #fff;
   font-size: 12px;
 }
-#title-qipao {
-  color: #fff;
-}
-
 #leftline {
   height: 1px;
   width: 32.3%;
@@ -305,5 +310,11 @@ body::-webkit-scrollbar {
   left: -235%;
   color: #fff;
   font-size: 1px;
+}
+.title {
+  color: white;
+  font-family: serif;
+  font-size: 20px;
+  font-weight: bold;
 }
 </style>

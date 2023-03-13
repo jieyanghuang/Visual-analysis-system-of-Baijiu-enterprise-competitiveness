@@ -53,7 +53,6 @@ export default {
           var a = stocks[i].datas;
 
           a.push.apply(a, this.locdata[name_fac]);
-          console.log(a);
           this.init(a);
           // this.init(this.locdata[i]);
           break;
@@ -72,8 +71,6 @@ export default {
       })
       .then((response) => {
         this.locdata = response.data;
-        console.log(this.locdata);
-        console.log(this.flag);
         for (var key in this.locdata) {
           var tem_store = this.locdata[key];
           for (var i = 0; i < tem_store.length; i++) {
@@ -88,7 +85,6 @@ export default {
 
   methods: {
     init(rawData) {
-      console.log(rawData);
       var chartDom = document.getElementById("Stock");
       var myChart = echarts.init(chartDom);
       var option;
@@ -107,11 +103,11 @@ export default {
         }
         return result;
       }
-      var dates = rawData.map(function(item) {
+      var dates = rawData.map(function (item) {
         return item[0];
       });
       var dd = dates;
-      var dta = rawData.map(function(item) {
+      var dta = rawData.map(function (item) {
         return [+item[1], +item[2], +item[3], +item[4]];
       });
 
@@ -243,7 +239,7 @@ export default {
 
       option && myChart.setOption(option);
 
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         myChart.resize(); //自适应屏幕宽度
       });
     },

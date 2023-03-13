@@ -1,5 +1,5 @@
 <template>
-  <div id="mywordcloud" style="width: 100%; height: 100%;"></div>
+  <div id="mywordcloud" style="width: 100%; height: 100%"></div>
 </template>
 <script>
 import Highcharts from "highcharts/highcharts";
@@ -11,7 +11,7 @@ export default {
   name: "mywordCloud2",
   data() {
     return {
-      worddata: [
+      wordData: [
         {
           name: "请选择企业",
           weight: 1,
@@ -20,18 +20,18 @@ export default {
     };
   },
   mounted() {
-    this.initcloud(this.worddata);
+    this.initcloud(this.wordData);
     PubSub.subscribe("companyName", (msg, data) => {
       for (let i = 0; i < cloudData.length; i++) {
         if (data == cloudData[i].label) {
-          this.initcloud(cloudData[i].datas);
+          this.initcloud(cloudData[i].datas, data);
           break;
         }
       }
     });
   },
   methods: {
-    initcloud: function(data) {
+    initcloud: function (data, companyName) {
       Highcharts.chart("mywordcloud", {
         // 关闭Highcharts右下方logo
         credits: { enabled: false },
@@ -60,10 +60,10 @@ export default {
           },
         ],
         title: {
-          text: "产品评论词云",
+          text: `${companyName ? companyName : ""}产品评论词云`,
           y: 20,
           style: {
-            fontSize: 16,
+            fontSize: 20,
             color: "white",
             fontWeight: "bold",
             fontFamily: "serif",
