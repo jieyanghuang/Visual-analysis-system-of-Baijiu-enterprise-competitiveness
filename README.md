@@ -4,8 +4,7 @@
 ## How to start:
 cd baijiu<br>
 npm run serve
-## Precautions:
-The above code only includes the front-end, and the back-end code is implemented in python, which is not included.
 
+## contact me
 If you have any questions, please contact jimmy_huang136@163.com
 
