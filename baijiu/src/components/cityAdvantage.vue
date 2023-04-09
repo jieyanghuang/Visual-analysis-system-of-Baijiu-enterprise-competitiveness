@@ -43,23 +43,22 @@ export default {
         },
         radar: {
           indicator: [
-            { name: "AQI", max: 300 },
-            { name: "PM2.5", max: 250 },
-            { name: "PM10", max: 300 },
-            { name: "CO", max: 5 },
-            { name: "NO2", max: 200 },
-            { name: "SO2", max: 100 },
+            { name: "人才储备", max: 300 },
+            { name: "市场", max: 250 },
+            { name: "政策", max: 300 },
+            { name: "运输", max: 5 },
+            { name: "原材料", max: 200 },
           ],
           shape: "circle",
           splitNumber: 5,
           axisName: {
             //属性名字的颜色
-            color: "rgb(238, 197, 102)",
+            color: "#03a9f3",
           },
           splitLine: {
             lineStyle: {
               //分割圈颜色
-              color: "rgba(238, 197, 102, 0.2)",
+              color: "rgba(24, 165, 207, 0.2)",
             },
           },
           splitArea: {
@@ -68,19 +67,19 @@ export default {
           axisLine: {
             lineStyle: {
               //分割线颜色
-              color: "rgba(238, 197, 102, 0.5)",
+              color: "rgba(24, 165, 207, 0.2)",
             },
           },
         },
         series: [
           {
-            name: "Beijing",
+            name: "区域综合信息",
             type: "radar",
             lineStyle: lineStyle,
             data: dataBJ,
             symbol: "none",
             itemStyle: {
-              color: "#F9713C",
+              color: "rgb(24, 165, 207)",
             },
             areaStyle: {
               opacity: 0.5,
@@ -122,16 +121,17 @@ export default {
 <style>
 .info {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 28px);
   display: flex;
 }
 #charts {
-  width: 60%;
-  height: 90%;
+  margin: 0 0 10px 0;
+  width: 55%;
+  height: 100%;
 }
 .content {
-  height: 80%;
-  border: 1px solid;
+  height: 90%;
+  border: 1px solid #03a9f3;
   margin: 10px 10px 0px 0px;
   color: white;
   flex: 1;

@@ -1,5 +1,5 @@
 <template>
-  <div id="example">
+  <div class="example">
     <input
       type="text"
       v-model="searchData"
@@ -110,6 +110,10 @@ export default {
   margin: 0;
   padding: 0;
 }
+.example {
+  width: 100%;
+  height: 100%;
+}
 input {
   color: white;
   width: 88%;
@@ -151,7 +155,7 @@ ul li span {
 
 .d1 {
   width: 87.5%;
-  height: 70%;
+  height: calc(100% - 50px);
   margin-top: 1%;
   left: 6%;
   overflow-x: hidden; /*设置滚动条*/

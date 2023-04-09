@@ -38,7 +38,7 @@
       <search />
     </div>
     <div id="cityAdvantage" class="border1" name="原来的股票">
-      <div class="title">区域综合信息</div>
+      <div class="title no-cover">区域综合信息</div>
       <cityAdvantage />
     </div>
   </div>
