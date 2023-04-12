@@ -3,9 +3,10 @@
     <input
       type="text"
       v-model="searchData"
+      @keyup.enter="getData"
       placeholder="请输入公司或地区名字  "
     />
-    <ul class="d1">
+    <ul class="d1" v-loading="loading">
       <li v-for="(item, index) in Newitems" :key="index">
         <span id="itemName"
           ><svg class="icon" aria-hidden="true">
@@ -41,7 +42,6 @@
 </template>
 
 <script>
-import Data from "../../public/static/searchDataItems";
 import "../store/iconfont.js";
 import "../store/iconfont-ranking.js";
 import "../store/iconfont-competitive.js";
@@ -52,36 +52,18 @@ export default {
     return {
       searchData: "",
       // name competive sort_area sort_province
-      items: Data,
+      Newitems: [],
+      loading: false,
     };
   },
-  computed: {
-    Newitems() {
-      var _this = this;
-      var Newitems = [];
-      _this.items.map(function (item) {
-        if (item.name.search(_this.searchData) != -1) {
-          Newitems.push(item);
-        }
-      });
-      if (this.searchData == "") {
-        return Newitems.slice(0, 10);
-      } else {
-        return Newitems;
-      }
-    },
-  },
-  mounted() {
-    setInterval((_) => {
-      this.changeColor();
-    }, 100); //每隔100ms调用一次
-  },
+  computed: {},
+  mounted() {},
   methods: {
     changeColor() {
       var len = this.Newitems.length;
       for (var i = 0; i < len; i++) {
         if (this.Newitems[i].competitive >= 60) {
-          document.getElementsByClassName("icon")[i].style.fill = "yellow"; //得分大于70
+          document.getElementsByClassName("icon")[i].style.fill = "yellow"; //得分大于60
           document.getElementsByClassName("pai")[i].innerHTML = "[金牌]";
         } else if (
           this.Newitems[i].competitive >= 30 &&
@@ -100,6 +82,19 @@ export default {
           document.getElementsByClassName("pai")[i].innerHTML = "";
         }
       }
+    },
+    async getData() {
+      this.loading = true;
+      await this.$axios
+        .post("http://127.0.0.1:5000/searchData", {
+          companyName: this.searchData,
+        })
+        .then((re) => {
+          console.log("houduan", re);
+          this.Newitems = re.data.data;
+        });
+      this.changeColor();
+      this.loading = false;
     },
   },
 };

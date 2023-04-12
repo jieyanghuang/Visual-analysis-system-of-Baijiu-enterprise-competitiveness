@@ -10,8 +10,8 @@
       <div id="rightline"><div id="rightline1"></div></div>
       <div class="yansetiao">
         <div id="bottom">0</div>
-        <div id="top">650</div>
-        <div id="companyNumber">竞争力指数</div>
+        <div id="top">50</div>
+        <div id="companyNumber">区域竞争力</div>
       </div>
     </div>
 
@@ -236,7 +236,7 @@ body::-webkit-scrollbar {
   left: 27%;
   width: 10px;
   height: 80px;
-  background: -webkit-linear-gradient(bottom, #64b5f6, #0d47a1) no-repeat;
+  background: -webkit-linear-gradient(bottom, #6fa1ff, #0020a0) no-repeat;
   border: 1px solid white;
 }
 #bottom {

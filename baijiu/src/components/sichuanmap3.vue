@@ -53,9 +53,8 @@ export default {
           ];
 
           var value = [
-            647.27, 481.85, 285.6, 160.0, 91.9, 48.28, 45.66, 44.22, 39.63,
-            37.21, 31.84, 30.5, 20.84, 17.68, 8.13, 6.8, 6.67, 5.51, 4.92, 1.27,
-            1.1,
+            46.79, 47.88, 22.71, 3.67, 2.55, 3.59, 2.09, 1.25, 0.76, 3.66, 1.2,
+            0.73, 0.94, 0.64, 0.4, 0.17, 0.22, 0.34, 0.04, 0.01, 0.01,
           ];
           var cities = [
             "成都市",
@@ -84,17 +83,15 @@ export default {
           var regions = []; //不同地区数组，用来分别设置颜色
           var Color;
           for (var i = 0; i < value.length; i++) {
-            if (value[i] > 0 && value[i] <= 6) {
+            if (value[i] >= 0 && value[i] <= 1) {
               //颜色分级
-              Color = "#64b5f6";
-            } else if (value[i] > 6 && value[i] <= 20) {
-              Color = "#42a5f5";
-            } else if (value[i] > 20 && value[i] <= 40) {
-              Color = "#1e88e5";
-            } else if (value[i] > 40 && value[i] <= 100) {
-              Color = "#1565c0";
+              Color = "#6FA1FF";
+            } else if (value[i] > 1 && value[i] <= 5) {
+              Color = "#3D76FF";
+            } else if (value[i] > 20 && value[i] <= 30) {
+              Color = "#1E4FFF";
             } else {
-              Color = "#0d47a1";
+              Color = "#0020A0";
             }
 
             regions.push({
