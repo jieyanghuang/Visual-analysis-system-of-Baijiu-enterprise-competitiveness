@@ -1,8 +1,7 @@
 <template>
-  <div id="c1" style="width: 100%; height: 100%"></div>
+  <div id="c1" style="width: 100%; height: 100%" ref="myChart"></div>
 </template>
 <script>
-import Labels from "@antv/g2/lib/component/labels";
 import * as echarts from "echarts";
 import PubSub from "pubsub-js";
 import comdata from "../../public/static/qiyejingzhengli.json";
@@ -39,23 +38,6 @@ export default {
           31.84, 30.5, 20.84, 17.68, 8.13, 6.8, 6.67, 5.51, 4.92, 1.27, 1.1,
         ],
       },
-      // sortdata: {
-      //   市州: [
-      //     "四川省宜宾五粮液集团有限公司",
-      //     "四川广汉金雁酒业有限公司",
-      //     "得荣县太阳谷绿色食品有限责任公司",
-      //     "康定市琼浆酒业有限责任公司",
-      //     "四川戎春酒业集团有限公司",
-      //     "舍得酒业股份有限公司",
-      //     "四川省金波酒业有限公司",
-      //     "雅安市雨城区古家酒厂",
-      //     "雅安市雨城区李俊瓦屋山泉纯粮酒厂",
-      //     "隆昌市贵香酒业有限公司",
-      //   ],
-      //   竞争力指数: [
-      //     647.27, 481.85, 285.6, 160.0, 91.9, 48.28, 45.66, 44.22, 39.63, 37.21,
-      //   ],
-      // },
     };
   },
   mounted() {
@@ -77,6 +59,9 @@ export default {
         }
       }
     });
+  },
+  beforeDestroy() {
+    this.$refs.myChart && this.$refs.myChart.clear();
   },
   methods: {
     initsort: function (data) {

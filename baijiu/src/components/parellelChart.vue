@@ -1,31 +1,31 @@
 <template>
-  <div id="parellelChart"></div>
+  <div id="parellelChart" ref="myChart"></div>
 </template>
 
 <script>
 import * as echarts from "echarts";
-import * as d3 from "d3";
-import comparadata from "../../public/static/parallel_final.json";
 import PubSub from "pubsub-js";
-import { color } from "highcharts";
 export default {
   name: "parellelChart",
   data() {
-    return {};
+    return {
+      countryName: "",
+    };
   },
   mounted() {
-    this.initChart(comparadata[0]);
-    // console.log(comparadata[1])
+    this.getData("市州", true);
     PubSub.subscribe("countryName", (msg, data) => {
-      for (let i = 1; i < comparadata.length; i++) {
-        if (data == comparadata[i]["label"]) {
-          this.initChart(comparadata[i]);
-          break;
-        }
-      }
+      this.countryName = data;
+      this.getData(data, false);
     });
   },
   created() {},
+  beforeDestroy() {
+    if (this.chart) {
+      this.$refs["myChart"].dispose();
+      this.$refs["myChart"] = null;
+    }
+  },
   methods: {
     initChart: function (data) {
       var chartDom = document.getElementById("parellelChart");
@@ -273,21 +273,20 @@ export default {
           { dim: 15, name: axisData[7], parallelIndex: 0 },
         ],
         title: {
-          text: "市/州白酒企业数据展示",
+          text: `${this.countryName}白酒企业数据展示`,
           textStyle: {
             left: "40%",
           },
         },
+        progressive: true,
         legend: {
-          left: "40%",
+          left: "50%",
           data: ["所有企业情况", "竞争力前十企业"],
-          // show:false,
           selected: {
             所有企业情况: false,
             竞争力前十企业: true,
             //不想显示的都设置成false
           },
-          //   selectedMode: "single",
           itemGap: 20,
           textStyle: {
             color: "#2F80ED",
@@ -310,7 +309,6 @@ export default {
             name: "所有企业情况",
             type: "parallel",
             parallelIndex: 1,
-            smooth: true,
             lineStyle: {
               width: 1,
               color: "#0ED2F7",
@@ -325,6 +323,17 @@ export default {
       window.addEventListener("resize", function () {
         myChart.resize();
       });
+    },
+    async getData(countryName, isInit) {
+      await this.$axios
+        .post("http://127.0.0.1:5000/multiData", {
+          countryName: countryName,
+          isInit: isInit,
+        })
+        .then((re) => {
+          let data = re.data;
+          this.initChart(data);
+        });
     },
   },
 };

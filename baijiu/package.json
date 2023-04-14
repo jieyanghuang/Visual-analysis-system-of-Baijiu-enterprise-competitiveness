@@ -15,6 +15,7 @@
     "echarts": "^5.1.0",
     "echarts-liquidfill": "^3.1.0",
     "echarts-wordcloud": "^2.0.0",
+    "element-ui": "^2.15.13",
     "highcharts": "^9.1.2",
     "jquery": "^3.6.0",
     "pubsub-js": "^1.9.3",

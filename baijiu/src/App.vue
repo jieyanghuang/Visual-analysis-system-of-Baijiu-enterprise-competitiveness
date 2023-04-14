@@ -108,6 +108,7 @@ body::-webkit-scrollbar {
   text-align: center;
   background-color: rgba(2, 55, 255, 1);
   margin-top: 600px;
+  color: white;
 }
 #c2 {
   position: absolute;

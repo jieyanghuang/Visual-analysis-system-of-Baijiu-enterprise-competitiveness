@@ -6,7 +6,8 @@
       @keyup.enter="getData"
       placeholder="请输入公司或地区名字  "
     />
-    <ul class="d1" v-loading="loading">
+    <div v-show="Newitems.length === 0" class="empty">暂时没有数据</div>
+    <ul class="d1" v-show="Newitems.length !== 0">
       <li v-for="(item, index) in Newitems" :key="index">
         <span id="itemName"
           ><svg class="icon" aria-hidden="true">
@@ -87,7 +88,7 @@ export default {
       this.loading = true;
       await this.$axios
         .post("http://127.0.0.1:5000/searchData", {
-          companyName: this.searchData,
+          companyName: this.searchData.trim(),
         })
         .then((re) => {
           console.log("houduan", re);
@@ -209,5 +210,13 @@ ul li span {
 .pai {
   color: MediumTurquoise;
   font-family: "Hannotate SC";
+}
+.empty {
+  margin: 0 auto;
+  color: rgb(124, 181, 236);
+  font-size: 25px;
+  font-weight: 900;
+  position: relative;
+  top: 25%;
 }
 </style>
