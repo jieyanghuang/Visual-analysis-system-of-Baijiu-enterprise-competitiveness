@@ -5,12 +5,15 @@
     element-loading-background="rgba(0, 0, 0, 0.8)"
   >
     <div id="charts"></div>
-    <div class="content">
-      <div id="water" class="water"></div>
-      <div class="number">
-        <div class="number_top">50分</div>
-        <div class="number_bottom">0分</div>
+    <div style="flex: 1">
+      <div class="content">
+        <div id="water" class="water"></div>
+        <div class="number">
+          <div class="number_top">48分<br />(最高)</div>
+          <div class="number_bottom">0分</div>
+        </div>
       </div>
+      <div class="label">超过{{ (scorePer * 100).toFixed(2) }}%的市州</div>
     </div>
   </div>
 </template>
@@ -29,7 +32,7 @@ export default {
   },
   computed: {
     scorePer() {
-      return Math.floor((this.score / 50) * 100) / 100;
+      return Number((this.score / 47.88).toFixed(4));
     },
   },
   created() {},
@@ -51,6 +54,7 @@ export default {
   },
   methods: {
     init(dataBJ, score) {
+      console.log("xxx", this.scorePer);
       var chartDom = document.getElementById("charts");
       var myChart = echarts.init(chartDom);
       var chartDom = document.getElementById("water");
@@ -97,7 +101,7 @@ export default {
             { name: "区域白酒人力资源情况", max: 2679 },
             { name: "区域白酒企业对外信用", max: 2562 },
             { name: "区域白酒财务能力", max: 317 },
-            { name: "政府扶持力度", max: 10 },
+            { name: "区域白酒企业数量", max: 1501 },
           ],
           // shape: "circle",
           splitNumber: 5,
@@ -177,8 +181,9 @@ export default {
   /* border: 1px solid #03a9f3; */
   margin: 10px 10px 0px 0px;
   color: white;
-  flex: 1;
   display: flex;
+  position: relative;
+  bottom: 10%;
 }
 .water {
   width: 50%;
@@ -190,6 +195,10 @@ export default {
 }
 .number_bottom {
   position: relative;
-  top: 80%;
+  top: 75%;
+}
+.label {
+  font-size: 1.5vh;
+  margin: -10px 10px 0px -40px;
 }
 </style>

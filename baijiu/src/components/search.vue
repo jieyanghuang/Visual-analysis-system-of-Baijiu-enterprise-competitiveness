@@ -11,7 +11,12 @@
       element-loading-background="rgba(0, 0, 0, 0.8)"
       class="main"
     >
-      <div v-show="Newitems.length === 0" class="empty">暂时没有数据</div>
+      <div v-show="searchNoData && this.Newitems.length === 0" class="empty">
+        暂时没有数据
+      </div>
+      <div v-show="!searchNoData && this.Newitems.length === 0" class="empty">
+        请输入关键词进行搜索
+      </div>
       <ul class="d1" v-show="Newitems.length !== 0">
         <li v-for="(item, index) in Newitems" :key="index">
           <span id="itemName"
@@ -61,6 +66,7 @@ export default {
       // name competive sort_area sort_province
       Newitems: [],
       loading: false,
+      searchNoData: false,
     };
   },
   computed: {},
@@ -103,6 +109,11 @@ export default {
         .then((re) => {
           console.log("houduan", re);
           this.Newitems = re.data.data;
+          if (this.Newitems.length === 0) {
+            this.searchNoData = true;
+          } else {
+            this.searchNoData = false;
+          }
         });
       this.changeColor();
       this.loading = false;
