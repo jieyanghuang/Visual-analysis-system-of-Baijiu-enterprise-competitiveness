@@ -96,6 +96,7 @@ export default {
 
             regions.push({
               name: cities[i],
+              score: value[i],
               itemStyle: { normal: { areaColor: Color } },
             });
           }
@@ -238,8 +239,9 @@ export default {
             //点击地图板块
             if (e.componentType == "geo") {
               PubSub.publish("countryName", e["region"]["name"]);
+              PubSub.publish("score", e["region"]["score"]);
             }
-            //点击地图学校点触发订阅事件
+            //点击地图企业点触发订阅事件
             else {
               PubSub.publish("companyName", e["data"]["name"]);
             }

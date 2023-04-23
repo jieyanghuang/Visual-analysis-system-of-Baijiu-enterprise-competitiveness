@@ -1,7 +1,17 @@
 <template>
-  <div class="info">
+  <div
+    class="info"
+    v-loading="loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
     <div id="charts"></div>
-    <div class="content" id="water"></div>
+    <div class="content">
+      <div id="water" class="water"></div>
+      <div class="number">
+        <div class="number_top">50分</div>
+        <div class="number_bottom">0分</div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -13,19 +23,34 @@ export default {
   data() {
     return {
       curCountry: "",
-      geography: "暂时没有内容～",
-      market: "暂时没有内容～",
+      score: 0,
+      loading: false,
     };
+  },
+  computed: {
+    scorePer() {
+      return Math.floor((this.score / 50) * 100) / 100;
+    },
   },
   created() {},
   mounted() {
-    this.init();
+    this.init([[0, 0, 0, 0, 0]], 0);
+    PubSub.subscribe("countryName", (msg, data) => {
+      if (this.curCountry === data) return;
+      else {
+        this.curCountry = data;
+        this.getData(data);
+      }
+    });
+    PubSub.subscribe("score", (msg, data) => {
+      if (this.score === data) return;
+      else {
+        this.score = data;
+      }
+    });
   },
   methods: {
-    init() {
-      PubSub.subscribe("countryName", (msg, data) => {
-        this.curCountry = data;
-      });
+    init(dataBJ, score) {
       var chartDom = document.getElementById("charts");
       var myChart = echarts.init(chartDom);
       var chartDom = document.getElementById("water");
@@ -33,33 +58,30 @@ export default {
       var option;
       var optionWater;
       // 测试数据集
-      const waterObj = { 成都市: 0.81, 泸州市: 0.92 };
       optionWater = {
         series: [
           {
             type: "liquidFill",
-            data: waterObj[this.curCountry]
-              ? [waterObj[this.curCountry]]
-              : [0.8],
+            data: [this.scorePer],
             shape: "container",
             outline: {
               show: false,
             },
             label: {
               formatter: function (param) {
-                return `成功率:${param.value * 100}%`;
+                console.log(param);
+                return `${score}`;
               },
               fontSize: 12,
             },
             color: ["rgb(24, 165, 207)"],
-            amplitude: "3%",
+            amplitude: "0%",
           },
         ],
       };
 
       // Schema:
       // date,AQIindex,PM2.5,PM10,CO,NO2,SO2
-      const dataBJ = [[154, 117, 157, 3.05, 92, 58]];
       const lineStyle = {
         width: 2,
         opacity: 1,
@@ -69,12 +91,13 @@ export default {
           trigger: "item",
         },
         radar: {
+          // [1284.64, 2678.09, 2561.56, 316.5, 5]
           indicator: [
-            { name: "区域白酒研发能力", max: 300 },
-            { name: "区域白酒财务能力", max: 250 },
-            { name: "区域白酒人力资源情况", max: 300 },
-            { name: "区域白酒企业对外信用", max: 5 },
-            { name: "政府扶持力度", max: 200 },
+            { name: "区域白酒研发能力", max: 1285 },
+            { name: "区域白酒人力资源情况", max: 2679 },
+            { name: "区域白酒企业对外信用", max: 2562 },
+            { name: "区域白酒财务能力", max: 317 },
+            { name: "政府扶持力度", max: 10 },
           ],
           // shape: "circle",
           splitNumber: 5,
@@ -122,41 +145,31 @@ export default {
         WaterChart.resize();
       });
     },
-    getData() {
-      this.$axios
-        .post("http://127.0.0.1:5000/searchData", {
-          CompanyName: "成都",
+    async getData(countryName) {
+      this.loading = true;
+      await this.$axios
+        .post("http://127.0.0.1:5000/allInfo", {
+          countryName: countryName,
         })
         .then((re) => {
-          let data = re;
-          console.log("houduan", data);
-          if (data.isHaveContent) {
-            this.geography = data.geography;
-            this.market = data.market;
-          } else {
-            this.geography = "暂时没有内容～";
-            this.market = "暂时没有内容～";
-          }
+          console.log("dedaoshuju");
+          this.init([re.data.data], this.score);
+          console.log("ok");
         });
-    },
-  },
-  watch: {
-    curCountry() {
-      // this.getData();
-      this.init();
+      this.loading = false;
     },
   },
 };
 </script>
 <style>
 .info {
-  width: 95%;
+  width: 100%;
   height: calc(100% - 28px);
   display: flex;
 }
 #charts {
   margin: 15px 0 10px 0;
-  width: 85%;
+  width: 80%;
   height: 100%;
 }
 .content {
@@ -165,5 +178,18 @@ export default {
   margin: 10px 10px 0px 0px;
   color: white;
   flex: 1;
+  display: flex;
+}
+.water {
+  width: 50%;
+  height: 100%;
+}
+.number {
+  flex: 1;
+  font-size: 1.5vh;
+}
+.number_bottom {
+  position: relative;
+  top: 80%;
 }
 </style>

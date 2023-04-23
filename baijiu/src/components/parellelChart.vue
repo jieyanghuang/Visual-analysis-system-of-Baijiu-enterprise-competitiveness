@@ -1,5 +1,12 @@
 <template>
-  <div id="parellelChart" ref="myChart"></div>
+  <div>
+    <div
+      id="parellelChart"
+      ref="myChart"
+      v-loading="loading"
+      element-loading-background="rgba(0, 0, 0, 0.8)"
+    ></div>
+  </div>
 </template>
 
 <script>
@@ -10,13 +17,17 @@ export default {
   data() {
     return {
       countryName: "",
+      loading: false,
     };
   },
   mounted() {
     this.getData("市州", true);
     PubSub.subscribe("countryName", (msg, data) => {
-      this.countryName = data;
-      this.getData(data, false);
+      if (this.countryName === data) return;
+      else {
+        this.countryName = data;
+        this.getData(data, false);
+      }
     });
   },
   created() {},
@@ -83,7 +94,7 @@ export default {
         parallel: [
           {
             left: "2%",
-            right: "21%",
+            right: "10%",
             bottom: 20,
             parallelindex: 0,
             parallelAxisDefault: {
@@ -111,7 +122,7 @@ export default {
           },
           {
             left: "2%",
-            right: "21%",
+            right: "10%",
             bottom: 20,
             parallelIndex: 1,
             parallelAxisDefault: {
@@ -220,13 +231,13 @@ export default {
         parallel: [
           {
             left: "2%",
-            right: "21%",
+            right: "10%",
             bottom: 20,
             parallelindex: 0,
           },
           {
             left: "2%",
-            right: "21%",
+            right: "10%",
             bottom: 20,
             parallelIndex: 1,
           },
@@ -325,6 +336,7 @@ export default {
       });
     },
     async getData(countryName, isInit) {
+      this.loading = true;
       await this.$axios
         .post("http://127.0.0.1:5000/multiData", {
           countryName: countryName,
@@ -334,6 +346,7 @@ export default {
           let data = re.data;
           this.initChart(data);
         });
+      this.loading = false;
     },
   },
 };
@@ -343,7 +356,8 @@ export default {
 <style>
 #parellelChart {
   height: 100%;
-  width: 115%;
+  width: 100%;
+  padding-left: 5px;
   position: absolute;
 }
 </style>

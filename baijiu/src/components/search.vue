@@ -4,41 +4,47 @@
       type="text"
       v-model="searchData"
       @keyup.enter="getData"
-      placeholder="请输入公司或地区名字  "
+      placeholder="请输入公司或地区名字 "
     />
-    <div v-show="Newitems.length === 0" class="empty">暂时没有数据</div>
-    <ul class="d1" v-show="Newitems.length !== 0">
-      <li v-for="(item, index) in Newitems" :key="index">
-        <span id="itemName"
-          ><svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-xingxing"></use>
-          </svg>
-          <nobr class="pai">error</nobr>{{ item.name }}</span
-        >
-        <span class="d2">
-          <div class="words">
-            <svg class="iconCompetitive" aria-hidden="true">
-              <use xlink:href="#icon-jz"></use></svg
-            >竞争力得分:{{ item.competitive }}分
-          </div>
-        </span>
-        <span class="d2">
-          <div class="words">
-            <svg class="iconRanking" aria-hidden="true">
-              <use xlink:href="#icon-paiming"></use></svg
-            >全省排名:{{ item.provinceRanking }}名
-          </div></span
-        >
-        <span class="d2" id="cityRanking">
-          <div class="words">
-            <svg class="iconRanking2" aria-hidden="true">
-              <use xlink:href="#icon-paiming"></use></svg
-            >全市排名:{{ item.cityRanking }}名
-          </div></span
-        >
-        <span id="kongge"></span>
-      </li>
-    </ul>
+    <div
+      v-loading="loading"
+      element-loading-background="rgba(0, 0, 0, 0.8)"
+      class="main"
+    >
+      <div v-show="Newitems.length === 0" class="empty">暂时没有数据</div>
+      <ul class="d1" v-show="Newitems.length !== 0">
+        <li v-for="(item, index) in Newitems" :key="index">
+          <span id="itemName"
+            ><svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-xingxing"></use>
+            </svg>
+            <nobr class="pai">error</nobr>{{ item.name }}</span
+          >
+          <span class="d2">
+            <div class="words">
+              <svg class="iconCompetitive" aria-hidden="true">
+                <use xlink:href="#icon-jz"></use></svg
+              >竞争力得分:{{ item.competitive }}分
+            </div>
+          </span>
+          <span class="d2">
+            <div class="words">
+              <svg class="iconRanking" aria-hidden="true">
+                <use xlink:href="#icon-paiming"></use></svg
+              >全省排名:{{ item.provinceRanking }}名
+            </div></span
+          >
+          <span class="d2" id="cityRanking">
+            <div class="words">
+              <svg class="iconRanking2" aria-hidden="true">
+                <use xlink:href="#icon-paiming"></use></svg
+              >全市排名:{{ item.cityRanking }}名
+            </div></span
+          >
+          <span id="kongge"></span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -85,6 +91,10 @@ export default {
       }
     },
     async getData() {
+      if (this.searchData.trim() === "") {
+        this.Newitems = [];
+        return;
+      }
       this.loading = true;
       await this.$axios
         .post("http://127.0.0.1:5000/searchData", {
@@ -134,6 +144,10 @@ input:focus {
     0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
     0 0 8px rgba(102, 175, 233, 0.6);
+}
+.main {
+  width: 100%;
+  height: calc(100% - 37px);
 }
 ul li {
   list-style: none;
@@ -212,7 +226,6 @@ ul li span {
   font-family: "Hannotate SC";
 }
 .empty {
-  margin: 0 auto;
   color: rgb(124, 181, 236);
   font-size: 25px;
   font-weight: 900;
