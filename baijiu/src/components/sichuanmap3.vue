@@ -21,18 +21,7 @@ export default {
         var myChart = echarts.init(document.getElementById("mapbox"));
         myChart.showLoading();
         $.get("/static/sichuan.json", function (geoJson) {
-          var TwoPineplants = [
-            {
-              name: "剑南春",
-              value: [104.20702, 31.09263],
-            },
-            {
-              name: "郎酒",
-              value: [105.43501, 29.00875],
-            },
-          ];
-
-          var FourPineplantss = [
+          var sixCompany = [
             {
               name: "沱牌舍得",
               value: [105.22636, 30.55541],
@@ -49,6 +38,14 @@ export default {
             {
               name: "泸州老窖",
               value: [105.43501, 28.00875],
+            },
+            {
+              name: "剑南春",
+              value: [104.20702, 31.09263],
+            },
+            {
+              name: "郎酒",
+              value: [105.43501, 29.00875],
             },
           ];
 
@@ -116,7 +113,7 @@ export default {
               itemWidth: 20,
               itemHeight: 10,
               icon: "roundRect",
-              data: ["两家未上市公司", "四家上市公司"],
+              data: ["川酒六大金花"],
               itemGap: 20,
               textStyle: {
                 color: "#ffffff",
@@ -210,22 +207,13 @@ export default {
 
             series: [
               {
-                name: "两家未上市公司",
-                symbolSize: 14, //大头针大小
-                type: "scatter",
-                symbol: "circle",
-                color: "yellow",
-                coordinateSystem: "geo",
-                data: TwoPineplants,
-              },
-              {
-                name: "四家上市公司",
+                name: "川酒六大金花",
                 symbolSize: 14, //大头针大小
                 type: "scatter",
                 symbol: "circle",
                 color: "orange",
                 coordinateSystem: "geo",
-                data: FourPineplantss,
+                data: sixCompany,
               },
             ],
           };

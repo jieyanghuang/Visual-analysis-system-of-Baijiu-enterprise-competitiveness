@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       isRouterAlive: true,
-      curCompanyName: "五粮液",
+      curCompanyName: "",
       curCountryName: "",
     };
   },
