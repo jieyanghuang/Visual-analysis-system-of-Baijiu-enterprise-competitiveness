@@ -33,7 +33,7 @@ export default {
         $.get("static/qipao_final.json"),
         $.getScript("static/qipao.js")
       ).done(function (res) {
-        if (qipaoData == 6) run(res[0]);
+        if (qipaoData == 6) run(res[0], "六大金花");
         else {
           var companys = [
             "剑南春",
@@ -43,17 +43,17 @@ export default {
             "五粮液",
             "水井坊",
           ];
-          run(res[0][companys[qipaoData]]);
+          run(res[0][companys[qipaoData]], companys[qipaoData]);
         }
       });
 
-      function run(rawData) {
-        var dataWrap = prepareData(rawData);
+      function run(rawData, initName) {
+        var dataWrap = prepareData(rawData, initName);
 
         initChart(dataWrap.seriesData, dataWrap.maxDepth);
       }
 
-      function prepareData(rawData) {
+      function prepareData(rawData, initName) {
         var seriesData = [];
         var maxDepth = 0;
 
@@ -81,7 +81,7 @@ export default {
           }
         }
 
-        convert(rawData, "option", 0);
+        convert(rawData, initName, 0);
 
         return {
           seriesData: seriesData,
@@ -239,6 +239,7 @@ export default {
               return node.data.id === targetNodeId;
             });
           }
+          console.log(displayRoot);
           // A trick to prevent d3-hierarchy from visiting parents in this algorithm.
           try {
             displayRoot.parent = null;
