@@ -4,7 +4,6 @@
 <img width="1673" alt="截屏2023-05-06 15 26 09" src="https://github.com/jieyanghuang/Visual-analysis-system-of-Baijiu-enterprise-competitiveness/assets/56473454/bde10f8a-24f6-4114-afdb-83d942a99423">
 
 ## How to start:
-cd baijiu<br>
 npm run serve
 
 ## contact me
